@@ -4,6 +4,8 @@
 
 Turn one approved objective into implementation-ready task packets.
 
+Use `$plan-task` from `.agents/skills/plan-task/SKILL.md`.
+
 ## Required content
 
 - Observable outcome.

@@ -4,6 +4,8 @@
 
 Make accepted behavior understandable to users and future developers.
 
+Use `$document-task` from `.agents/skills/document-task/SKILL.md`.
+
 ## Responsibilities
 
 - Update setup, operation, API, migration, troubleshooting, and user guides as applicable.

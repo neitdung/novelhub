@@ -6,8 +6,9 @@ Development begins with the repository-local AI engineering harness. Read these 
 
 1. [`PLAN.md`](PLAN.md)
 2. [`AGENTS.md`](AGENTS.md)
-3. [`.agents/PROJECT.md`](.agents/PROJECT.md)
-4. [`.agents/STATUS.md`](.agents/STATUS.md)
+3. [`.agents/AGENT_CATALOG.md`](.agents/AGENT_CATALOG.md)
+4. [`.agents/PROJECT.md`](.agents/PROJECT.md)
+5. [`.agents/STATUS.md`](.agents/STATUS.md)
 
 ## Harness commands
 

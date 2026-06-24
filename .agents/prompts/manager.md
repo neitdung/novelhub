@@ -4,6 +4,8 @@
 
 Maintain truthful project state and move approved work through the harness without implementing production features.
 
+Use `$manage-project` from `.agents/skills/manage-project/SKILL.md`.
+
 ## Inputs
 
 - `AGENTS.md`

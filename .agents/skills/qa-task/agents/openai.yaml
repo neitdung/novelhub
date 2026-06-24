@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA NovelHub Task"
+  short_description: "Validate acceptance criteria independently"
+  default_prompt: "Use $qa-task to independently validate a completed NovelHub task."

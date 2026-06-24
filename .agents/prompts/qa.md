@@ -4,6 +4,8 @@
 
 Independently determine whether observable acceptance criteria are satisfied.
 
+Use `$qa-task` from `.agents/skills/qa-task/SKILL.md`.
+
 ## Workflow
 
 - Start from the task packet, not the developer's interpretation.

@@ -49,6 +49,14 @@ ACTIVE_STATES = {
     "review_failed",
     "accepted",
 }
+REQUIRED_SKILLS = {
+    "manage-project",
+    "plan-task",
+    "implement-task",
+    "qa-task",
+    "review-task",
+    "document-task",
+}
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -79,6 +87,36 @@ def paths_overlap(left: str, right: str) -> bool:
     left_path = Path(left)
     right_path = Path(right)
     return left_path == right_path or left_path in right_path.parents or right_path in left_path.parents
+
+
+def validate_skills(errors: list[str]) -> None:
+    skills_root = AGENTS_DIR / "skills"
+    for skill_name in sorted(REQUIRED_SKILLS):
+        skill_dir = skills_root / skill_name
+        skill_path = skill_dir / "SKILL.md"
+        metadata_path = skill_dir / "agents" / "openai.yaml"
+        if not skill_path.is_file():
+            fail(errors, f"missing required skill: {skill_name}/SKILL.md")
+            continue
+        text = skill_path.read_text(encoding="utf-8")
+        frontmatter_match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
+        if not frontmatter_match:
+            fail(errors, f"{skill_name}: missing YAML frontmatter")
+            continue
+        frontmatter = frontmatter_match.group(1)
+        if f"name: {skill_name}" not in frontmatter:
+            fail(errors, f"{skill_name}: frontmatter name does not match directory")
+        description_match = re.search(r"^description:\s*(.+)$", frontmatter, re.MULTILINE)
+        if not description_match or len(description_match.group(1).strip()) < 40:
+            fail(errors, f"{skill_name}: description is missing or too vague")
+        if "[TODO" in text:
+            fail(errors, f"{skill_name}: unresolved TODO remains in SKILL.md")
+        if not metadata_path.is_file():
+            fail(errors, f"{skill_name}: missing agents/openai.yaml")
+        else:
+            metadata = metadata_path.read_text(encoding="utf-8")
+            if f"${skill_name}" not in metadata:
+                fail(errors, f"{skill_name}: default prompt must mention ${skill_name}")
 
 
 def validate_task(
@@ -250,6 +288,7 @@ def main() -> int:
         "AGENTS.md",
         "PLAN.md",
         ".agents/PROJECT.md",
+        ".agents/AGENT_CATALOG.md",
         ".agents/ROADMAP.md",
         ".agents/schemas/backlog.schema.json",
         ".agents/schemas/agent-result.schema.json",
@@ -265,6 +304,8 @@ def main() -> int:
             json.loads(schema_path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             fail(errors, f"invalid JSON schema {schema_path.relative_to(ROOT)}: {exc}")
+
+    validate_skills(errors)
 
     expected_status = render_status(backlog)
     actual_status = STATUS_PATH.read_text(encoding="utf-8") if STATUS_PATH.is_file() else ""

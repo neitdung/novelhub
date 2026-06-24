@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan NovelHub Task"
+  short_description: "Turn roadmap work into executable task packets"
+  default_prompt: "Use $plan-task to prepare an implementation-ready NovelHub task packet."

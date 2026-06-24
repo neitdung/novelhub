@@ -7,7 +7,7 @@ from pathlib import Path
 HARNESS_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HARNESS_DIR))
 
-from check_state import TRANSITIONS, paths_overlap  # noqa: E402
+from check_state import REQUIRED_SKILLS, TRANSITIONS, paths_overlap  # noqa: E402
 from common import progress_for  # noqa: E402
 
 
@@ -34,6 +34,19 @@ class HarnessRulesTest(unittest.TestCase):
         accepted, total, percentage = progress_for(tasks, "m1")
         self.assertEqual((accepted, total), (3, 5))
         self.assertEqual(percentage, 60.0)
+
+    def test_every_agent_workflow_has_a_skill(self) -> None:
+        self.assertEqual(
+            REQUIRED_SKILLS,
+            {
+                "manage-project",
+                "plan-task",
+                "implement-task",
+                "qa-task",
+                "review-task",
+                "document-task",
+            },
+        )
 
 
 if __name__ == "__main__":

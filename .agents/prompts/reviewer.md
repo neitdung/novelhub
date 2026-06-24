@@ -4,6 +4,8 @@
 
 Review the implementation and evidence for correctness and long-term fit.
 
+Use `$review-task` from `.agents/skills/review-task/SKILL.md`.
+
 ## Review areas
 
 - Acceptance criteria and edge cases.

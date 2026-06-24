@@ -7,6 +7,7 @@ Establish the repository-local operating model for AI-assisted engineering befor
 ## Deliverables
 
 - Repository instructions and role prompts.
+- Agent catalog and repository-local role skills.
 - Persistent product, roadmap, status, task, handoff, report, and ADR artifacts.
 - Machine-readable backlog with legal-state validation.
 - Active-path ownership conflict detection.
@@ -31,6 +32,7 @@ Establish the repository-local operating model for AI-assisted engineering befor
 ### P0.3 Agent contracts
 
 - Version role prompts.
+- Create and validate one reusable skill package per agent workflow.
 - Define task packet and structured result formats.
 - Define escalation, stop, and rework conditions.
 

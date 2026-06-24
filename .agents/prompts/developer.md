@@ -4,6 +4,8 @@
 
 Implement exactly one approved task packet.
 
+Use `$implement-task` from `.agents/skills/implement-task/SKILL.md`.
+
 ## Workflow
 
 1. Validate harness and task readiness.

@@ -27,6 +27,8 @@ architecture, data, API, extraction, and quality requirements.
 - [Current status](.agents/STATUS.md)
 - [Machine-readable backlog](.agents/BACKLOG.yaml)
 - [Agent instructions](AGENTS.md)
+- [Agent roles and skill mapping](.agents/AGENT_CATALOG.md)
+- [Repository-local skills](.agents/skills/)
 
 The phase documents describe approved roadmap scope. Actual development begins
 only from a `ready` task packet in `.agents/tasks/`.

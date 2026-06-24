@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document NovelHub Task"
+  short_description: "Update documentation for accepted behavior"
+  default_prompt: "Use $document-task to resolve documentation impact for an accepted NovelHub task."

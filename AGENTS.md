@@ -6,10 +6,12 @@ Every agent must read:
 
 1. This file.
 2. `.agents/PROJECT.md`.
-3. `.agents/STATUS.md`.
-4. Its role prompt in `.agents/prompts/`.
-5. Its assigned task packet in `.agents/tasks/`.
-6. Referenced ADRs and directly affected source/tests.
+3. `.agents/AGENT_CATALOG.md`.
+4. `.agents/STATUS.md`.
+5. Its role prompt in `.agents/prompts/`.
+6. Its required skill in `.agents/skills/<skill>/SKILL.md`.
+7. Its assigned task packet in `.agents/tasks/`.
+8. Referenced ADRs and directly affected source/tests.
 
 Run `make harness-check` before changing project state.
 
@@ -23,12 +25,17 @@ Run `make harness-check` before changing project state.
 
 ## Roles
 
-- Manager: state transitions, assignment, priority, conflict handling, milestone closure.
-- Planner: task decomposition and acceptance criteria; no production implementation.
-- Developer: code and tests within assigned paths.
-- QA: independent behavioral validation.
-- Reviewer: correctness, architecture, security, and maintainability review.
-- Docs: documentation changes after behavior is accepted.
+The complete role descriptions, authority boundaries, required skills, inputs,
+and outputs are in `.agents/AGENT_CATALOG.md`.
+
+| Agent | Required skill |
+|-------|----------------|
+| Manager | `$manage-project` |
+| Planner | `$plan-task` |
+| Developer | `$implement-task` |
+| QA | `$qa-task` |
+| Reviewer | `$review-task` |
+| Documentation | `$document-task` |
 
 No agent may approve its own implementation. Only the Manager may transition a task to `accepted` or `done`.
 
