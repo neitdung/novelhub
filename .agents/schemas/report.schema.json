@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NovelHub QA or review report metadata",
+  "type": "object",
+  "required": ["task_id", "role", "verdict", "created_at"],
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^NH-[A-Z]+-[0-9]{3}$"},
+    "role": {"enum": ["qa", "reviewer"]},
+    "verdict": {"enum": ["pass", "fail", "approve", "changes_requested"]},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

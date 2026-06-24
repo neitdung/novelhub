@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "project": "novelhub",
+  "current_milestone": "foundation",
+  "updated_at": "2026-06-25T00:11:00Z",
+  "tasks": [
+    {
+      "id": "NH-HARNESS-001",
+      "title": "Bootstrap and validate the AI engineering harness",
+      "milestone": "harness-bootstrap",
+      "priority": "P0",
+      "weight": 5,
+      "state": "done",
+      "owner": "developer-bootstrap",
+      "branch": null,
+      "depends_on": [],
+      "owned_paths": [],
+      "task_packet": ".agents/tasks/NH-HARNESS-001.md",
+      "handoff": ".agents/handoffs/NH-HARNESS-001.md",
+      "qa_report": ".agents/reports/NH-HARNESS-001-qa.md",
+      "review_report": ".agents/reports/NH-HARNESS-001-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {"state": "proposed", "at": "2026-06-25T00:00:00Z", "by": "manager-bootstrap"},
+        {"state": "planning", "at": "2026-06-25T00:01:00Z", "by": "planner-bootstrap"},
+        {"state": "ready", "at": "2026-06-25T00:02:00Z", "by": "manager-bootstrap"},
+        {"state": "in_progress", "at": "2026-06-25T00:03:00Z", "by": "developer-bootstrap"},
+        {"state": "dev_complete", "at": "2026-06-25T00:04:00Z", "by": "manager-bootstrap"},
+        {"state": "qa_passed", "at": "2026-06-25T00:05:00Z", "by": "manager-bootstrap"},
+        {"state": "accepted", "at": "2026-06-25T00:06:00Z", "by": "manager-bootstrap"},
+        {"state": "done", "at": "2026-06-25T00:07:00Z", "by": "manager-bootstrap"}
+      ],
+      "updated_at": "2026-06-25T00:07:00Z"
+    },
+    {
+      "id": "NH-FOUND-001",
+      "title": "Scaffold backend and frontend toolchains",
+      "milestone": "foundation",
+      "priority": "P0",
+      "weight": 3,
+      "state": "ready",
+      "owner": null,
+      "branch": null,
+      "depends_on": ["NH-HARNESS-001"],
+      "owned_paths": [],
+      "task_packet": ".agents/tasks/NH-FOUND-001.md",
+      "handoff": null,
+      "qa_report": null,
+      "review_report": null,
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {"state": "proposed", "at": "2026-06-25T00:08:00Z", "by": "manager-bootstrap"},
+        {"state": "planning", "at": "2026-06-25T00:09:00Z", "by": "planner-bootstrap"},
+        {"state": "ready", "at": "2026-06-25T00:10:00Z", "by": "manager-bootstrap"}
+      ],
+      "updated_at": "2026-06-25T00:10:00Z"
+    }
+  ]
+}
