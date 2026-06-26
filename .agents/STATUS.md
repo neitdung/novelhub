@@ -4,7 +4,7 @@
 
 - Current milestone: `external-ingestion`
 - Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-26T10:04:20.034410Z`
+- Backlog updated: `2026-06-26T17:52:59.000000Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -34,6 +34,7 @@ None.
 | `NH-FOUND-005` OpenAPI contract and generated type check | `done` | unassigned | `m2-consume-api` | none |
 | `NH-HARD-001` Security: sanitize_html, sanitize_url, sanitize_markdown, validate_input | `done` | unassigned | `m1-foundations` | none |
 | `NH-HARNESS-001` Bootstrap and validate the AI engineering harness | `done` | unassigned | `m1-foundations` | none |
+| `NH-HARNESS-002` Branch Naming, PR Creation, and PR-Based Review Workflow | `done` | unassigned | `m1-foundations` | NH-HARNESS-001 |
 | `NH-INGEST-001` Novel upload API and storage | `done` | unassigned | `m1-foundations` | none |
 | `NH-INGEST-002` Chapter parsing and splitting | `done` | unassigned | `m1-foundations` | none |
 | `NH-INGEST-003` Unified External Source Ingestion and Chapter Handler | `done` | unassigned | `m3-web-scraping` | none |
