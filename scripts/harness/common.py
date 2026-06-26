@@ -41,6 +41,100 @@ def progress_for(tasks: list[dict[str, Any]], milestone: str) -> tuple[int, int,
     return accepted, total, percentage
 
 
+def task_sort_key(task: dict[str, Any]) -> tuple[int, int, str]:
+    priority_rank = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
+    return (
+        priority_rank.get(str(task.get("priority")), 99),
+        -int(task.get("weight", 0)),
+        str(task.get("id", "")),
+    )
+
+
+def dependencies_satisfied(
+    task: dict[str, Any],
+    tasks_by_id: dict[str, dict[str, Any]],
+) -> bool:
+    for dependency in task.get("depends_on", []):
+        if tasks_by_id.get(dependency, {}).get("state") not in {"accepted", "done"}:
+            return False
+    return True
+
+
+def next_valid_action(tasks: list[dict[str, Any]], milestone: str) -> str:
+    tasks_by_id = {
+        task["id"]: task
+        for task in tasks
+        if isinstance(task, dict) and isinstance(task.get("id"), str)
+    }
+    ordered = sorted(
+        [task for task in tasks if isinstance(task, dict)],
+        key=task_sort_key,
+    )
+
+    for state, message in [
+        (
+            "blocked",
+            "Resolve blockers for `{id}` or move it back to `in_progress` when unblocked.",
+        ),
+        ("needs_decision", "Record the required decision for `{id}` before planning continues."),
+        ("qa_failed", "Reassign `{id}` to a Developer for QA rework."),
+        ("review_failed", "Reassign `{id}` to a Developer for review rework."),
+        ("dev_complete", "Assign `{id}` to QA and require a `<!-- qa-report -->` verdict."),
+        (
+            "qa_passed",
+            "Assign `{id}` to Reviewer and require a `<!-- review-report -->` verdict.",
+        ),
+    ]:
+        for task in ordered:
+            if task.get("state") == state:
+                return message.format(id=task["id"])
+
+    for task in ordered:
+        if task.get("state") == "accepted":
+            if task.get("docs_impact") == "pending":
+                return f"Resolve documentation impact for `{task['id']}` before closing it."
+            return f"Move `{task['id']}` to `done` and close its GitHub Issue."
+
+    for task in ordered:
+        if task.get("state") == "in_progress":
+            return f"Wait for Developer handoff on `{task['id']}` or record a blocker."
+
+    ready = [
+        task
+        for task in ordered
+        if task.get("state") == "ready" and dependencies_satisfied(task, tasks_by_id)
+    ]
+    if ready:
+        task = ready[0]
+        return f"Assign `{task['id']}` to a Developer and record its branch and owned paths."
+
+    waiting = [
+        task
+        for task in ordered
+        if task.get("state") == "ready" and not dependencies_satisfied(task, tasks_by_id)
+    ]
+    if waiting:
+        task = waiting[0]
+        return f"Wait for dependencies before assigning ready task `{task['id']}`."
+
+    for task in ordered:
+        if task.get("state") == "planning":
+            return f"Complete the task packet for `{task['id']}` and move it to `ready`."
+
+    for task in ordered:
+        if task.get("state") == "proposed":
+            return f"Move `{task['id']}` to `planning` and create its GitHub Issue packet."
+
+    milestone_tasks = [task for task in ordered if task.get("milestone") == milestone]
+    if milestone_tasks and all(task.get("state") in {"done", "superseded"} for task in milestone_tasks):
+        return (
+            f"No active or queued tasks remain for `{milestone}`. "
+            "Select the next approved milestone or create the next task packet."
+        )
+
+    return "No active or queued tasks remain. Create the next approved task packet before assigning work."
+
+
 def render_status(backlog: dict[str, Any]) -> str:
     tasks = backlog.get("tasks", [])
     milestone = backlog.get("current_milestone", "unknown")
@@ -126,7 +220,7 @@ def render_status(backlog: dict[str, Any]) -> str:
         [
             "## Next valid action",
             "",
-            "Assign `NH-FOUND-001` to a Developer and record its branch and owned paths.",
+            next_valid_action(tasks, milestone),
             "",
         ]
     )

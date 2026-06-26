@@ -8,7 +8,7 @@ HARNESS_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HARNESS_DIR))
 
 from check_state import REQUIRED_SKILLS, TRANSITIONS, paths_overlap  # noqa: E402
-from common import progress_for  # noqa: E402
+from common import next_valid_action, progress_for  # noqa: E402
 
 
 class HarnessRulesTest(unittest.TestCase):
@@ -34,6 +34,48 @@ class HarnessRulesTest(unittest.TestCase):
         accepted, total, percentage = progress_for(tasks, "m1")
         self.assertEqual((accepted, total), (3, 5))
         self.assertEqual(percentage, 60.0)
+
+    def test_next_action_does_not_assign_done_task(self) -> None:
+        tasks = [
+            {
+                "id": "NH-FOUND-001",
+                "milestone": "foundation",
+                "priority": "P1",
+                "weight": 5,
+                "state": "done",
+            }
+        ]
+
+        action = next_valid_action(tasks, "foundation")
+
+        self.assertIn("No active or queued tasks remain", action)
+        self.assertNotIn("Assign `NH-FOUND-001`", action)
+
+    def test_next_action_assigns_ready_task_with_satisfied_dependencies(self) -> None:
+        tasks = [
+            {
+                "id": "NH-FOUND-001",
+                "milestone": "foundation",
+                "priority": "P1",
+                "weight": 5,
+                "state": "done",
+            },
+            {
+                "id": "NH-FOUND-002",
+                "milestone": "foundation",
+                "priority": "P0",
+                "weight": 3,
+                "state": "ready",
+                "depends_on": ["NH-FOUND-001"],
+            },
+        ]
+
+        action = next_valid_action(tasks, "foundation")
+
+        self.assertEqual(
+            action,
+            "Assign `NH-FOUND-002` to a Developer and record its branch and owned paths.",
+        )
 
     def test_every_agent_workflow_has_a_skill(self) -> None:
         self.assertEqual(

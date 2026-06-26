@@ -62,4 +62,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-FOUND-001` to a Developer and record its branch and owned paths.
+No active or queued tasks remain. Create the next approved task packet before assigning work.
