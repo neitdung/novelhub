@@ -8,6 +8,8 @@ HARNESS_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HARNESS_DIR))
 
 from check_state import (  # noqa: E402
+    ASSISTANT_WORKFLOW_FILES,
+    OPENCODE_REQUIRED_AGENTS,
     REQUIRED_ROLE_PROMPTS,
     REQUIRED_SKILLS,
     TRANSITIONS,
@@ -105,6 +107,24 @@ class HarnessRulesTest(unittest.TestCase):
                 "qa.md",
                 "reviewer.md",
                 "docs.md",
+            },
+        )
+
+    def test_opencode_injects_project_setup_for_all_agents(self) -> None:
+        self.assertIn("novelhub", OPENCODE_REQUIRED_AGENTS)
+        for role in ("manager", "planner", "developer", "qa", "reviewer", "docs"):
+            self.assertIn(f"novelhub-{role}", OPENCODE_REQUIRED_AGENTS)
+        for builtin in ("general", "build", "explore", "plan"):
+            self.assertIn(builtin, OPENCODE_REQUIRED_AGENTS)
+
+    def test_common_assistant_workflow_entrypoints_exist(self) -> None:
+        self.assertEqual(
+            ASSISTANT_WORKFLOW_FILES,
+            {
+                "AGENTS.md",
+                "CLAUDE.md",
+                "GEMINI.md",
+                ".github/copilot-instructions.md",
             },
         )
 

@@ -125,6 +125,9 @@ fi
 
 export OPENCODE_PORT
 
+echo "Rendering OpenCode project prompt config..."
+"$PYTHON" scripts/harness/render_opencode_config.py
+
 cleanup() {
     echo ""
     echo "Shutting down..."
