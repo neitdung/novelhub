@@ -173,13 +173,14 @@ def pull() -> int:
         print(f"ERROR: unexpected issues response: {issues}", file=sys.stderr)
         return 1
 
-    project_items = gh_list("project", "item-list", project_number, "--owner", owner, "--format", "json")
-    items_list = project_items if isinstance(project_items, list) else project_items.get("items", [])
-
-    project_fields_raw = gh_list("project", "field-list", project_number, "--owner", owner, "--format", "json")
+    project_fields_raw = gh_list("project", "field-list", project_number, "--owner", "@me", "--format", "json")
     proj_fields_list = project_fields_raw if isinstance(project_fields_raw, list) else project_fields_raw.get("fields", [])
 
     task_id_field_name = "Task ID"
+
+    items_gql = gh("api", "graphql", "-f", f"query={{user(login:\"{owner}\"){{projectV2(number:{project_number}){{items(first:100){{nodes{{id fieldValues(first:30){{nodes{{__typename ...on ProjectV2ItemFieldTextValue{{text field{{...on ProjectV2Field{{id name}}}}}} ...on ProjectV2ItemFieldNumberValue{{number field{{...on ProjectV2Field{{id name}}}}}} ...on ProjectV2ItemFieldSingleSelectValue{{name field{{...on ProjectV2SingleSelectField{{id name}}}}}}}}}} content{{...on Issue{{number title}}}}}}}}}}}}}}")
+    items_list = (items_gql or {}).get("data", {}).get("user", {}).get("projectV2", {}).get("items", {}).get("nodes", [])
+
     issue_by_task_id: dict[str, dict[str, Any]] = {}
 
     for item in items_list:
@@ -227,10 +228,8 @@ def pull() -> int:
         qa_comment = find_comment_by_marker(comments_list, MARKER_QA)
         review_comment = find_comment_by_marker(comments_list, MARKER_REVIEW)
 
-        issue_state = issue.get("state", "open")
-        gh_state = "proposed"
-        if issue_state == "closed":
-            gh_state = "done"
+        issue_state = (issue.get("state") or "open").lower()
+        gh_state = "done" if issue_state == "closed" else "proposed"
 
         fields: dict[str, Any] = {}
         if task_id in issue_by_task_id:
@@ -347,7 +346,7 @@ def push() -> int:
         if match:
             existing_by_id[match.group(1)] = issue["number"]
 
-    fields_info = gh_list("project", "field-list", project_number, "--owner", owner, "--format", "json")
+    fields_info = gh_list("project", "field-list", project_number, "--owner", "@me", "--format", "json")
     proj_fields_list = fields_info if isinstance(fields_info, list) else fields_info.get("fields", [])
 
     created = 0
@@ -449,7 +448,7 @@ def push() -> int:
             priority_opts = {o["name"]: o["id"] for o in field_map.get("Priority", {}).get("options", [])}
             impact_opts = {o["name"]: o["id"] for o in field_map.get("Docs Impact", {}).get("options", [])}
 
-            item_cmd = gh("project", "item-list", project_number, "--owner", owner, "--format", "json")
+            item_cmd = gh("project", "item-list", project_number, "--owner", "@me", "--format", "json")
             items = item_cmd if isinstance(item_cmd, list) else item_cmd.get("items", [])
             target_item = None
             for item in items:
