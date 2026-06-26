@@ -1,4 +1,4 @@
 interface:
   display_name: "QA NovelHub Task"
   short_description: "Validate acceptance criteria independently"
-  default_prompt: "Use $qa-task to independently validate a completed NovelHub task."
+  default_prompt: "AGENTS.md + .agents/prompts/common.md + project docs; use $qa-task to validate one completed task."

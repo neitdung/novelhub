@@ -1,4 +1,4 @@
 interface:
   display_name: "Manage NovelHub Project"
   short_description: "Coordinate task state, ownership, and milestones"
-  default_prompt: "Use $manage-project to select and advance the next valid NovelHub task."
+  default_prompt: "AGENTS.md + .agents/prompts/common.md + project docs; use $manage-project for the next valid state action."

@@ -57,6 +57,15 @@ REQUIRED_SKILLS = {
     "review-task",
     "document-task",
 }
+REQUIRED_ROLE_PROMPTS = {
+    "manager.md",
+    "planner.md",
+    "developer.md",
+    "qa.md",
+    "reviewer.md",
+    "docs.md",
+}
+PROMPT_CONTRACT = ".agents/prompts/common.md"
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -123,6 +132,35 @@ def validate_skills(errors: list[str]) -> None:
             metadata = metadata_path.read_text(encoding="utf-8")
             if f"${skill_name}" not in metadata:
                 fail(errors, f"{skill_name}: default prompt must mention ${skill_name}")
+            for required_text in ("AGENTS.md", PROMPT_CONTRACT, "project docs"):
+                if required_text not in metadata:
+                    fail(errors, f"{skill_name}: default prompt must mention {required_text}")
+
+
+def validate_prompts(errors: list[str]) -> None:
+    prompts_root = AGENTS_DIR / "prompts"
+    common_path = ROOT / PROMPT_CONTRACT
+    if not common_path.is_file():
+        fail(errors, f"missing shared prompt contract: {PROMPT_CONTRACT}")
+    else:
+        common_text = common_path.read_text(encoding="utf-8")
+        for required_text in (
+            "AGENTS.md",
+            ".agents/PROJECT.md",
+            ".agents/AGENT_CATALOG.md",
+            ".agents/STATUS.md",
+        ):
+            if required_text not in common_text:
+                fail(errors, f"{PROMPT_CONTRACT}: must mention {required_text}")
+
+    for prompt_name in sorted(REQUIRED_ROLE_PROMPTS):
+        prompt_path = prompts_root / prompt_name
+        if not prompt_path.is_file():
+            fail(errors, f"missing required role prompt: .agents/prompts/{prompt_name}")
+            continue
+        prompt_text = prompt_path.read_text(encoding="utf-8")
+        if PROMPT_CONTRACT not in prompt_text:
+            fail(errors, f".agents/prompts/{prompt_name}: must require {PROMPT_CONTRACT}")
 
 
 def validate_task(
@@ -296,6 +334,7 @@ def main() -> int:
         ".agents/PROJECT.md",
         ".agents/AGENT_CATALOG.md",
         ".agents/ROADMAP.md",
+        ".agents/prompts/common.md",
         ".agents/schemas/backlog.schema.json",
         ".agents/schemas/agent-result.schema.json",
         ".agents/schemas/report.schema.json",
@@ -312,6 +351,7 @@ def main() -> int:
             fail(errors, f"invalid JSON schema {schema_path.relative_to(ROOT)}: {exc}")
 
     validate_skills(errors)
+    validate_prompts(errors)
 
     expected_status = render_status(backlog)
     actual_status = STATUS_PATH.read_text(encoding="utf-8") if STATUS_PATH.is_file() else ""

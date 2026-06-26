@@ -1,4 +1,4 @@
 interface:
   display_name: "Implement NovelHub Task"
   short_description: "Implement one assigned task with verification"
-  default_prompt: "Use $implement-task to implement the assigned NovelHub task and write its handoff."
+  default_prompt: "AGENTS.md + .agents/prompts/common.md + project docs; use $implement-task to implement one task and handoff."

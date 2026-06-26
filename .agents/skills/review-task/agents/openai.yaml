@@ -1,4 +1,4 @@
 interface:
   display_name: "Review NovelHub Task"
   short_description: "Review correctness, safety, and architecture"
-  default_prompt: "Use $review-task to review a NovelHub implementation and its evidence."
+  default_prompt: "AGENTS.md + .agents/prompts/common.md + project docs; use $review-task to review code and evidence."

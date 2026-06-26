@@ -7,7 +7,12 @@ from pathlib import Path
 HARNESS_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HARNESS_DIR))
 
-from check_state import REQUIRED_SKILLS, TRANSITIONS, paths_overlap  # noqa: E402
+from check_state import (  # noqa: E402
+    REQUIRED_ROLE_PROMPTS,
+    REQUIRED_SKILLS,
+    TRANSITIONS,
+    paths_overlap,
+)
 from common import next_valid_action, progress_for  # noqa: E402
 
 
@@ -87,6 +92,19 @@ class HarnessRulesTest(unittest.TestCase):
                 "qa-task",
                 "review-task",
                 "document-task",
+            },
+        )
+
+    def test_every_agent_role_has_a_prompt(self) -> None:
+        self.assertEqual(
+            REQUIRED_ROLE_PROMPTS,
+            {
+                "manager.md",
+                "planner.md",
+                "developer.md",
+                "qa.md",
+                "reviewer.md",
+                "docs.md",
             },
         )
 

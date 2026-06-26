@@ -1,4 +1,4 @@
 interface:
   display_name: "Plan NovelHub Task"
   short_description: "Turn roadmap work into executable task packets"
-  default_prompt: "Use $plan-task to prepare an implementation-ready NovelHub task packet."
+  default_prompt: "AGENTS.md + .agents/prompts/common.md + project docs; use $plan-task to draft a ready task packet."
