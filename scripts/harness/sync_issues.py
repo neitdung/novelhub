@@ -316,7 +316,7 @@ def pull() -> int:
     return 0
 
 
-def push() -> int:
+def push(task_filter: str = "", since: str = "", push_all: bool = False, dry_run: bool = False) -> int:
     """Push local files → GitHub Issues (bootstrap)."""
     project_number = os.environ.get("GH_PROJECT_NUMBER")
     owner = os.environ.get("GH_OWNER") or os.environ.get("GITHUB_REPOSITORY_OWNER") or ""
@@ -332,7 +332,30 @@ def push() -> int:
     repo = f"{owner}/novelhub"
     backlog_raw = BACKLOG_PATH.read_text(encoding="utf-8")
     backlog = json.loads(backlog_raw)
-    tasks: list[dict[str, Any]] = backlog.get("tasks", [])
+    all_tasks: list[dict[str, Any]] = backlog.get("tasks", [])
+
+    # Filter tasks to push
+    if task_filter:
+        tasks = [t for t in all_tasks if t.get("id") == task_filter]
+        if not tasks:
+            print(f"No task found with ID '{task_filter}'", file=sys.stderr)
+            return 1
+        if dry_run:
+            print(f"[dry-run] Would push 1 task: {task_filter}")
+            return 0
+    elif push_all:
+        tasks = all_tasks
+        if dry_run:
+            print(f"[dry-run] Would push all {len(tasks)} tasks")
+            return 0
+    else:
+        # Default: only push active (non-done) tasks
+        tasks = [t for t in all_tasks if t.get("state") not in ("done", "accepted")]
+        if dry_run:
+            print(f"[dry-run] Would push {len(tasks)} active tasks (skipping {len(all_tasks) - len(tasks)} done/accepted)")
+            return 0
+
+    print(f"Pushing {len(tasks)} tasks to GitHub Issues...")
 
     existing_issues = gh_list("issue", "list", "--repo", repo, "--state", "all",
                                "--json", "number,title,state", "--limit", "1000")
@@ -513,10 +536,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Sync local harness files with GitHub Issues")
     parser.add_argument("direction", nargs="?", choices=["pull", "push"], default="pull",
                         help="Sync direction (default: pull)")
+    parser.add_argument("--task", type=str, default="",
+                        help="Only sync a specific task ID (e.g., NH-FOUND-001)")
+    parser.add_argument("--since", type=str, default="",
+                        help="Only sync tasks updated after this ISO timestamp")
+    parser.add_argument("--all", action="store_true", default=False,
+                        help="Push ALL tasks, not just active (non-done) ones")
+    parser.add_argument("--dry-run", action="store_true", default=False,
+                        help="Show what would be synced without making changes")
     args = parser.parse_args()
     ensure_dirs()
     if args.direction == "push":
-        return push()
+        return push(task_filter=args.task, since=args.since, push_all=args.all, dry_run=args.dry_run)
     return pull()
 
 
