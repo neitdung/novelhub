@@ -16,3 +16,21 @@ test-results/
 .env
 .env.*
 !.env.example
+
+# Uploaded novel files
+uploads/
+backend/uploads/
+
+# Build artifacts
+*.egg-info/
+*.whl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

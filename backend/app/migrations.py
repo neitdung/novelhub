@@ -211,4 +211,48 @@ def get_migrations() -> dict[int, str]:
             CREATE INDEX IF NOT EXISTS idx_events_type
                 ON events(event_type);
         """,
+        4: """
+            CREATE TABLE IF NOT EXISTS sources (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                url_template TEXT NOT NULL,
+                css_selector TEXT NOT NULL DEFAULT '.txtnav',
+                language TEXT NOT NULL DEFAULT 'zh',
+                active INTEGER NOT NULL DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+
+            CREATE TABLE IF NOT EXISTS ingest_jobs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                novel_id INTEGER NOT NULL,
+                source_id INTEGER NOT NULL,
+                chapter_start INTEGER NOT NULL,
+                chapter_end INTEGER NOT NULL,
+                status TEXT NOT NULL DEFAULT 'pending',
+                progress INTEGER NOT NULL DEFAULT 0,
+                error TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (novel_id) REFERENCES novels(id) ON DELETE CASCADE,
+                FOREIGN KEY (source_id) REFERENCES sources(id) ON DELETE CASCADE
+            );
+
+            ALTER TABLE novels ADD COLUMN source_type TEXT NOT NULL DEFAULT 'upload';
+            ALTER TABLE novels ADD COLUMN source_id INTEGER REFERENCES sources(id);
+
+            ALTER TABLE chapters ADD COLUMN raw_content TEXT;
+            ALTER TABLE chapters ADD COLUMN source_url TEXT;
+            ALTER TABLE chapters ADD COLUMN is_corrected INTEGER NOT NULL DEFAULT 0;
+            ALTER TABLE chapters ADD COLUMN corrected_at TIMESTAMP;
+            ALTER TABLE chapters ADD COLUMN ingest_job_id INTEGER
+                REFERENCES ingest_jobs(id);
+
+            CREATE INDEX IF NOT EXISTS idx_novels_source_type
+                ON novels(source_type);
+            CREATE INDEX IF NOT EXISTS idx_chapters_ingest_job
+                ON chapters(ingest_job_id);
+            CREATE INDEX IF NOT EXISTS idx_ingest_jobs_novel ON ingest_jobs(novel_id);
+            CREATE INDEX IF NOT EXISTS idx_ingest_jobs_status ON ingest_jobs(status);
+        """,
     }

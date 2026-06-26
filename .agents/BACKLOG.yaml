@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "project": "novelhub",
-  "current_milestone": "core-frontend",
-  "updated_at": "2026-06-25T10:00:00Z",
+  "current_milestone": "external-ingestion",
+  "updated_at": "2026-06-26T07:18:07Z",
   "tasks": [
     {
       "id": "NH-HARNESS-001",
@@ -22,14 +22,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T00:00:00Z", "by": "manager-bootstrap"},
-        {"state": "planning", "at": "2026-06-25T00:01:00Z", "by": "planner-bootstrap"},
-        {"state": "ready", "at": "2026-06-25T00:02:00Z", "by": "manager-bootstrap"},
-        {"state": "in_progress", "at": "2026-06-25T00:03:00Z", "by": "developer-bootstrap"},
-        {"state": "dev_complete", "at": "2026-06-25T00:04:00Z", "by": "manager-bootstrap"},
-        {"state": "qa_passed", "at": "2026-06-25T00:05:00Z", "by": "manager-bootstrap"},
-        {"state": "accepted", "at": "2026-06-25T00:06:00Z", "by": "manager-bootstrap"},
-        {"state": "done", "at": "2026-06-25T00:07:00Z", "by": "manager-bootstrap"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T00:00:00Z",
+          "by": "manager-bootstrap"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T00:01:00Z",
+          "by": "planner-bootstrap"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T00:02:00Z",
+          "by": "manager-bootstrap"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T00:03:00Z",
+          "by": "developer-bootstrap"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T00:04:00Z",
+          "by": "manager-bootstrap"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T00:05:00Z",
+          "by": "manager-bootstrap"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T00:06:00Z",
+          "by": "manager-bootstrap"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T00:07:00Z",
+          "by": "manager-bootstrap"
+        }
       ],
       "updated_at": "2026-06-25T00:07:00Z"
     },
@@ -42,8 +74,14 @@
       "state": "done",
       "owner": "developer-found-001",
       "branch": "feat/NH-FOUND-001-scaffold",
-      "depends_on": ["NH-HARNESS-001"],
-      "owned_paths": ["backend/", "frontend/", "Makefile"],
+      "depends_on": [
+        "NH-HARNESS-001"
+      ],
+      "owned_paths": [
+        "backend/",
+        "frontend/",
+        "Makefile"
+      ],
       "task_packet": ".agents/tasks/NH-FOUND-001.md",
       "handoff": ".agents/handoffs/NH-FOUND-001.md",
       "qa_report": ".agents/reports/NH-FOUND-001-qa.md",
@@ -51,14 +89,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T00:08:00Z", "by": "manager-bootstrap"},
-        {"state": "planning", "at": "2026-06-25T00:09:00Z", "by": "planner-bootstrap"},
-        {"state": "ready", "at": "2026-06-25T00:10:00Z", "by": "manager-bootstrap"},
-        {"state": "in_progress", "at": "2026-06-25T02:50:00Z", "by": "developer-found-001"},
-        {"state": "dev_complete", "at": "2026-06-25T03:05:00Z", "by": "developer-found-001"},
-        {"state": "qa_passed", "at": "2026-06-25T03:10:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T03:15:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T03:20:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T00:08:00Z",
+          "by": "manager-bootstrap"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T00:09:00Z",
+          "by": "planner-bootstrap"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T00:10:00Z",
+          "by": "manager-bootstrap"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T02:50:00Z",
+          "by": "developer-found-001"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T03:05:00Z",
+          "by": "developer-found-001"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T03:10:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T03:15:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T03:20:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T03:20:00Z"
     },
@@ -71,8 +141,12 @@
       "state": "done",
       "owner": "developer-found-003",
       "branch": "feat/NH-FOUND-003-sqlite",
-      "depends_on": ["NH-FOUND-001"],
-      "owned_paths": ["backend/"],
+      "depends_on": [
+        "NH-FOUND-001"
+      ],
+      "owned_paths": [
+        "backend/"
+      ],
       "task_packet": ".agents/tasks/NH-FOUND-003.md",
       "handoff": ".agents/handoffs/NH-FOUND-003.md",
       "qa_report": ".agents/reports/NH-FOUND-003-qa.md",
@@ -80,14 +154,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T03:25:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T03:26:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T03:27:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T03:30:00Z", "by": "developer-found-003"},
-        {"state": "dev_complete", "at": "2026-06-25T03:45:00Z", "by": "developer-found-003"},
-        {"state": "qa_passed", "at": "2026-06-25T03:50:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T03:55:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T04:00:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T03:25:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T03:26:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T03:27:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T03:30:00Z",
+          "by": "developer-found-003"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T03:45:00Z",
+          "by": "developer-found-003"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T03:50:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T03:55:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T04:00:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T04:00:00Z"
     },
@@ -100,8 +206,13 @@
       "state": "done",
       "owner": "developer-found-005",
       "branch": "feat/NH-FOUND-005-openapi",
-      "depends_on": ["NH-FOUND-001"],
-      "owned_paths": ["scripts/contracts/", "contracts/"],
+      "depends_on": [
+        "NH-FOUND-001"
+      ],
+      "owned_paths": [
+        "scripts/contracts/",
+        "contracts/"
+      ],
       "task_packet": ".agents/tasks/NH-FOUND-005.md",
       "handoff": ".agents/handoffs/NH-FOUND-005.md",
       "qa_report": ".agents/reports/NH-FOUND-005-qa.md",
@@ -109,14 +220,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T04:05:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T04:06:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T04:07:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T04:10:00Z", "by": "developer-found-005"},
-        {"state": "dev_complete", "at": "2026-06-25T04:25:00Z", "by": "developer-found-005"},
-        {"state": "qa_passed", "at": "2026-06-25T04:30:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T04:35:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T04:40:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T04:05:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T04:06:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T04:07:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T04:10:00Z",
+          "by": "developer-found-005"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T04:25:00Z",
+          "by": "developer-found-005"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T04:30:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T04:35:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T04:40:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T04:40:00Z"
     },
@@ -129,8 +272,12 @@
       "state": "done",
       "owner": "developer-ingest-001",
       "branch": "feat/NH-INGEST-001-upload",
-      "depends_on": ["NH-FOUND-003"],
-      "owned_paths": ["backend/"],
+      "depends_on": [
+        "NH-FOUND-003"
+      ],
+      "owned_paths": [
+        "backend/"
+      ],
       "task_packet": ".agents/tasks/NH-INGEST-001.md",
       "handoff": ".agents/handoffs/NH-INGEST-001.md",
       "qa_report": ".agents/reports/NH-INGEST-001-qa.md",
@@ -138,14 +285,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T04:45:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T04:46:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T04:47:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T04:50:00Z", "by": "developer-ingest-001"},
-        {"state": "dev_complete", "at": "2026-06-25T05:15:00Z", "by": "developer-ingest-001"},
-        {"state": "qa_passed", "at": "2026-06-25T05:20:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T05:25:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T05:30:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T04:45:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T04:46:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T04:47:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T04:50:00Z",
+          "by": "developer-ingest-001"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T05:15:00Z",
+          "by": "developer-ingest-001"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T05:20:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T05:25:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T05:30:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T05:30:00Z"
     },
@@ -158,8 +337,12 @@
       "state": "done",
       "owner": "developer-ingest-002",
       "branch": "feat/NH-INGEST-002-parser",
-      "depends_on": ["NH-INGEST-001"],
-      "owned_paths": ["backend/"],
+      "depends_on": [
+        "NH-INGEST-001"
+      ],
+      "owned_paths": [
+        "backend/"
+      ],
       "task_packet": ".agents/tasks/NH-INGEST-002.md",
       "handoff": ".agents/handoffs/NH-INGEST-002.md",
       "qa_report": ".agents/reports/NH-INGEST-002-qa.md",
@@ -167,14 +350,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T04:45:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T04:46:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T04:47:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T05:35:00Z", "by": "developer-ingest-002"},
-        {"state": "dev_complete", "at": "2026-06-25T05:50:00Z", "by": "developer-ingest-002"},
-        {"state": "qa_passed", "at": "2026-06-25T05:55:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T06:00:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T06:05:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T04:45:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T04:46:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T04:47:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T05:35:00Z",
+          "by": "developer-ingest-002"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T05:50:00Z",
+          "by": "developer-ingest-002"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T05:55:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T06:00:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T06:05:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T06:05:00Z"
     },
@@ -187,8 +402,13 @@
       "state": "done",
       "owner": "developer-read-001",
       "branch": "feat/NH-READ-001-reader",
-      "depends_on": ["NH-INGEST-002", "NH-FOUND-001"],
-      "owned_paths": ["frontend/"],
+      "depends_on": [
+        "NH-INGEST-002",
+        "NH-FOUND-001"
+      ],
+      "owned_paths": [
+        "frontend/"
+      ],
       "task_packet": ".agents/tasks/NH-READ-001.md",
       "handoff": ".agents/handoffs/NH-READ-001.md",
       "qa_report": ".agents/reports/NH-READ-001-qa.md",
@@ -196,14 +416,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T04:45:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T04:46:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T04:47:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T06:10:00Z", "by": "developer-read-001"},
-        {"state": "dev_complete", "at": "2026-06-25T06:30:00Z", "by": "developer-read-001"},
-        {"state": "qa_passed", "at": "2026-06-25T06:35:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T06:40:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T06:45:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T04:45:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T04:46:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T04:47:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T06:10:00Z",
+          "by": "developer-read-001"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T06:30:00Z",
+          "by": "developer-read-001"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T06:35:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T06:40:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T06:45:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T06:45:00Z"
     },
@@ -216,8 +468,13 @@
       "state": "done",
       "owner": "developer-read-002",
       "branch": "feat/NH-READ-002-bookmarks",
-      "depends_on": ["NH-READ-001"],
-      "owned_paths": ["backend/", "frontend/"],
+      "depends_on": [
+        "NH-READ-001"
+      ],
+      "owned_paths": [
+        "backend/",
+        "frontend/"
+      ],
       "task_packet": ".agents/tasks/NH-READ-002.md",
       "handoff": ".agents/handoffs/NH-READ-002.md",
       "qa_report": ".agents/reports/NH-READ-002-qa.md",
@@ -225,14 +482,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T04:45:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T04:46:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T04:47:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T06:50:00Z", "by": "developer-read-002"},
-        {"state": "dev_complete", "at": "2026-06-25T07:10:00Z", "by": "developer-read-002"},
-        {"state": "qa_passed", "at": "2026-06-25T07:15:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T07:20:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T07:25:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T04:45:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T04:46:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T04:47:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T06:50:00Z",
+          "by": "developer-read-002"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T07:10:00Z",
+          "by": "developer-read-002"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T07:15:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T07:20:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T07:25:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T07:25:00Z"
     },
@@ -245,8 +534,12 @@
       "state": "done",
       "owner": "developer-llm-001",
       "branch": "feat/NH-LLM-001-providers",
-      "depends_on": ["NH-FOUND-003"],
-      "owned_paths": ["backend/app/llm/"],
+      "depends_on": [
+        "NH-FOUND-003"
+      ],
+      "owned_paths": [
+        "backend/app/llm/"
+      ],
       "task_packet": ".agents/tasks/NH-LLM-001.md",
       "handoff": ".agents/handoffs/NH-LLM-001.md",
       "qa_report": ".agents/reports/NH-LLM-001-qa.md",
@@ -254,14 +547,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T07:30:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T07:31:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T07:32:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T07:35:00Z", "by": "developer-llm-001"},
-        {"state": "dev_complete", "at": "2026-06-25T07:55:00Z", "by": "developer-llm-001"},
-        {"state": "qa_passed", "at": "2026-06-25T08:00:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T08:05:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T08:10:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T07:30:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T07:31:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T07:32:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T07:35:00Z",
+          "by": "developer-llm-001"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T07:55:00Z",
+          "by": "developer-llm-001"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T08:00:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T08:05:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T08:10:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T08:10:00Z"
     },
@@ -274,8 +599,13 @@
       "state": "done",
       "owner": "developer-llm-002",
       "branch": "feat/NH-LLM-002-pipeline",
-      "depends_on": ["NH-LLM-001", "NH-INGEST-002"],
-      "owned_paths": ["backend/app/analysis/"],
+      "depends_on": [
+        "NH-LLM-001",
+        "NH-INGEST-002"
+      ],
+      "owned_paths": [
+        "backend/app/analysis/"
+      ],
       "task_packet": ".agents/tasks/NH-LLM-002.md",
       "handoff": ".agents/handoffs/NH-LLM-002.md",
       "qa_report": ".agents/reports/NH-LLM-002-qa.md",
@@ -283,14 +613,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T07:30:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T07:31:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T07:32:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T07:35:00Z", "by": "developer-llm-002"},
-        {"state": "dev_complete", "at": "2026-06-25T07:55:00Z", "by": "developer-llm-002"},
-        {"state": "qa_passed", "at": "2026-06-25T08:00:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T08:05:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T08:10:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T07:30:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T07:31:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T07:32:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T07:35:00Z",
+          "by": "developer-llm-002"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T07:55:00Z",
+          "by": "developer-llm-002"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T08:00:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T08:05:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T08:10:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T08:10:00Z"
     },
@@ -303,8 +665,13 @@
       "state": "done",
       "owner": "developer-kb-001",
       "branch": "feat/NH-KB-001-entity-kb",
-      "depends_on": ["NH-FOUND-003"],
-      "owned_paths": ["backend/app/kb/", "backend/app/migrations.py"],
+      "depends_on": [
+        "NH-FOUND-003"
+      ],
+      "owned_paths": [
+        "backend/app/kb/",
+        "backend/app/migrations.py"
+      ],
       "task_packet": ".agents/tasks/NH-KB-001.md",
       "handoff": ".agents/handoffs/NH-KB-001.md",
       "qa_report": ".agents/reports/NH-KB-001-qa.md",
@@ -312,14 +679,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T08:15:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T08:16:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T08:17:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T08:20:00Z", "by": "developer-kb-001"},
-        {"state": "dev_complete", "at": "2026-06-25T08:45:00Z", "by": "developer-kb-001"},
-        {"state": "qa_passed", "at": "2026-06-25T08:50:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T08:55:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T09:00:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T08:15:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T08:16:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T08:17:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T08:20:00Z",
+          "by": "developer-kb-001"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T08:45:00Z",
+          "by": "developer-kb-001"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T08:50:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T08:55:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T09:00:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T09:00:00Z"
     },
@@ -332,8 +731,12 @@
       "state": "done",
       "owner": "developer-kb-002",
       "branch": "feat/NH-KB-002-search",
-      "depends_on": ["NH-KB-001"],
-      "owned_paths": ["backend/app/search.py"],
+      "depends_on": [
+        "NH-KB-001"
+      ],
+      "owned_paths": [
+        "backend/app/search.py"
+      ],
       "task_packet": ".agents/tasks/NH-KB-002.md",
       "handoff": ".agents/handoffs/NH-KB-002.md",
       "qa_report": ".agents/reports/NH-KB-002-qa.md",
@@ -341,14 +744,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T08:15:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T08:16:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T08:17:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T08:20:00Z", "by": "developer-kb-002"},
-        {"state": "dev_complete", "at": "2026-06-25T08:45:00Z", "by": "developer-kb-002"},
-        {"state": "qa_passed", "at": "2026-06-25T08:50:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T08:55:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T09:00:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T08:15:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T08:16:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T08:17:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T08:20:00Z",
+          "by": "developer-kb-002"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T08:45:00Z",
+          "by": "developer-kb-002"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T08:50:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T08:55:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T09:00:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T09:00:00Z"
     },
@@ -361,8 +796,13 @@
       "state": "done",
       "owner": "developer-kb-003",
       "branch": "feat/NH-KB-003-wiki",
-      "depends_on": ["NH-KB-001", "NH-LLM-001"],
-      "owned_paths": ["backend/app/wiki/"],
+      "depends_on": [
+        "NH-KB-001",
+        "NH-LLM-001"
+      ],
+      "owned_paths": [
+        "backend/app/wiki/"
+      ],
       "task_packet": ".agents/tasks/NH-KB-003.md",
       "handoff": ".agents/handoffs/NH-KB-003.md",
       "qa_report": ".agents/reports/NH-KB-003-qa.md",
@@ -370,14 +810,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T08:15:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T08:16:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T08:17:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T08:20:00Z", "by": "developer-kb-003"},
-        {"state": "dev_complete", "at": "2026-06-25T08:45:00Z", "by": "developer-kb-003"},
-        {"state": "qa_passed", "at": "2026-06-25T08:50:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T08:55:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T09:00:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T08:15:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T08:16:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T08:17:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T08:20:00Z",
+          "by": "developer-kb-003"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T08:45:00Z",
+          "by": "developer-kb-003"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T08:50:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T08:55:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T09:00:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T09:00:00Z"
     },
@@ -390,8 +862,12 @@
       "state": "done",
       "owner": "developer-fe-001",
       "branch": "feat/NH-FE-001-websocket",
-      "depends_on": ["NH-LLM-002"],
-      "owned_paths": ["backend/app/ws.py"],
+      "depends_on": [
+        "NH-LLM-002"
+      ],
+      "owned_paths": [
+        "backend/app/ws.py"
+      ],
       "task_packet": ".agents/tasks/NH-FE-001.md",
       "handoff": ".agents/handoffs/NH-FE-001.md",
       "qa_report": ".agents/reports/NH-FE-001-qa.md",
@@ -399,14 +875,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T09:10:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T09:11:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T09:12:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T09:15:00Z", "by": "developer-fe-001"},
-        {"state": "dev_complete", "at": "2026-06-25T09:30:00Z", "by": "developer-fe-001"},
-        {"state": "qa_passed", "at": "2026-06-25T09:35:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T09:40:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T10:00:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T09:10:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T09:11:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T09:12:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T09:15:00Z",
+          "by": "developer-fe-001"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T09:30:00Z",
+          "by": "developer-fe-001"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T09:35:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T09:40:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T10:00:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T10:00:00Z"
     },
@@ -420,7 +928,10 @@
       "owner": "developer-fe-002",
       "branch": "feat/NH-FE-002-theme",
       "depends_on": [],
-      "owned_paths": ["frontend/src/context/", "frontend/src/components/ThemeToggle.tsx"],
+      "owned_paths": [
+        "frontend/src/context/",
+        "frontend/src/components/ThemeToggle.tsx"
+      ],
       "task_packet": ".agents/tasks/NH-FE-002.md",
       "handoff": ".agents/handoffs/NH-FE-002.md",
       "qa_report": ".agents/reports/NH-FE-002-qa.md",
@@ -428,14 +939,46 @@
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
-        {"state": "proposed", "at": "2026-06-25T09:10:00Z", "by": "manager-agent"},
-        {"state": "planning", "at": "2026-06-25T09:11:00Z", "by": "planner-agent"},
-        {"state": "ready", "at": "2026-06-25T09:12:00Z", "by": "manager-agent"},
-        {"state": "in_progress", "at": "2026-06-25T09:15:00Z", "by": "developer-fe-002"},
-        {"state": "dev_complete", "at": "2026-06-25T09:30:00Z", "by": "developer-fe-002"},
-        {"state": "qa_passed", "at": "2026-06-25T09:35:00Z", "by": "qa-agent"},
-        {"state": "accepted", "at": "2026-06-25T09:40:00Z", "by": "reviewer-agent"},
-        {"state": "done", "at": "2026-06-25T10:00:00Z", "by": "manager-agent"}
+        {
+          "state": "proposed",
+          "at": "2026-06-25T09:10:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T09:11:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T09:12:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T09:15:00Z",
+          "by": "developer-fe-002"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T09:30:00Z",
+          "by": "developer-fe-002"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T09:35:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T09:40:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T10:00:00Z",
+          "by": "manager-agent"
+        }
       ],
       "updated_at": "2026-06-25T10:00:00Z"
     },
@@ -449,156 +992,329 @@
       "owner": "developer-fe-003",
       "branch": "feat/NH-FE-003-settings",
       "depends_on": [],
-      "owned_paths": ["frontend/src/pages/Settings.tsx", "frontend/src/components/"],
+      "owned_paths": [
+        "frontend/src/pages/Settings.tsx",
+        "frontend/src/components/"
+      ],
       "task_packet": ".agents/tasks/NH-FE-003.md",
       "handoff": ".agents/handoffs/NH-FE-003.md",
       "qa_report": ".agents/reports/NH-FE-003-qa.md",
       "review_report": ".agents/reports/NH-FE-003-review.md",
       "docs_impact": "resolved",
       "blocked_by": [],
-        "history": [
-          {"state": "proposed", "at": "2026-06-25T09:10:00Z", "by": "manager-agent"},
-          {"state": "planning", "at": "2026-06-25T09:11:00Z", "by": "planner-agent"},
-          {"state": "ready", "at": "2026-06-25T09:12:00Z", "by": "manager-agent"},
-          {"state": "in_progress", "at": "2026-06-25T09:15:00Z", "by": "developer-fe-003"},
-          {"state": "dev_complete", "at": "2026-06-25T09:30:00Z", "by": "developer-fe-003"},
-          {"state": "qa_passed", "at": "2026-06-25T09:35:00Z", "by": "qa-agent"},
-          {"state": "accepted", "at": "2026-06-25T09:40:00Z", "by": "reviewer-agent"},
-          {"state": "done", "at": "2026-06-25T10:00:00Z", "by": "manager-agent"}
-        ],
-        "updated_at": "2026-06-25T10:00:00Z"
-      },
-      {
-        "id": "NH-CHAT-001",
-        "title": "Chat CRUD and Messages API",
-        "milestone": "discovery-chat",
-        "priority": "P0",
-        "weight": 4,
-        "state": "done",
-        "owner": "developer-chat-001",
-        "branch": "feat/NH-CHAT-001-crud",
-        "depends_on": ["NH-KB-001"],
-        "owned_paths": ["backend/app/chat/"],
-        "task_packet": ".agents/tasks/NH-CHAT-001.md",
-        "handoff": ".agents/handoffs/NH-CHAT-001.md",
-        "qa_report": ".agents/reports/NH-CHAT-001-qa.md",
-        "review_report": ".agents/reports/NH-CHAT-001-review.md",
-        "docs_impact": "resolved",
-        "blocked_by": [],
-        "history": [
-          {"state": "done", "at": "2026-06-25T10:30:00Z", "by": "manager-agent"}
-        ],
-        "updated_at": "2026-06-25T10:30:00Z"
-      },
-      {
-        "id": "NH-CHAT-002",
-        "title": "Chat Tools: Wiki Search, Entity Lookup, Alias Resolution",
-        "milestone": "discovery-chat",
-        "priority": "P0",
-        "weight": 3,
-        "state": "done",
-        "owner": "developer-chat-002",
-        "branch": "feat/NH-CHAT-002-tools",
-        "depends_on": ["NH-CHAT-001", "NH-KB-002"],
-        "owned_paths": ["backend/app/chat/tools.py"],
-        "task_packet": ".agents/tasks/NH-CHAT-002.md",
-        "handoff": ".agents/handoffs/NH-CHAT-002.md",
-        "qa_report": ".agents/reports/NH-CHAT-002-qa.md",
-        "review_report": ".agents/reports/NH-CHAT-002-review.md",
-        "docs_impact": "resolved",
-        "blocked_by": [],
-        "history": [
-          {"state": "done", "at": "2026-06-25T10:35:00Z", "by": "manager-agent"}
-        ],
-        "updated_at": "2026-06-25T10:35:00Z"
-      },
-      {
-        "id": "NH-DISCOV-001",
-        "title": "Knowledge Graph and Timeline API",
-        "milestone": "discovery-chat",
-        "priority": "P0",
-        "weight": 4,
-        "state": "done",
-        "owner": "developer-discov-001",
-        "branch": "feat/NH-DISCOV-001-graph",
-        "depends_on": ["NH-KB-001"],
-        "owned_paths": ["backend/app/graph.py", "backend/app/timeline.py"],
-        "task_packet": ".agents/tasks/NH-DISCOV-001.md",
-        "handoff": ".agents/handoffs/NH-DISCOV-001.md",
-        "qa_report": ".agents/reports/NH-DISCOV-001-qa.md",
-        "review_report": ".agents/reports/NH-DISCOV-001-review.md",
-        "docs_impact": "resolved",
-        "blocked_by": [],
-        "history": [
-          {"state": "done", "at": "2026-06-25T10:40:00Z", "by": "manager-agent"}
-        ],
-        "updated_at": "2026-06-25T10:40:00Z"
-      },
-      {
-        "id": "NH-PORT-001",
-        "title": "Export: Markdown Novel, JSON KB, Markdown Wiki",
-        "milestone": "portability-resilience",
-        "priority": "P0",
-        "weight": 3,
-        "state": "done",
-        "owner": "developer-port-001",
-        "branch": "feat/NH-PORT-001-export",
-        "depends_on": ["NH-KB-001", "NH-KB-003"],
-        "owned_paths": ["backend/app/export.py"],
-        "task_packet": ".agents/tasks/NH-PORT-001.md",
-        "handoff": ".agents/handoffs/NH-PORT-001.md",
-        "qa_report": ".agents/reports/NH-PORT-001-qa.md",
-        "review_report": ".agents/reports/NH-PORT-001-review.md",
-        "docs_impact": "resolved",
-        "blocked_by": [],
-        "history": [
-          {"state": "done", "at": "2026-06-25T10:45:00Z", "by": "manager-agent"}
-        ],
-        "updated_at": "2026-06-25T10:45:00Z"
-      },
-      {
-        "id": "NH-PORT-002",
-        "title": "Backup ZIP with Manifest/Checksum, Restore with Validation",
-        "milestone": "portability-resilience",
-        "priority": "P0",
-        "weight": 4,
-        "state": "done",
-        "owner": "developer-port-002",
-        "branch": "feat/NH-PORT-002-backup",
-        "depends_on": ["NH-PORT-001"],
-        "owned_paths": ["backend/app/backup.py"],
-        "task_packet": ".agents/tasks/NH-PORT-002.md",
-        "handoff": ".agents/handoffs/NH-PORT-002.md",
-        "qa_report": ".agents/reports/NH-PORT-002-qa.md",
-        "review_report": ".agents/reports/NH-PORT-002-review.md",
-        "docs_impact": "resolved",
-        "blocked_by": [],
-        "history": [
-          {"state": "done", "at": "2026-06-25T10:50:00Z", "by": "manager-agent"}
-        ],
-        "updated_at": "2026-06-25T10:50:00Z"
-      },
-      {
-        "id": "NH-HARD-001",
-        "title": "Security: sanitize_html, sanitize_url, sanitize_markdown, validate_input",
-        "milestone": "hardening-release",
-        "priority": "P0",
-        "weight": 3,
-        "state": "done",
-        "owner": "developer-hard-001",
-        "branch": "feat/NH-HARD-001-security",
-        "depends_on": [],
-        "owned_paths": ["backend/app/security.py"],
-        "task_packet": ".agents/tasks/NH-HARD-001.md",
-        "handoff": ".agents/handoffs/NH-HARD-001.md",
-        "qa_report": ".agents/reports/NH-HARD-001-qa.md",
-        "review_report": ".agents/reports/NH-HARD-001-review.md",
-        "docs_impact": "resolved",
-        "blocked_by": [],
-        "history": [
-          {"state": "done", "at": "2026-06-25T10:55:00Z", "by": "manager-agent"}
-        ],
-        "updated_at": "2026-06-25T10:55:00Z"
-      }
-    ]
-  }
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-25T09:10:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-25T09:11:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-25T09:12:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-25T09:15:00Z",
+          "by": "developer-fe-003"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-25T09:30:00Z",
+          "by": "developer-fe-003"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-25T09:35:00Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-25T09:40:00Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-25T10:00:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-25T10:00:00Z"
+    },
+    {
+      "id": "NH-CHAT-001",
+      "title": "Chat CRUD and Messages API",
+      "milestone": "discovery-chat",
+      "priority": "P0",
+      "weight": 4,
+      "state": "done",
+      "owner": "developer-chat-001",
+      "branch": "feat/NH-CHAT-001-crud",
+      "depends_on": [
+        "NH-KB-001"
+      ],
+      "owned_paths": [
+        "backend/app/chat/"
+      ],
+      "task_packet": ".agents/tasks/NH-CHAT-001.md",
+      "handoff": ".agents/handoffs/NH-CHAT-001.md",
+      "qa_report": ".agents/reports/NH-CHAT-001-qa.md",
+      "review_report": ".agents/reports/NH-CHAT-001-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "done",
+          "at": "2026-06-25T10:30:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-25T10:30:00Z"
+    },
+    {
+      "id": "NH-CHAT-002",
+      "title": "Chat Tools: Wiki Search, Entity Lookup, Alias Resolution",
+      "milestone": "discovery-chat",
+      "priority": "P0",
+      "weight": 3,
+      "state": "done",
+      "owner": "developer-chat-002",
+      "branch": "feat/NH-CHAT-002-tools",
+      "depends_on": [
+        "NH-CHAT-001",
+        "NH-KB-002"
+      ],
+      "owned_paths": [
+        "backend/app/chat/tools.py"
+      ],
+      "task_packet": ".agents/tasks/NH-CHAT-002.md",
+      "handoff": ".agents/handoffs/NH-CHAT-002.md",
+      "qa_report": ".agents/reports/NH-CHAT-002-qa.md",
+      "review_report": ".agents/reports/NH-CHAT-002-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "done",
+          "at": "2026-06-25T10:35:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-25T10:35:00Z"
+    },
+    {
+      "id": "NH-DISCOV-001",
+      "title": "Knowledge Graph and Timeline API",
+      "milestone": "discovery-chat",
+      "priority": "P0",
+      "weight": 4,
+      "state": "done",
+      "owner": "developer-discov-001",
+      "branch": "feat/NH-DISCOV-001-graph",
+      "depends_on": [
+        "NH-KB-001"
+      ],
+      "owned_paths": [
+        "backend/app/graph.py",
+        "backend/app/timeline.py"
+      ],
+      "task_packet": ".agents/tasks/NH-DISCOV-001.md",
+      "handoff": ".agents/handoffs/NH-DISCOV-001.md",
+      "qa_report": ".agents/reports/NH-DISCOV-001-qa.md",
+      "review_report": ".agents/reports/NH-DISCOV-001-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "done",
+          "at": "2026-06-25T10:40:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-25T10:40:00Z"
+    },
+    {
+      "id": "NH-PORT-001",
+      "title": "Export: Markdown Novel, JSON KB, Markdown Wiki",
+      "milestone": "portability-resilience",
+      "priority": "P0",
+      "weight": 3,
+      "state": "done",
+      "owner": "developer-port-001",
+      "branch": "feat/NH-PORT-001-export",
+      "depends_on": [
+        "NH-KB-001",
+        "NH-KB-003"
+      ],
+      "owned_paths": [
+        "backend/app/export.py"
+      ],
+      "task_packet": ".agents/tasks/NH-PORT-001.md",
+      "handoff": ".agents/handoffs/NH-PORT-001.md",
+      "qa_report": ".agents/reports/NH-PORT-001-qa.md",
+      "review_report": ".agents/reports/NH-PORT-001-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "done",
+          "at": "2026-06-25T10:45:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-25T10:45:00Z"
+    },
+    {
+      "id": "NH-PORT-002",
+      "title": "Backup ZIP with Manifest/Checksum, Restore with Validation",
+      "milestone": "portability-resilience",
+      "priority": "P0",
+      "weight": 4,
+      "state": "done",
+      "owner": "developer-port-002",
+      "branch": "feat/NH-PORT-002-backup",
+      "depends_on": [
+        "NH-PORT-001"
+      ],
+      "owned_paths": [
+        "backend/app/backup.py"
+      ],
+      "task_packet": ".agents/tasks/NH-PORT-002.md",
+      "handoff": ".agents/handoffs/NH-PORT-002.md",
+      "qa_report": ".agents/reports/NH-PORT-002-qa.md",
+      "review_report": ".agents/reports/NH-PORT-002-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "done",
+          "at": "2026-06-25T10:50:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-25T10:50:00Z"
+    },
+    {
+      "id": "NH-HARD-001",
+      "title": "Security: sanitize_html, sanitize_url, sanitize_markdown, validate_input",
+      "milestone": "hardening-release",
+      "priority": "P0",
+      "weight": 3,
+      "state": "done",
+      "owner": "developer-hard-001",
+      "branch": "feat/NH-HARD-001-security",
+      "depends_on": [],
+      "owned_paths": [
+        "backend/app/security.py"
+      ],
+      "task_packet": ".agents/tasks/NH-HARD-001.md",
+      "handoff": ".agents/handoffs/NH-HARD-001.md",
+      "qa_report": ".agents/reports/NH-HARD-001-qa.md",
+      "review_report": ".agents/reports/NH-HARD-001-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "done",
+          "at": "2026-06-25T10:55:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-25T10:55:00Z"
+    },
+    {
+      "id": "NH-INGEST-003",
+      "title": "Unified External Source Ingestion and Chapter Handler",
+      "milestone": "external-ingestion",
+      "priority": "P0",
+      "weight": 13,
+      "state": "dev_complete",
+      "owner": "developer-ingest-003",
+      "branch": "feat/NH-INGEST-003-ingestion",
+      "depends_on": [
+        "NH-FOUND-003"
+      ],
+      "owned_paths": [
+        "backend/app/scraper.py",
+        "backend/app/routers/sources.py",
+        "backend/app/routers/chapters.py",
+        "backend/app/crud.py",
+        "backend/app/schemas.py",
+        "backend/app/migrations.py",
+        "backend/pyproject.toml"
+      ],
+      "task_packet": ".agents/tasks/NH-INGEST-003.md",
+      "handoff": ".agents/handoffs/NH-INGEST-003.md",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-26T07:06:56Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-26T07:07:02Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-26T07:07:02Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-26T07:07:12Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-26T07:18:07Z",
+          "by": "developer-ingest-003"
+        }
+      ],
+      "updated_at": "2026-06-26T07:18:07Z"
+    },
+    {
+      "id": "NH-INGEST-005",
+      "title": "Frontend Source Management, Import Flow, and Chapter Handler UI",
+      "milestone": "external-ingestion",
+      "priority": "P1",
+      "weight": 7,
+      "state": "proposed",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-INGEST-003"
+      ],
+      "owned_paths": [
+        "frontend/src/pages/Sources.tsx",
+        "frontend/src/pages/ChapterManager.tsx",
+        "frontend/src/store/api.ts",
+        "frontend/src/App.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-INGEST-005.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-26T07:06:56Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-26T07:06:56Z"
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 
 <!-- GENERATED: scripts/harness/render_status.py --write -->
 
-- Current milestone: `core-frontend`
-- Milestone accepted weight: 10/10 (100.0%)
-- Backlog updated: `2026-06-25T10:00:00Z`
+- Current milestone: `external-ingestion`
+- Milestone accepted weight: 0/20 (0.0%)
+- Backlog updated: `2026-06-26T07:18:07Z`
 
 ## Ready
 
@@ -12,7 +12,9 @@ None.
 
 ## In progress
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-INGEST-003` Unified External Source Ingestion and Chapter Handler | `dev_complete` | developer-ingest-003 | `external-ingestion` | NH-FOUND-003 |
 
 ## Blocked / rework
 
@@ -47,11 +49,15 @@ None.
 
 ## Queued / proposed
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-INGEST-005` Frontend Source Management, Import Flow, and Chapter Handler UI | `proposed` | unassigned | `external-ingestion` | NH-INGEST-003 |
 
 ## Active ownership
 
-No active path ownership.
+| Task | Branch | Owned paths |
+|------|--------|-------------|
+| `NH-INGEST-003` | `feat/NH-INGEST-003-ingestion` | `backend/app/scraper.py`<br>`backend/app/routers/sources.py`<br>`backend/app/routers/chapters.py`<br>`backend/app/crud.py`<br>`backend/app/schemas.py`<br>`backend/app/migrations.py`<br>`backend/pyproject.toml` |
 
 ## Decisions and blockers
 

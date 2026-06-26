@@ -11,12 +11,14 @@ from .routers import (
     analysis,
     backup,
     bookmarks,
+    chapters,
     chat,
     export,
     graph,
     kb,
     novels,
     search,
+    sources,
     wiki,
 )
 from .ws import router as ws_router
@@ -44,6 +46,8 @@ app.include_router(chat.router)
 app.include_router(graph.router)
 app.include_router(export.router)
 app.include_router(backup.router)
+app.include_router(sources.router)
+app.include_router(chapters.router)
 app.include_router(ws_router)
 
 
