@@ -348,6 +348,36 @@ def push() -> int:
 
     fields_info = gh_list("project", "field-list", project_number, "--owner", "@me", "--format", "json")
     proj_fields_list = fields_info if isinstance(fields_info, list) else fields_info.get("fields", [])
+    field_map: dict[str, Any] = {}
+    for f in proj_fields_list:
+        if isinstance(f, dict):
+            field_map[f.get("name", "")] = f
+
+    sid = field_map.get("State", {}).get("id", "")
+    pid = field_map.get("Priority", {}).get("id", "")
+    wid = field_map.get("Weight", {}).get("id", "")
+    oid = field_map.get("Owner", {}).get("id", "")
+    tid_fid = field_map.get("Task ID", {}).get("id", "")
+    did = field_map.get("Dependencies", {}).get("id", "")
+    bid = field_map.get("Blocked by", {}).get("id", "")
+    dimp = field_map.get("Docs Impact", {}).get("id", "")
+
+    state_opts = {o["name"]: o["id"] for o in field_map.get("State", {}).get("options", [])}
+    priority_opts = {o["name"]: o["id"] for o in field_map.get("Priority", {}).get("options", [])}
+    impact_opts = {o["name"]: o["id"] for o in field_map.get("Docs Impact", {}).get("options", [])}
+
+    # Cache project item list once (reduces GraphQL calls from N to 1)
+    item_cmd = gh("project", "item-list", project_number, "--owner", "@me", "--format", "json")
+    items_raw = item_cmd if isinstance(item_cmd, list) else item_cmd.get("items", [])
+    item_by_issue: dict[int, str] = {}
+    for item in items_raw:
+        if not isinstance(item, dict):
+            continue
+        content = item.get("content", {})
+        issue_num = content.get("number")
+        item_id = item.get("id", "")
+        if issue_num and item_id:
+            item_by_issue[issue_num] = item_id
 
     created = 0
     updated = 0
@@ -429,41 +459,8 @@ def push() -> int:
 
         state_label = STATE_LABEL_INV.get(task.get("state", ""), "Proposed")
         try:
-            proj_fields_list = fields_info if isinstance(fields_info, list) else fields_info.get("fields", [])
-            field_map: dict[str, Any] = {}
-            for f in proj_fields_list:
-                if isinstance(f, dict):
-                    field_map[f.get("name", "")] = f
-
-            sid = field_map.get("State", {}).get("id", "")
-            pid = field_map.get("Priority", {}).get("id", "")
-            wid = field_map.get("Weight", {}).get("id", "")
-            oid = field_map.get("Owner", {}).get("id", "")
-            tid = field_map.get("Task ID", {}).get("id", "")
-            did = field_map.get("Dependencies", {}).get("id", "")
-            bid = field_map.get("Blocked by", {}).get("id", "")
-            dimp = field_map.get("Docs Impact", {}).get("id", "")
-
-            state_opts = {o["name"]: o["id"] for o in field_map.get("State", {}).get("options", [])}
-            priority_opts = {o["name"]: o["id"] for o in field_map.get("Priority", {}).get("options", [])}
-            impact_opts = {o["name"]: o["id"] for o in field_map.get("Docs Impact", {}).get("options", [])}
-
-            item_cmd = gh("project", "item-list", project_number, "--owner", "@me", "--format", "json")
-            items = item_cmd if isinstance(item_cmd, list) else item_cmd.get("items", [])
-            target_item = None
-            for item in items:
-                if not isinstance(item, dict):
-                    continue
-                content = item.get("content", {})
-                if content.get("number") == issue_num:
-                    target_item = item
-                    break
-
-            if target_item:
-                item_id = target_item.get("id", "")
-                if not item_id:
-                    continue
-
+            item_id = item_by_issue.get(issue_num)
+            if item_id:
                 def _uf(field_id: str, val_type: str, val: str | int) -> None:
                     if not field_id:
                         return
@@ -478,8 +475,8 @@ def push() -> int:
                     mutation = mutation.replace("VAL", json.dumps(val))
                     gh_mutation(mutation, {"pid": PROJECT_ID, "iid": item_id, "fid": field_id})
 
-                if tid:
-                    _uf(tid, "text", task_id)
+                if tid_fid:
+                    _uf(tid_fid, "text", task_id)
                 if sid and state_label in state_opts:
                     _uf(sid, "singleSelectOptionId", state_opts[state_label])
                 if pid and task.get("priority") in priority_opts:
@@ -501,6 +498,8 @@ def push() -> int:
                     impact_label = {"pending": "Pending", "none": "None", "resolved": "Resolved"}.get(impact, "Pending")
                     if impact_label in impact_opts:
                         _uf(dimp, "singleSelectOptionId", impact_opts[impact_label])
+            else:
+                print(f"  Warning: item #{issue_num} ({task_id}) not found in project", file=sys.stderr)
         except Exception as exc:
             print(f"  Warning: could not update project fields for {task_id}: {exc}", file=sys.stderr)
 
