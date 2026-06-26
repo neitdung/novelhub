@@ -5,6 +5,7 @@
 - Current milestone: `external-ingestion`
 - Milestone accepted weight: 0/20 (0.0%)
 - Backlog updated: `2026-06-26T07:18:07Z`
+- GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
 

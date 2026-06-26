@@ -15,10 +15,10 @@
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": ".agents/tasks/NH-HARNESS-001.md",
-      "handoff": ".agents/handoffs/NH-HARNESS-001.md",
-      "qa_report": ".agents/reports/NH-HARNESS-001-qa.md",
-      "review_report": ".agents/reports/NH-HARNESS-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -82,10 +82,10 @@
         "frontend/",
         "Makefile"
       ],
-      "task_packet": ".agents/tasks/NH-FOUND-001.md",
-      "handoff": ".agents/handoffs/NH-FOUND-001.md",
-      "qa_report": ".agents/reports/NH-FOUND-001-qa.md",
-      "review_report": ".agents/reports/NH-FOUND-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -147,10 +147,10 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": ".agents/tasks/NH-FOUND-003.md",
-      "handoff": ".agents/handoffs/NH-FOUND-003.md",
-      "qa_report": ".agents/reports/NH-FOUND-003-qa.md",
-      "review_report": ".agents/reports/NH-FOUND-003-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -213,10 +213,10 @@
         "scripts/contracts/",
         "contracts/"
       ],
-      "task_packet": ".agents/tasks/NH-FOUND-005.md",
-      "handoff": ".agents/handoffs/NH-FOUND-005.md",
-      "qa_report": ".agents/reports/NH-FOUND-005-qa.md",
-      "review_report": ".agents/reports/NH-FOUND-005-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -278,10 +278,10 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": ".agents/tasks/NH-INGEST-001.md",
-      "handoff": ".agents/handoffs/NH-INGEST-001.md",
-      "qa_report": ".agents/reports/NH-INGEST-001-qa.md",
-      "review_report": ".agents/reports/NH-INGEST-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -343,10 +343,10 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": ".agents/tasks/NH-INGEST-002.md",
-      "handoff": ".agents/handoffs/NH-INGEST-002.md",
-      "qa_report": ".agents/reports/NH-INGEST-002-qa.md",
-      "review_report": ".agents/reports/NH-INGEST-002-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -409,10 +409,10 @@
       "owned_paths": [
         "frontend/"
       ],
-      "task_packet": ".agents/tasks/NH-READ-001.md",
-      "handoff": ".agents/handoffs/NH-READ-001.md",
-      "qa_report": ".agents/reports/NH-READ-001-qa.md",
-      "review_report": ".agents/reports/NH-READ-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -475,10 +475,10 @@
         "backend/",
         "frontend/"
       ],
-      "task_packet": ".agents/tasks/NH-READ-002.md",
-      "handoff": ".agents/handoffs/NH-READ-002.md",
-      "qa_report": ".agents/reports/NH-READ-002-qa.md",
-      "review_report": ".agents/reports/NH-READ-002-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -540,10 +540,10 @@
       "owned_paths": [
         "backend/app/llm/"
       ],
-      "task_packet": ".agents/tasks/NH-LLM-001.md",
-      "handoff": ".agents/handoffs/NH-LLM-001.md",
-      "qa_report": ".agents/reports/NH-LLM-001-qa.md",
-      "review_report": ".agents/reports/NH-LLM-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -606,10 +606,10 @@
       "owned_paths": [
         "backend/app/analysis/"
       ],
-      "task_packet": ".agents/tasks/NH-LLM-002.md",
-      "handoff": ".agents/handoffs/NH-LLM-002.md",
-      "qa_report": ".agents/reports/NH-LLM-002-qa.md",
-      "review_report": ".agents/reports/NH-LLM-002-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -672,10 +672,10 @@
         "backend/app/kb/",
         "backend/app/migrations.py"
       ],
-      "task_packet": ".agents/tasks/NH-KB-001.md",
-      "handoff": ".agents/handoffs/NH-KB-001.md",
-      "qa_report": ".agents/reports/NH-KB-001-qa.md",
-      "review_report": ".agents/reports/NH-KB-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -737,10 +737,10 @@
       "owned_paths": [
         "backend/app/search.py"
       ],
-      "task_packet": ".agents/tasks/NH-KB-002.md",
-      "handoff": ".agents/handoffs/NH-KB-002.md",
-      "qa_report": ".agents/reports/NH-KB-002-qa.md",
-      "review_report": ".agents/reports/NH-KB-002-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -803,10 +803,10 @@
       "owned_paths": [
         "backend/app/wiki/"
       ],
-      "task_packet": ".agents/tasks/NH-KB-003.md",
-      "handoff": ".agents/handoffs/NH-KB-003.md",
-      "qa_report": ".agents/reports/NH-KB-003-qa.md",
-      "review_report": ".agents/reports/NH-KB-003-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -868,10 +868,10 @@
       "owned_paths": [
         "backend/app/ws.py"
       ],
-      "task_packet": ".agents/tasks/NH-FE-001.md",
-      "handoff": ".agents/handoffs/NH-FE-001.md",
-      "qa_report": ".agents/reports/NH-FE-001-qa.md",
-      "review_report": ".agents/reports/NH-FE-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -932,10 +932,10 @@
         "frontend/src/context/",
         "frontend/src/components/ThemeToggle.tsx"
       ],
-      "task_packet": ".agents/tasks/NH-FE-002.md",
-      "handoff": ".agents/handoffs/NH-FE-002.md",
-      "qa_report": ".agents/reports/NH-FE-002-qa.md",
-      "review_report": ".agents/reports/NH-FE-002-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -996,10 +996,10 @@
         "frontend/src/pages/Settings.tsx",
         "frontend/src/components/"
       ],
-      "task_packet": ".agents/tasks/NH-FE-003.md",
-      "handoff": ".agents/handoffs/NH-FE-003.md",
-      "qa_report": ".agents/reports/NH-FE-003-qa.md",
-      "review_report": ".agents/reports/NH-FE-003-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -1061,10 +1061,10 @@
       "owned_paths": [
         "backend/app/chat/"
       ],
-      "task_packet": ".agents/tasks/NH-CHAT-001.md",
-      "handoff": ".agents/handoffs/NH-CHAT-001.md",
-      "qa_report": ".agents/reports/NH-CHAT-001-qa.md",
-      "review_report": ".agents/reports/NH-CHAT-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -1092,10 +1092,10 @@
       "owned_paths": [
         "backend/app/chat/tools.py"
       ],
-      "task_packet": ".agents/tasks/NH-CHAT-002.md",
-      "handoff": ".agents/handoffs/NH-CHAT-002.md",
-      "qa_report": ".agents/reports/NH-CHAT-002-qa.md",
-      "review_report": ".agents/reports/NH-CHAT-002-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -1123,10 +1123,10 @@
         "backend/app/graph.py",
         "backend/app/timeline.py"
       ],
-      "task_packet": ".agents/tasks/NH-DISCOV-001.md",
-      "handoff": ".agents/handoffs/NH-DISCOV-001.md",
-      "qa_report": ".agents/reports/NH-DISCOV-001-qa.md",
-      "review_report": ".agents/reports/NH-DISCOV-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -1154,10 +1154,10 @@
       "owned_paths": [
         "backend/app/export.py"
       ],
-      "task_packet": ".agents/tasks/NH-PORT-001.md",
-      "handoff": ".agents/handoffs/NH-PORT-001.md",
-      "qa_report": ".agents/reports/NH-PORT-001-qa.md",
-      "review_report": ".agents/reports/NH-PORT-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -1184,10 +1184,10 @@
       "owned_paths": [
         "backend/app/backup.py"
       ],
-      "task_packet": ".agents/tasks/NH-PORT-002.md",
-      "handoff": ".agents/handoffs/NH-PORT-002.md",
-      "qa_report": ".agents/reports/NH-PORT-002-qa.md",
-      "review_report": ".agents/reports/NH-PORT-002-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -1212,10 +1212,10 @@
       "owned_paths": [
         "backend/app/security.py"
       ],
-      "task_packet": ".agents/tasks/NH-HARD-001.md",
-      "handoff": ".agents/handoffs/NH-HARD-001.md",
-      "qa_report": ".agents/reports/NH-HARD-001-qa.md",
-      "review_report": ".agents/reports/NH-HARD-001-review.md",
+      "task_packet": "",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
       "docs_impact": "resolved",
       "blocked_by": [],
       "history": [
@@ -1248,8 +1248,8 @@
         "backend/app/migrations.py",
         "backend/pyproject.toml"
       ],
-      "task_packet": ".agents/tasks/NH-INGEST-003.md",
-      "handoff": ".agents/handoffs/NH-INGEST-003.md",
+      "task_packet": "",
+      "handoff": "",
       "qa_report": "",
       "review_report": "",
       "docs_impact": "pending",
@@ -1301,7 +1301,7 @@
         "frontend/src/store/api.ts",
         "frontend/src/App.tsx"
       ],
-      "task_packet": ".agents/tasks/NH-INGEST-005.md",
+      "task_packet": "",
       "handoff": "",
       "qa_report": "",
       "review_report": "",

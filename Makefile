@@ -2,7 +2,16 @@ PYTHON ?= python3
 BACKEND_DIR := backend
 FRONTEND_DIR := frontend
 
+# Load .env if present (local GitHub token, project number)
+-include .env
+export
+
+GH_PROJECT_NUMBER ?= 1
+GH_OWNER ?= neitdung
+GITHUB_TOKEN ?=
+
 .PHONY: bootstrap harness-check status status-write task-check check integration e2e ci
+.PHONY: sync-pull sync-push sync-project
 .PHONY: backend-install backend-lint backend-typecheck backend-test backend-check
 .PHONY: frontend-install frontend-lint frontend-typecheck frontend-test frontend-build frontend-check
 .PHONY: contract-export contract-check contract-validate
@@ -19,6 +28,15 @@ status:
 
 status-write:
 	$(PYTHON) scripts/harness/render_status.py --write
+
+sync-pull:
+	$(PYTHON) scripts/harness/sync_issues.py pull
+
+sync-push:
+	$(PYTHON) scripts/harness/sync_issues.py push
+
+sync-project: sync-push sync-pull
+	@echo "Synced both directions."
 
 task-check:
 	@test -n "$(ID)" || (echo "ID is required: make task-check ID=<task-id>" && exit 2)

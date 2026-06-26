@@ -1,0 +1,30 @@
+name: Sync GitHub Project
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".agents/BACKLOG.yaml"
+  workflow_dispatch:
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pull Issues → local files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PROJECT_NUMBER: ${{ vars.GH_PROJECT_NUMBER || '1' }}
+          GH_OWNER: ${{ github.repository_owner }}
+        run: python3 scripts/harness/sync_issues.py pull
+      - name: Commit generated artifacts if changed
+        run: |
+          git config user.name "novelhub-bot"
+          git config user.email "bot@novelhub.app"
+          git add .agents/
+          git diff --cached --quiet || git commit -m "sync: update local artifacts from GitHub Issues"
+          git push

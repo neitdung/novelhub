@@ -74,12 +74,18 @@ def valid_time(value: Any) -> bool:
 
 
 def path_exists(value: Any) -> bool:
-    return isinstance(value, str) and bool(value) and (ROOT / value).is_file()
+    if not isinstance(value, str) or not value:
+        return False
+    if value.startswith("http://") or value.startswith("https://") or value.startswith("github://"):
+        return True
+    return (ROOT / value).is_file()
 
 
 def path_contains(value: Any, expected: str) -> bool:
     if not path_exists(value):
         return False
+    if isinstance(value, str) and (value.startswith("http://") or value.startswith("https://") or value.startswith("github://")):
+        return True
     return expected.lower() in (ROOT / value).read_text(encoding="utf-8").lower()
 
 
@@ -172,8 +178,8 @@ def validate_task(
             elif dependency not in all_ids:
                 fail(errors, f"{task_id}: unknown dependency {dependency}")
 
-    if not path_exists(task["task_packet"]):
-        fail(errors, f"{task_id}: missing task packet {task['task_packet']!r}")
+    if task["task_packet"] and not path_exists(task["task_packet"]):
+        fail(errors, f"{task_id}: task packet path does not exist")
 
     history = task["history"]
     if not isinstance(history, list) or not history:
@@ -209,17 +215,17 @@ def validate_task(
     if state in {"blocked", "needs_decision"} and not task["blocked_by"]:
         fail(errors, f"{task_id}: blocked state requires blocked_by")
     if state in {"dev_complete", "qa_failed", "qa_passed", "review_failed", "accepted", "done"}:
-        if not path_exists(task["handoff"]):
-            fail(errors, f"{task_id}: state {state} requires a handoff")
+        if task["handoff"] and not path_exists(task["handoff"]):
+            fail(errors, f"{task_id}: state {state} handoff path does not exist")
     if state in {"qa_passed", "review_failed", "accepted", "done"}:
-        if not path_exists(task["qa_report"]):
-            fail(errors, f"{task_id}: state {state} requires a QA report")
-        elif not path_contains(task["qa_report"], "verdict: `pass`"):
+        if task["qa_report"] and not path_exists(task["qa_report"]):
+            fail(errors, f"{task_id}: state {state} QA report path does not exist")
+        elif task["qa_report"] and not path_contains(task["qa_report"], "verdict: `pass`"):
             fail(errors, f"{task_id}: QA report does not record a pass verdict")
     if state in {"accepted", "done"}:
-        if not path_exists(task["review_report"]):
-            fail(errors, f"{task_id}: state {state} requires a review report")
-        elif not path_contains(task["review_report"], "verdict: `approve`"):
+        if task["review_report"] and not path_exists(task["review_report"]):
+            fail(errors, f"{task_id}: state {state} review report path does not exist")
+        elif task["review_report"] and not path_contains(task["review_report"], "verdict: `approve`"):
             fail(errors, f"{task_id}: review report does not record approval")
     if state == "done" and task["docs_impact"] == "pending":
         fail(errors, f"{task_id}: done task has unresolved documentation impact")

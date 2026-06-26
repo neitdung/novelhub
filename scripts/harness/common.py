@@ -53,6 +53,7 @@ def render_status(backlog: dict[str, Any]) -> str:
         ("Queued / proposed", {"proposed", "planning", "superseded"}),
     ]
 
+    repo = "neitdung/novelhub"
     lines = [
         "# NovelHub Status",
         "",
@@ -61,6 +62,7 @@ def render_status(backlog: dict[str, Any]) -> str:
         f"- Current milestone: `{milestone}`",
         f"- Milestone accepted weight: {accepted}/{total} ({percentage:.1f}%)",
         f"- Backlog updated: `{backlog.get('updated_at', 'unknown')}`",
+        f"- GitHub Project: https://github.com/{repo}/projects",
         "",
     ]
 
