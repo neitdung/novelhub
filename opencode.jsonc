@@ -1,6 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "novelhub",
+  "instructions": [
+    "AGENTS.md",
+    ".opencode/instructions/auto-orchestrate.md"
+  ],
   "agent": {
     "novelhub": {
       "mode": "primary",

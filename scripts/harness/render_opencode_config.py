@@ -105,9 +105,15 @@ def build_config() -> dict[str, object]:
             "prompt": role_prompt(name),
         }
 
+    instructions_path = ROOT / ".opencode" / "instructions" / "auto-orchestrate.md"
+    instructions = ["AGENTS.md"]
+    if instructions_path.exists():
+        instructions.append(str(instructions_path.relative_to(ROOT)))
+
     return {
         "$schema": "https://opencode.ai/config.json",
         "default_agent": "novelhub",
+        "instructions": instructions,
         "agent": agents,
     }
 
