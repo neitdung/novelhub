@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException
 
 from ..analysis.pipeline import AnalysisPipeline, PipelineState
 from ..database import get_db_context
-from ..llm import FakeLLMProvider
+from ..llm import get_llm_provider
 from ..schemas import AnalysisRequest, AnalysisStatus
 
 router = APIRouter(prefix="/api/analysis", tags=["analysis"])
@@ -35,7 +35,7 @@ async def start_analysis(request: AnalysisRequest) -> AnalysisStatus:
             status_code=400, detail="No chapters found for analysis"
         )
 
-    llm = FakeLLMProvider()
+    llm = get_llm_provider()
     pipeline = AnalysisPipeline(llm, max_concurrent=1)
     pipelines[request.novel_id] = pipeline
 

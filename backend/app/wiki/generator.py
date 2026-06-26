@@ -4,7 +4,7 @@ import json
 
 from ..database import get_db_context
 from ..kb.crud import get_entity
-from ..llm import FakeLLMProvider
+from ..llm import get_llm_provider
 from ..llm.base import LLMProvider
 from .schemas import WikiGenerateRequest, WikiPageResponse
 
@@ -32,7 +32,7 @@ async def generate_wiki(
     llm: LLMProvider | None = None,
 ) -> WikiPageResponse:
     if llm is None:
-        llm = FakeLLMProvider()
+        llm = get_llm_provider()
 
     async with get_db_context() as db:
         if request.entity_id:
