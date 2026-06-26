@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "external-ingestion",
-  "updated_at": "2026-06-26T10:04:20.034410Z",
+  "updated_at": "2026-06-26T17:52:59.000000Z",
   "tasks": [
     {
       "id": "NH-INGEST-005",
@@ -664,6 +664,82 @@
         }
       ],
       "updated_at": "2026-06-26T10:04:20.034408Z"
+    },
+    {
+      "id": "NH-HARNESS-002",
+      "title": "Branch Naming, PR Creation, and PR-Based Review Workflow",
+      "milestone": "m1-foundations",
+      "priority": "P2",
+      "weight": 5,
+      "state": "done",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-HARNESS-001"
+      ],
+      "owned_paths": [
+        ".agents/prompts/developer.md",
+        ".agents/prompts/manager.md",
+        ".agents/prompts/planner.md",
+        ".agents/prompts/qa.md",
+        ".agents/prompts/reviewer.md",
+        ".agents/skills/implement-task/SKILL.md",
+        ".agents/skills/manage-project/SKILL.md",
+        ".agents/skills/qa-task/SKILL.md",
+        ".agents/skills/review-task/SKILL.md",
+        ".agents/skills/plan-task/SKILL.md",
+        "AGENTS.md",
+        ".opencode/instructions/auto-orchestrate.md"
+      ],
+      "task_packet": ".agents/tasks/NH-HARNESS-002.md",
+      "handoff": ".agents/handoffs/NH-HARNESS-002.md",
+      "qa_report": ".agents/reports/NH-HARNESS-002-qa.md",
+      "review_report": ".agents/reports/NH-HARNESS-002-review.md",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-26T17:49:29.000000Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-26T17:49:36.000000Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-26T17:49:36.000000Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-26T17:49:41.000000Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-26T17:51:28.000000Z",
+          "by": "developer-agent"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-26T17:52:03.000000Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-26T17:52:42.000000Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-26T17:52:59.000000Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-26T17:52:59.000000Z"
     }
   ]
 }

@@ -98,15 +98,39 @@ The `gh` CLI **cannot** set Project custom fields directly. The split is:
 | Create ADR | `gh issue create --label adr,decision` | Agent |
 | Regenerate local files for validation | **sync script**: `make sync-pull` | After edits |
 
+### Branch naming convention
+
+Every implementation branch must use a descriptive prefix and follow this
+pattern:
+
+```text
+<prefix>/<task-id>-<short-description>
+```
+
+Allowed prefixes:
+| Prefix | Use case |
+|--------|----------|
+| `feat/` | New feature or enhancement |
+| `fix/` | Bug fix or regression fix |
+| `chore/` | Maintenance, tooling, config |
+| `docs/` | Documentation only changes |
+| `refactor/` | Code restructuring without behavior change |
+
+Example: `feat/NH-HARNESS-002-branch-pr-workflow`
+
 ### gh CLI commands to use
 
 | Action | Command |
 |--------|---------|
 | Create a task | `gh issue create --title "[NH-XXX-###] Title" --body "$(cat task.md)" --label task --repo neitdung/novelhub` |
 | Read task packet | `gh issue view <number> --json body --jq .body --repo neitdung/novelhub` |
+| Create/switch branch | `git checkout -b <prefix>/<task-id>-<description>` |
 | Post handoff | `gh issue comment <number> --body "<!-- handoff -->\n\n$(cat handoff.md)" --repo neitdung/novelhub` |
-| Post QA report | `gh issue comment <number> --body "<!-- qa-report -->\n\n$(cat report.md)" --repo neitdung/novelhub` |
-| Post review report | `gh issue comment <number> --body "<!-- review-report -->\n\n$(cat report.md)" --repo neitdung/novelhub` |
+| Create PR (Developer) | `gh pr create --title "[NH-XXX-###] Title" --body "Closes #<issue-num>" --base main` |
+| Post QA report on PR | `gh pr comment <pr-number> --body "<!-- qa-report -->\n\n$(cat report.md)"` |
+| Post review on PR | `gh pr review <pr-number> --approve --body "$(cat report.md)"` |
+| Post review (changes req) | `gh pr review <pr-number> --request-changes --body "$(cat report.md)"` |
+| Merge PR (Manager) | `gh pr merge <pr-number> --merge --subject "[NH-XXX-###] Title"` |
 | Close Issue | `gh issue close <number> --repo neitdung/novelhub` |
 | Create ADR | `gh issue create --title "[ADR-XXXX] Title" --body "$(cat adr.md)" --label adr,decision --repo neitdung/novelhub` |
 
@@ -116,11 +140,11 @@ The `gh` CLI **cannot** set Project custom fields directly. The split is:
 |-----------------|-------|--------|
 | `proposed` → `planning` | Manager | `gh issue create` with task packet as body, `task` label. Then sync: `make sync-push` to set Status→Planning. |
 | `planning` → `ready` | Planner | `gh issue edit <num> --body "$(cat task.md)"`. Then sync: `make sync-push` to set Status→Ready. |
-| `ready` → `in_progress` | Manager | Write task fields in BACKLOG.yaml, then `make sync-push` to set Status→In Progress, Owner. |
-| `in_progress` → `dev_complete` | Developer | `gh issue comment` with `<!-- handoff -->`. Write state change in BACKLOG.yaml. Sync: `make sync-push`. |
-| `dev_complete` → `qa_passed` | QA | `gh issue comment` with `<!-- qa-report -->`. Sync: `make sync-push`. |
-| `qa_passed` → `accepted` | Reviewer | `gh issue comment` with `<!-- review-report -->`. Sync: `make sync-push`. |
-| `accepted` → `done` | Manager | Sync: `make sync-push` to set Status→Done, close Issue (`gh issue close`). |
+| `ready` → `in_progress` | Manager | Write task fields in BACKLOG.yaml, then `make sync-push` to set Status→In Progress, Owner. Suggest branch name with proper prefix (`feat/`, `fix/`, `chore/`, `docs/`, `refactor/`). |
+| `in_progress` → `dev_complete` | Developer | Create/switch to branch (`git checkout -b <prefix>/<task-id>-<desc>`). Implement, test, commit, push. Create PR (`gh pr create`). `gh issue comment` with `<!-- handoff -->`. Write state change in BACKLOG.yaml. Sync: `make sync-push`. |
+| `dev_complete` → `qa_passed` | QA | Check out the PR branch. Validate. `gh pr comment` with `<!-- qa-report -->`. Sync: `make sync-push`. |
+| `qa_passed` → `accepted` | Reviewer | Review PR diff. `gh pr review` with `--approve` or `--request-changes`. Sync: `make sync-push`. |
+| `accepted` → `done` | Manager | Merge PR (`gh pr merge`). Switch to main, pull latest, delete branch. Sync: `make sync-push` to set Status→Done, close Issue (`gh issue close`). |
 
 ### Simplified workflow
 
