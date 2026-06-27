@@ -43,16 +43,16 @@
       "milestone": "foundation",
       "priority": "P2",
       "weight": 3,
-      "state": "planning",
-      "owner": "",
-      "branch": null,
+      "state": "dev_complete",
+      "owner": "opencode",
+      "branch": "chore/NH-TOOL-002-unified-install-command",
       "depends_on": [],
       "owned_paths": [
         "** `Makefile",
         "scripts/install.sh"
       ],
       "task_packet": "",
-      "handoff": "",
+      "handoff": ".agents/handoffs/NH-TOOL-002.md",
       "qa_report": "",
       "review_report": "",
       "docs_impact": "pending",
@@ -67,6 +67,21 @@
           "state": "planning",
           "at": "2026-06-27T03:54:00.658845Z",
           "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T04:06:37.182604Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T04:06:37.182604Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-27T04:08:05.256500Z",
+          "by": "developer-agent"
         }
       ],
       "updated_at": "2026-06-27T03:53:08.587288Z"
