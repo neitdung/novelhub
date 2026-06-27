@@ -1,4 +1,8 @@
+# Generated artifacts (synced via GitHub Issues, never committed)
 .agents/runs/
+.agents/tasks/*.md
+.agents/handoffs/*.md
+.agents/reports/*.md
 .venv/
 __pycache__/
 *.pyc

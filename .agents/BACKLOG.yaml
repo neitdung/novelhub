@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "external-ingestion",
-  "updated_at": "2026-06-27T04:55:00Z",
+  "updated_at": "2026-06-27T05:23:10.396584Z",
   "tasks": [
     {
       "id": "NH-TOOL-004",
@@ -920,6 +920,44 @@
         }
       ],
       "updated_at": "2026-06-27T03:53:08.587566Z"
+    },
+    {
+      "id": "NH-HARNESS-003",
+      "title": "Stop tracking generated artifact .md files in .agents/",
+      "milestone": "foundation",
+      "priority": "P2",
+      "weight": 2,
+      "state": "in_progress",
+      "owner": "opencode",
+      "branch": "fix/NH-HARNESS-003-ignore-artifact-md-files",
+      "depends_on": [],
+      "owned_paths": [
+        ".gitignore"
+      ],
+      "task_packet": ".agents/tasks/NH-HARNESS-003.md",
+      "handoff": ".agents/handoffs/NH-HARNESS-003.md",
+      "qa_report": ".agents/reports/NH-HARNESS-003-qa.md",
+      "review_report": "",
+      "docs_impact": "none",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-27T05:23:10.396584Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T05:23:10.396584Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T05:23:10.396584Z",
+          "by": "developer-agent"
+        }
+      ],
+      "updated_at": "2026-06-27T05:23:10.396584Z"
     }
   ]
 }
