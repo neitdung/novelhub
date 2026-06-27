@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "foundation",
-  "updated_at": "2026-06-27T15:50:13.259239Z",
+  "updated_at": "2026-06-27T17:35:50.740340+00:00",
   "tasks": [
     {
       "id": "NH-TOOL-005",
@@ -939,6 +939,304 @@
         }
       ],
       "updated_at": "2026-06-27T15:29:58.685673Z"
+    },
+    {
+      "id": "NH-FEP-001",
+      "title": "Full Frontend API Client and App Navigation Shell",
+      "milestone": "parity",
+      "priority": "P0",
+      "weight": 13,
+      "state": "in_progress",
+      "owner": "developer",
+      "branch": "feat/NH-FEP-001-frontend-api-shell",
+      "branch": null,
+      "depends_on": [],
+      "owned_paths": [
+        "frontend/src/store/api.ts",
+        "frontend/src/app/",
+        "frontend/src/components/Layout.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-001.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-FEP-002",
+      "title": "Bookshelf, Import, Source, and Chapter Management UI",
+      "milestone": "parity",
+      "priority": "P0",
+      "weight": 13,
+      "state": "planning",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-FEP-001"
+      ],
+      "owned_paths": [
+        "frontend/src/app/bookshelf/",
+        "frontend/src/app/novels/[id]/",
+        "frontend/src/components/BookshelfCard.tsx",
+        "frontend/src/components/ChapterTable.tsx",
+        "frontend/src/components/SourceManager.tsx",
+        "frontend/src/components/ImportJobStatus.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-002.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-FEP-003",
+      "title": "Analysis Dashboard with WebSocket Progress and Polling Fallback",
+      "milestone": "parity",
+      "priority": "P0",
+      "weight": 13,
+      "state": "planning",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-FEP-001"
+      ],
+      "owned_paths": [
+        "frontend/src/app/analysis/",
+        "frontend/src/components/AnalysisDashboard.tsx",
+        "frontend/src/components/ChapterStatusTable.tsx",
+        "frontend/src/hooks/useAnalysisWebSocket.ts"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-003.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-FEP-004",
+      "title": "Reader UX with Bookmarks, Progress, Highlights, and Entity Drawer",
+      "milestone": "parity",
+      "priority": "P0",
+      "weight": 13,
+      "state": "planning",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-FEP-001"
+      ],
+      "owned_paths": [
+        "frontend/src/app/reader/",
+        "frontend/src/components/ReaderView.tsx",
+        "frontend/src/components/EntityDrawer.tsx",
+        "frontend/src/components/BookmarkPanel.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-004.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-FEP-005",
+      "title": "Entities, Wiki Browser, Search, Generation, and Backlink Workflows",
+      "milestone": "parity",
+      "priority": "P0",
+      "weight": 13,
+      "state": "planning",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-FEP-001"
+      ],
+      "owned_paths": [
+        "frontend/src/app/entities/",
+        "frontend/src/app/wiki/",
+        "frontend/src/components/EntityList.tsx",
+        "frontend/src/components/EntityDetail.tsx",
+        "frontend/src/components/WikiBrowser.tsx",
+        "frontend/src/components/SearchResults.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-005.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-FEP-006",
+      "title": "Graph, Shortest Path, Timeline, and Factions Visualization",
+      "milestone": "parity",
+      "priority": "P1",
+      "weight": 13,
+      "state": "planning",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-FEP-001",
+        "NH-FEP-005"
+      ],
+      "owned_paths": [
+        "frontend/src/app/graph/",
+        "frontend/src/app/timeline/",
+        "frontend/src/components/ForceGraph.tsx",
+        "frontend/src/components/TimelineView.tsx",
+        "frontend/src/components/FactionView.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-006.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-FEP-007",
+      "title": "Chat Conversations, Tool Execution, Citations, and Export",
+      "milestone": "parity",
+      "priority": "P1",
+      "weight": 13,
+      "state": "planning",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-FEP-001"
+      ],
+      "owned_paths": [
+        "frontend/src/app/chat/",
+        "frontend/src/components/ChatView.tsx",
+        "frontend/src/components/ToolExecution.tsx",
+        "frontend/src/components/CitationPanel.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-007.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-FEP-008",
+      "title": "Settings, Provider Health, Backup/Restore, and Export Workflows",
+      "milestone": "parity",
+      "priority": "P1",
+      "weight": 13,
+      "state": "planning",
+      "owner": "",
+      "branch": null,
+      "depends_on": [
+        "NH-FEP-001"
+      ],
+      "owned_paths": [
+        "frontend/src/app/settings/",
+        "frontend/src/components/ProviderSettings.tsx",
+        "frontend/src/components/BackupRestore.tsx",
+        "frontend/src/components/ExportPanel.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-008.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
+    },
+    {
+      "id": "NH-BEP-001",
+      "title": "Backend Gaps for Import Preview, Factions, Wiki Lint/Backlinks, Chat Streaming, and Provider Health",
+      "milestone": "parity",
+      "priority": "P1",
+      "weight": 13,
+      "state": "in_progress",
+      "owner": "developer",
+      "branch": null,
+      "depends_on": [],
+      "owned_paths": [
+        "backend/app/routers/",
+        "backend/app/schemas.py",
+        "backend/app/crud.py"
+      ],
+      "task_packet": ".agents/tasks/NH-BEP-001.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "manager"
+        }
+      ],
+      "updated_at": "2026-06-28T00:00:00Z"
     }
   ]
 }
