@@ -3,8 +3,8 @@
 <!-- GENERATED: scripts/harness/render_status.py --write -->
 
 - Current milestone: `foundation`
-- Milestone accepted weight: 18/18 (100.0%)
-- Backlog updated: `2026-06-27T11:27:37.579332Z`
+- Milestone accepted weight: 13/13 (100.0%)
+- Backlog updated: `2026-06-27T13:56:23.210880Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -46,8 +46,8 @@ None.
 | `NH-KB-003` On-Demand Wiki Generation | `done` | unassigned | `unknown` | none |
 | `NH-LLM-001` LLM provider interfaces | `done` | unassigned | `unknown` | none |
 | `NH-LLM-002` Analysis pipeline | `done` | unassigned | `unknown` | none |
-| `NH-NEXT-001` Refactor Frontend to Next.js (App Router, SPA Mode) | `done` | opencode-agent | `foundation` | none |
-| `NH-NEXT-002` Sync Documents and Scripts After Next.js Refactor | `done` | opencode-agent | `foundation` | NH-NEXT-001 |
+| `NH-NEXT-001` Refactor Frontend to Next.js (App Router, SPA Mode) | `done` | unassigned | `foundation` | none |
+| `NH-NEXT-002` Sync Documents and Scripts After Next.js Refactor | `done` | unassigned | `unknown` | none |
 | `NH-PORT-001` Export: Markdown Novel, JSON KB, Markdown Wiki | `done` | unassigned | `unknown` | none |
 | `NH-PORT-002` Backup ZIP with Manifest/Checksum, Restore with Validation | `done` | unassigned | `unknown` | none |
 | `NH-READ-001` Reader UI and navigation | `done` | unassigned | `unknown` | none |
