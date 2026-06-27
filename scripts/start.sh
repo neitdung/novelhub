@@ -15,7 +15,7 @@ fi
 
 # Parse CLI flags
 START_LOCAL_LLM=${START_LOCAL_LLM:-0}
-START_FRONTEND=${START_FRONTEND:-0}
+START_FRONTEND=${START_FRONTEND:-1}
 while [ $# -gt 0 ]; do
     case "$1" in
         --local) START_LOCAL_LLM=1; shift ;;
@@ -211,15 +211,39 @@ echo "NovelHub started (PID $APP_PID)"
 
 # Start frontend dev server if enabled
 FRONTEND_PID=""
+FRONTEND_ABS_DIR="${PROJECT_ROOT}/${FRONTEND_DIR}"
+FRONTEND_BIN="${FRONTEND_ABS_DIR}/node_modules/.bin/next"
 if [ "$START_FRONTEND" = "1" ]; then
-    if [ -d "${FRONTEND_DIR}/node_modules" ]; then
+    if [ -d "${FRONTEND_ABS_DIR}/node_modules" ] && [ -x "$FRONTEND_BIN" ]; then
+        # Clear any stale process on the frontend port
+        fuser -k "${FRONTEND_PORT}/tcp" 2>/dev/null || true
+        sleep 1
+
         echo ""
         echo "Starting frontend dev server on port ${FRONTEND_PORT}..."
         echo "Frontend URL: ${FRONTEND_URL}"
-        cd "${FRONTEND_DIR}" && npm run dev &
+        cd "${FRONTEND_ABS_DIR}" && PORT="" ./node_modules/.bin/next dev -p "${FRONTEND_PORT}" &
         FRONTEND_PID=$!
-        cd ..
+        cd "${PROJECT_ROOT}"
         echo "Frontend dev server started (PID $FRONTEND_PID)"
+
+        # Brief health check — give it a few seconds to confirm it's listening
+        echo "Waiting for frontend dev server..."
+        for i in $(seq 1 10); do
+            if curl -s -o /dev/null "http://127.0.0.1:${FRONTEND_PORT}" 2>/dev/null; then
+                echo "Frontend dev server is ready."
+                break
+            fi
+            if [ $i -eq 10 ]; then
+                echo "Warning: Frontend dev server did not respond within 10s."
+                echo "Check for errors in the frontend logs."
+            fi
+            sleep 1
+        done
+    elif [ -d "${FRONTEND_ABS_DIR}/node_modules" ]; then
+        echo ""
+        echo "Warning: Next.js binary not found at ${FRONTEND_BIN}"
+        echo "Try reinstalling frontend dependencies: make frontend-install"
     else
         echo ""
         echo "Warning: Frontend dependencies not installed."

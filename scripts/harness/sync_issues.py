@@ -452,7 +452,7 @@ def push(task_filter: str = "", since: str = "", push_all: bool = False, dry_run
     impact_opts = {o["name"]: o["id"] for o in field_map.get("Docs Impact", {}).get("options", [])}
 
     # Cache project item list once (reduces GraphQL calls from N to 1)
-    item_cmd = gh("project", "item-list", project_number, "--owner", owner, "--format", "json")
+    item_cmd = gh("project", "item-list", project_number, "--owner", owner, "--format", "json", "--limit", "100")
     items_raw = item_cmd if isinstance(item_cmd, list) else item_cmd.get("items", [])
     item_by_issue: dict[int, str] = {}
     for item in items_raw:
