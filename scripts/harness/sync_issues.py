@@ -154,6 +154,13 @@ def escape_gh_title(title: str) -> str:
     return title.replace("'", "\\'")
 
 
+def _strip_marker(body: str, marker: str) -> str:
+    """Remove the marker line from a comment body, returning clean content."""
+    lines = body.split("\n")
+    cleaned = [line for line in lines if marker not in line]
+    return "\n".join(cleaned).strip()
+
+
 def pull() -> int:
     """Pull Issues → local files (BACKLOG.yaml, task packets, handoffs, reports)."""
     project_number = os.environ.get("GH_PROJECT_NUMBER")
@@ -164,6 +171,18 @@ def pull() -> int:
         return 1
 
     repo = f"{owner}/novelhub"
+
+    # Load existing backlog so we can preserve fields GitHub doesn't store well
+    existing_backlog: dict[str, Any] = {"tasks": []}
+    existing_by_id: dict[str, dict[str, Any]] = {}
+    if BACKLOG_PATH.is_file():
+        try:
+            existing_backlog = json.loads(BACKLOG_PATH.read_text(encoding="utf-8"))
+            for t in existing_backlog.get("tasks", []):
+                if isinstance(t, dict) and t.get("id"):
+                    existing_by_id[t["id"]] = t
+        except (json.JSONDecodeError, Exception):
+            existing_backlog = {"tasks": []}
 
     issues = gh_list("issue", "list", "--repo", repo, "--state", "all", "--json",
                       "number,title,body,state,labels,comments,createdAt,updatedAt",
@@ -266,12 +285,55 @@ def pull() -> int:
                     owned_paths = [p.strip().strip("`",).strip() for p in raw.split(",") if p.strip()]
                 break
 
+        # Preserve existing values when GitHub returns empty/zero/invalid
+        existing = existing_by_id.get(task_id, {})
+        if weight == 0 and existing.get("weight", 0) > 0:
+            weight = existing["weight"]
+        if docs_impact in ("pending",) and existing.get("docs_impact") in ("none", "resolved"):
+            docs_impact = existing["docs_impact"]
+
         now_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
         history: list[dict[str, str]] = [{
             "state": state,
             "at": issue.get("updatedAt", now_iso),
             "by": "github-mcp",
         }]
+
+        # Compute artifact paths based on task_id and state
+        task_packet_path = f".agents/tasks/{task_id}.md"
+        handoff_path = f".agents/handoffs/{task_id}.md"
+        qa_path = f".agents/reports/{task_id}-qa.md"
+        review_path = f".agents/reports/{task_id}-review.md"
+
+        # Write task packet from Issue body (only if file doesn't exist yet)
+        if body and not body.startswith("Task packet not available"):
+            tp_file = ROOT / task_packet_path
+            if not tp_file.is_file():
+                tp_file.parent.mkdir(parents=True, exist_ok=True)
+                tp_file.write_text(body, encoding="utf-8")
+                print(f"  Wrote {task_packet_path}")
+
+        # Write handoff/QA/review files from Issue comments (only if files don't exist yet)
+        if handoff_comment:
+            hf_file = ROOT / handoff_path
+            if not hf_file.is_file():
+                hf_file.parent.mkdir(parents=True, exist_ok=True)
+                hf_file.write_text(_strip_marker(handoff_comment["body"], MARKER_HANDOFF), encoding="utf-8")
+                print(f"  Wrote {handoff_path}")
+
+        if qa_comment:
+            qa_file = ROOT / qa_path
+            if not qa_file.is_file():
+                qa_file.parent.mkdir(parents=True, exist_ok=True)
+                qa_file.write_text(_strip_marker(qa_comment["body"], MARKER_QA), encoding="utf-8")
+                print(f"  Wrote {qa_path}")
+
+        if review_comment:
+            rv_file = ROOT / review_path
+            if not rv_file.is_file():
+                rv_file.parent.mkdir(parents=True, exist_ok=True)
+                rv_file.write_text(_strip_marker(review_comment["body"], MARKER_REVIEW), encoding="utf-8")
+                print(f"  Wrote {review_path}")
 
         task_entry: dict[str, Any] = {
             "id": task_id,
@@ -284,10 +346,10 @@ def pull() -> int:
             "branch": None,
             "depends_on": depends_on,
             "owned_paths": owned_paths,
-            "task_packet": "",
-            "handoff": "",
-            "qa_report": "",
-            "review_report": "",
+            "task_packet": task_packet_path if (ROOT / task_packet_path).is_file() else "",
+            "handoff": handoff_path if (ROOT / handoff_path).is_file() else "",
+            "qa_report": qa_path if (ROOT / qa_path).is_file() else "",
+            "review_report": review_path if (ROOT / review_path).is_file() else "",
             "docs_impact": docs_impact,
             "blocked_by": blocked_by,
             "history": history,
@@ -299,7 +361,7 @@ def pull() -> int:
     backlog = {
         "schema_version": 1,
         "project": "novelhub",
-        "current_milestone": "external-ingestion",
+        "current_milestone": existing_backlog.get("current_milestone", "external-ingestion"),
         "updated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "tasks": tasks_out,
     }
