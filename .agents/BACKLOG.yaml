@@ -10,9 +10,9 @@
       "milestone": "unknown",
       "priority": "P2",
       "weight": 13,
-      "state": "proposed",
-      "owner": "",
-      "branch": null,
+      "state": "qa_passed",
+      "owner": "Developer",
+      "branch": "feat/NH-FEP-001-frontend-api-shell",
       "depends_on": [],
       "owned_paths": [
         "frontend/src/store/api.ts",
@@ -21,7 +21,7 @@
       ],
       "task_packet": ".agents/tasks/NH-FEP-001.md",
       "handoff": ".agents/handoffs/NH-FEP-001.md",
-      "qa_report": "",
+      "qa_report": ".agents/reports/NH-FEP-001-qa.md",
       "review_report": "",
       "docs_impact": "pending",
       "blocked_by": [],
@@ -30,9 +30,14 @@
           "state": "proposed",
           "at": "2026-06-27T17:53:26Z",
           "by": "github-mcp"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-28T01:01:00Z",
+          "by": "qa-agent"
         }
       ],
-      "updated_at": "2026-06-27T17:54:24.112326Z"
+      "updated_at": "2026-06-28T01:01:00Z"
     },
     {
       "id": "NH-TOOL-005",
@@ -1213,9 +1218,9 @@
       "milestone": "parity",
       "priority": "P1",
       "weight": 13,
-      "state": "in_progress",
+      "state": "qa_failed",
       "owner": "developer",
-      "branch": null,
+      "branch": "feat/NH-BEP-001-backend-gaps",
       "depends_on": [],
       "owned_paths": [
         "backend/app/routers/",
@@ -1223,8 +1228,8 @@
         "backend/app/crud.py"
       ],
       "task_packet": ".agents/tasks/NH-BEP-001.md",
-      "handoff": "",
-      "qa_report": "",
+      "handoff": ".agents/handoffs/NH-BEP-001.md",
+      "qa_report": ".agents/reports/NH-BEP-001-qa.md",
       "review_report": "",
       "docs_impact": "pending",
       "blocked_by": [],
@@ -1233,6 +1238,11 @@
           "state": "planning",
           "at": "2026-06-28T00:00:00Z",
           "by": "manager"
+        },
+        {
+          "state": "qa_failed",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "qa"
         }
       ],
       "updated_at": "2026-06-28T00:00:00Z"
