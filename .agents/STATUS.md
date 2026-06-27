@@ -13,7 +13,9 @@ None.
 
 ## In progress
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `dev_complete` | opencode | `foundation` | none |
 
 ## Blocked / rework
 
@@ -53,13 +55,14 @@ None.
 
 | Task | State | Owner | Milestone | Dependencies |
 |------|-------|-------|-----------|--------------|
-| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `planning` | opencode | `foundation` | none |
 | `NH-TOOL-002` Add Unified install Command | `planning` | unassigned | `foundation` | none |
 | `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `planning` | unassigned | `foundation` | none |
 
 ## Active ownership
 
-No active path ownership.
+| Task | Branch | Owned paths |
+|------|--------|-------------|
+| `NH-TOOL-001` | `chore/NH-TOOL-001-cleanup-makefile-scripts` | `** `Makefile`<br>`scripts/` |
 
 ## Decisions and blockers
 
@@ -67,4 +70,4 @@ None recorded.
 
 ## Next valid action
 
-Complete the task packet for `NH-TOOL-001` and move it to `ready`.
+Assign `NH-TOOL-001` to QA and require a `<!-- qa-report -->` verdict.
