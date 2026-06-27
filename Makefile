@@ -58,11 +58,11 @@ status-write:
 	$(PYTHON) scripts/harness/render_status.py --write
 
 sync-pull:
-	$(PYTHON) scripts/harness/sync_issues.py pull
+	$(PYTHON) scripts/harness/sync_issues.py pull $(ARGS)
 	$(PYTHON) scripts/harness/render_opencode_config.py
 
 sync-push:
-	$(PYTHON) scripts/harness/sync_issues.py push
+	$(PYTHON) scripts/harness/sync_issues.py push $(ARGS)
 
 sync-project: sync-push sync-pull
 	@echo "Synced both directions."

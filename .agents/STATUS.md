@@ -4,7 +4,7 @@
 
 - Current milestone: `foundation`
 - Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T15:29:58.685733Z`
+- Backlog updated: `2026-06-27T15:50:13.259239Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready

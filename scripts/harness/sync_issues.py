@@ -161,8 +161,47 @@ def _strip_marker(body: str, marker: str) -> str:
     return "\n".join(cleaned).strip()
 
 
-def pull() -> int:
-    """Pull Issues → local files (BACKLOG.yaml, task packets, handoffs, reports)."""
+def _fetch_issue_full(repo: str, issue_num: int) -> dict[str, Any]:
+    """Fetch a single issue's body and comments (only when needed)."""
+    result = gh("issue", "view", str(issue_num), "--repo", repo,
+                "--json", "body,comments")
+    return result if isinstance(result, dict) else {}
+
+
+def _prefetch_comments(
+    repo: str,
+    owner: str,
+    issue_nums: list[int],
+    cache: dict[int, list[str]],
+) -> None:
+    """Batch-fetch comments for multiple issues in a single GraphQL query."""
+
+    if not issue_nums:
+        return
+
+    # Build a GraphQL query with aliases for each issue number
+    alias_parts: list[str] = []
+    for num in issue_nums:
+        alias_parts.append(
+            f'  i{num}: issue(number: {num}) {{ number comments(first: 10) {{ nodes {{ body }} }} }}'
+        )
+
+    query = f"query {{ repository(owner: \"{owner}\", name: \"{repo.split('/')[-1]}\") {{\n" + "\n".join(alias_parts) + "\n}} }}"
+
+    result = gh("api", "graphql", "-f", f"query={query}")
+    repo_data = result.get("data", {}).get("repository", {})
+
+    for num in issue_nums:
+        issue_data = repo_data.get(f"i{num}", {})
+        comment_nodes = issue_data.get("comments", {}).get("nodes", [])
+        cache[num] = [c.get("body", "") for c in comment_nodes if isinstance(c, dict)]
+
+
+def pull(task_filter: str = "") -> int:
+    """Pull Issues → local files (BACKLOG.yaml, task packets, handoffs, reports).
+
+    If task_filter is set, only pull data for that specific task ID.
+    """
     project_number = os.environ.get("GH_PROJECT_NUMBER")
     owner = os.environ.get("GH_OWNER") or os.environ.get("GITHUB_REPOSITORY_OWNER") or ""
 
@@ -184,9 +223,17 @@ def pull() -> int:
         except (json.JSONDecodeError, Exception):
             existing_backlog = {"tasks": []}
 
-    issues = gh_list("issue", "list", "--repo", repo, "--state", "all", "--json",
-                      "number,title,body,state,labels,comments,createdAt,updatedAt",
-                      "--limit", "1000")
+    # Step 1: Lightweight issue list — just number, title, state
+    # No body or comments — those are fetched on-demand only for tasks that need them
+    list_args: list[str] = [
+        "issue", "list", "--repo", repo, "--state", "all",
+        "--json", "number,title,state,updatedAt",
+        "--limit", "1000",
+    ]
+    if task_filter:
+        list_args.extend(["--search", f"[{task_filter}] in:title"])
+        print(f"Pulling single task: {task_filter}")
+    issues = gh_list(*list_args)
 
     if not isinstance(issues, list):
         print(f"ERROR: unexpected issues response: {issues}", file=sys.stderr)
@@ -197,7 +244,8 @@ def pull() -> int:
 
     task_id_field_name = "Task ID"
 
-    items_gql = gh("api", "graphql", "-f", f"query={{user(login:\"{owner}\"){{projectV2(number:{project_number}){{items(first:100){{nodes{{id fieldValues(first:30){{nodes{{__typename ...on ProjectV2ItemFieldTextValue{{text field{{...on ProjectV2Field{{id name}}}}}} ...on ProjectV2ItemFieldNumberValue{{number field{{...on ProjectV2Field{{id name}}}}}} ...on ProjectV2ItemFieldSingleSelectValue{{name field{{...on ProjectV2SingleSelectField{{id name}}}}}}}}}} content{{...on Issue{{number title}}}}}}}}}}}}}}")
+    # Step 2: GraphQL query for project fields — reduced from first:30 to first:15
+    items_gql = gh("api", "graphql", "-f", f"query={{user(login:\"{owner}\"){{projectV2(number:{project_number}){{items(first:100){{nodes{{id fieldValues(first:15){{nodes{{__typename ...on ProjectV2ItemFieldTextValue{{text field{{...on ProjectV2Field{{id name}}}}}} ...on ProjectV2ItemFieldNumberValue{{number field{{...on ProjectV2Field{{id name}}}}}} ...on ProjectV2ItemFieldSingleSelectValue{{name field{{...on ProjectV2SingleSelectField{{id name}}}}}}}}}} content{{...on Issue{{number title}}}}}}}}}}}}}}")
     items_list = (items_gql or {}).get("data", {}).get("user", {}).get("projectV2", {}).get("items", {}).get("nodes", [])
 
     issue_by_task_id: dict[str, dict[str, Any]] = {}
@@ -231,6 +279,18 @@ def pull() -> int:
 
     tasks_out: list[dict[str, Any]] = []
 
+    # Build a map from issue number to task info for on-demand fetching
+    issue_num_to_task: dict[int, str] = {}
+    for issue in issues:
+        title = issue.get("title", "")
+        match = TASK_ID_RE.match(title)
+        if not match:
+            continue
+        task_id = match.group(1)
+        issue_num = issue.get("number")
+        if issue_num:
+            issue_num_to_task[issue_num] = task_id
+
     for issue in issues:
         title = issue.get("title", "")
         match = TASK_ID_RE.match(title)
@@ -239,9 +299,24 @@ def pull() -> int:
         task_id = match.group(1)
         issue_title = match.group(2)
 
-        body = issue.get("body") or ""
-        comments_list = issue.get("comments", []) or []
         issue_num = issue.get("number")
+
+        # Step 3: Fetch body and comments ON-DEMAND only if local files are missing
+        body = ""
+        comments_list: list[dict[str, Any]] = []
+        tp_path = ROOT / f".agents/tasks/{task_id}.md"
+        hf_path = ROOT / f".agents/handoffs/{task_id}.md"
+        qa_path = ROOT / f".agents/reports/{task_id}-qa.md"
+        rv_path = ROOT / f".agents/reports/{task_id}-review.md"
+
+        need_body = not tp_path.is_file()
+        need_comments = not (hf_path.is_file() and qa_path.is_file() and rv_path.is_file())
+        if need_body or need_comments:
+            full = _fetch_issue_full(repo, issue_num)
+            if need_body:
+                body = full.get("body") or ""
+            if need_comments:
+                comments_list = full.get("comments", []) or []
 
         handoff_comment = find_comment_by_marker(comments_list, MARKER_HANDOFF)
         qa_comment = find_comment_by_marker(comments_list, MARKER_QA)
@@ -276,14 +351,19 @@ def pull() -> int:
         if docs_impact not in known_impacts:
             docs_impact = "pending"
 
+        # Parse owned_paths from body (or existing backlog if body was skipped)
         owned_paths: list[str] = []
-        for line in body.split("\n"):
-            if "owned paths" in line.lower() or "owned_paths" in line.lower():
-                parts = line.split(":")
-                if len(parts) > 1:
-                    raw = parts[1].strip()
-                    owned_paths = [p.strip().strip("`",).strip() for p in raw.split(",") if p.strip()]
-                break
+        if body:
+            for line in body.split("\n"):
+                if "owned paths" in line.lower() or "owned_paths" in line.lower():
+                    parts = line.split(":")
+                    if len(parts) > 1:
+                        raw = parts[1].strip()
+                        owned_paths = [p.strip().strip("`",).strip() for p in raw.split(",") if p.strip()]
+                    break
+        # Fall back to preserved value if body wasn't fetched
+        if not owned_paths and task_id in existing_by_id:
+            owned_paths = existing_by_id[task_id].get("owned_paths", [])
 
         # Preserve existing values when GitHub returns empty/zero/invalid
         existing = existing_by_id.get(task_id, {})
@@ -335,7 +415,8 @@ def pull() -> int:
                 rv_file.write_text(_strip_marker(review_comment["body"], MARKER_REVIEW), encoding="utf-8")
                 print(f"  Wrote {review_path}")
 
-        task_entry: dict[str, Any] = {
+        # Build the new task entry — preserve existing updated_at if nothing changed
+        new_entry: dict[str, Any] = {
             "id": task_id,
             "title": issue_title,
             "milestone": milestone,
@@ -356,7 +437,30 @@ def pull() -> int:
             "updated_at": now_iso,
         }
 
+        # Detect whether the task actually changed vs the previous snapshot
+        prev_task = existing_by_id.get(task_id, {})
+        if prev_task:
+            # Compare only meaningful task data fields (exclude metadata)
+            compare_keys = {"id", "title", "milestone", "priority", "weight", "state",
+                            "owner", "depends_on", "owned_paths", "docs_impact",
+                            "blocked_by", "task_packet", "handoff", "qa_report",
+                            "review_report"}
+            prev_flat = {k: prev_task.get(k) for k in compare_keys}
+            new_flat = {k: new_entry.get(k) for k in compare_keys}
+            if prev_flat == new_flat:
+                # No meaningful change — preserve the previous updated_at
+                new_entry["updated_at"] = prev_task.get("updated_at", now_iso)
+
+        task_entry = new_entry
+
         tasks_out.append(task_entry)
+
+    # If task_filter was set, also preserve backlog entries for other tasks
+    # so the backlog doesn't lose all other tasks
+    if task_filter:
+        for tid, tdata in existing_by_id.items():
+            if tid != task_filter and not any(t.get("id") == tid for t in tasks_out):
+                tasks_out.append(tdata)
 
     backlog = {
         "schema_version": 1,
@@ -419,8 +523,14 @@ def push(task_filter: str = "", since: str = "", push_all: bool = False, dry_run
 
     print(f"Pushing {len(tasks)} tasks to GitHub Issues...")
 
-    existing_issues = gh_list("issue", "list", "--repo", repo, "--state", "all",
-                               "--json", "number,title,state", "--limit", "1000")
+    # When task_filter is set, only search for that specific issue
+    existing_issues_args: list[str] = [
+        "issue", "list", "--repo", repo, "--state", "all",
+        "--json", "number,title,state", "--limit", "1000",
+    ]
+    if task_filter:
+        existing_issues_args.extend(["--search", f"[{task_filter}] in:title"])
+    existing_issues = gh_list(*existing_issues_args)
 
     existing_by_id: dict[str, int] = {}
     for issue in existing_issues:
@@ -468,6 +578,15 @@ def push(task_filter: str = "", since: str = "", push_all: bool = False, dry_run
     updated = 0
     skipped = 0
 
+    # Pre-fetch comments for all existing issues in a single GraphQL query
+    # to avoid N individual REST calls
+    comments_cache: dict[int, list[str]] = {}
+    existing_issue_nums = [
+        existing_by_id[t["id"]] for t in tasks
+        if t["id"] in existing_by_id
+    ]
+    _prefetch_comments(repo, owner, existing_issue_nums, comments_cache)
+
     for task in tasks:
         task_id = task.get("id", "")
         title = task.get("title", "")
@@ -503,6 +622,7 @@ def push(task_filter: str = "", since: str = "", push_all: bool = False, dry_run
 
         labels = "task"
 
+        created_new = False
         if task_id in existing_by_id:
             issue_num = existing_by_id[task_id]
             if task_packet:
@@ -523,11 +643,12 @@ def push(task_filter: str = "", since: str = "", push_all: bool = False, dry_run
             issue_num = int(m.group(1)) if m else 0
             existing_by_id[task_id] = issue_num
             created += 1
+            created_new = True
 
-        existing_comments = gh_list("issue", "view", str(issue_num), "--repo", repo,
-                                     "--json", "comments") or []
-        existing_comments_list = existing_comments if isinstance(existing_comments, list) else existing_comments.get("comments", [])
-        existing_bodies = [c.get("body", "") for c in existing_comments_list]
+        # Use cached comments when available; freshly created issues have none
+        existing_bodies = comments_cache.get(issue_num, [])
+        if created_new or not existing_bodies:
+            existing_bodies = []
 
         def _has_marker(marker: str) -> bool:
             return any(marker in body for body in existing_bodies)
@@ -542,47 +663,49 @@ def push(task_filter: str = "", since: str = "", push_all: bool = False, dry_run
             gh("issue", "comment", str(issue_num), "--repo", repo,
                "--body", f"{MARKER_REVIEW}\n\n{review_body}")
 
+        # Batch all project field updates into a single GraphQL mutation per task
         state_label = STATE_LABEL_INV.get(task.get("state", ""), "Proposed")
         try:
             item_id = item_by_issue.get(issue_num)
             if item_id:
-                def _uf(field_id: str, val_type: str, val: str | int) -> None:
-                    if not field_id:
-                        return
-                    mutation = """
-                        mutation($pid: ID!, $iid: ID!, $fid: ID!) {
-                            updateProjectV2ItemFieldValue(input: {
-                                projectId: $pid, itemId: $iid, fieldId: $fid,
-                                value: { """ + val_type + """: VAL }
-                            }) { projectV2Item { id } }
-                        }
-                    """
-                    mutation = mutation.replace("VAL", json.dumps(val))
-                    gh_mutation(mutation, {"pid": PROJECT_ID, "iid": item_id, "fid": field_id})
-
+                updates: list[tuple[str, str, str | int]] = []
                 if tid_fid:
-                    _uf(tid_fid, "text", task_id)
+                    updates.append((tid_fid, "text", task_id))
                 if sid and state_label in state_opts:
-                    _uf(sid, "singleSelectOptionId", state_opts[state_label])
+                    updates.append((sid, "singleSelectOptionId", state_opts[state_label]))
                 if pid and task.get("priority") in priority_opts:
-                    _uf(pid, "singleSelectOptionId", priority_opts[task["priority"]])
+                    updates.append((pid, "singleSelectOptionId", priority_opts[task["priority"]]))
                 if wid:
-                    _uf(wid, "number", task.get("weight", 0))
+                    updates.append((wid, "number", task.get("weight", 0)))
                 if oid and task.get("owner"):
-                    _uf(oid, "text", str(task["owner"]))
+                    updates.append((oid, "text", str(task["owner"])))
                 if did:
                     deps = ", ".join(task.get("depends_on", []))
                     if deps:
-                        _uf(did, "text", deps)
+                        updates.append((did, "text", deps))
                 if bid:
                     blocked = ", ".join(task.get("blocked_by", []))
                     if blocked:
-                        _uf(bid, "text", blocked)
+                        updates.append((bid, "text", blocked))
                 if dimp:
                     impact = task.get("docs_impact", "pending")
                     impact_label = {"pending": "Pending", "none": "None", "resolved": "Resolved"}.get(impact, "Pending")
                     if impact_label in impact_opts:
-                        _uf(dimp, "singleSelectOptionId", impact_opts[impact_label])
+                        updates.append((dimp, "singleSelectOptionId", impact_opts[impact_label]))
+
+                if updates:
+                    # Send all field updates in a single batched GraphQL mutation
+                    parts: list[str] = []
+                    for i, (fid, vtype, val) in enumerate(updates):
+                        val_json = json.dumps(val)
+                        parts.append(
+                            f'  f{i}: updateProjectV2ItemFieldValue(input: {{'
+                            f'projectId: $pid, itemId: $iid, fieldId: "{fid}", '
+                            f'value: {{ {vtype}: {val_json} }}'
+                            f'}}) {{ projectV2Item {{ id }} }}'
+                        )
+                    mutation = "mutation($pid: ID!, $iid: ID!) {\n" + "\n".join(parts) + "\n}"
+                    gh_mutation(mutation, {"pid": PROJECT_ID, "iid": item_id})
             else:
                 print(f"  Warning: item #{issue_num} ({task_id}) not found in project", file=sys.stderr)
         except Exception as exc:
@@ -610,7 +733,7 @@ def main() -> int:
     ensure_dirs()
     if args.direction == "push":
         return push(task_filter=args.task, since=args.since, push_all=args.all, dry_run=args.dry_run)
-    return pull()
+    return pull(task_filter=args.task)
 
 
 if __name__ == "__main__":

@@ -136,34 +136,43 @@ Example: `feat/NH-HARNESS-002-branch-pr-workflow`
 
 ### Required artifact flow
 
+Use `ARGS="--task <TASK-ID>"` to sync only the task being worked on, reducing
+GitHub API calls dramatically.
+
 | State transition | Agent | Action |
 |-----------------|-------|--------|
-| `proposed` → `planning` | Manager | `gh issue create` with task packet as body, `task` label. Then sync: `make sync-push` to set Status→Planning. |
-| `planning` → `ready` | Planner | `gh issue edit <num> --body "$(cat task.md)"`. Then sync: `make sync-push` to set Status→Ready. |
-| `ready` → `in_progress` | Manager | Write task fields in BACKLOG.yaml, then `make sync-push` to set Status→In Progress, Owner. Suggest branch name with proper prefix (`feat/`, `fix/`, `chore/`, `docs/`, `refactor/`). |
-| `in_progress` → `dev_complete` | Developer | Create/switch to branch (`git checkout -b <prefix>/<task-id>-<desc>`). Implement, test, commit, push. Create PR (`gh pr create`). `gh issue comment` with `<!-- handoff -->`. Write state change in BACKLOG.yaml. Sync: `make sync-push`. |
-| `dev_complete` → `qa_passed` | QA | Check out the PR branch. Validate. `gh pr comment` with `<!-- qa-report -->`. Sync: `make sync-push`. |
-| `qa_passed` → `accepted` | Reviewer | Review PR diff. `gh pr review` with `--approve` or `--request-changes`. Sync: `make sync-push`. |
-| `accepted` → `done` | Manager | Merge PR (`gh pr merge`). Switch to main, pull latest, delete branch. Sync: `make sync-push` to set Status→Done, close Issue (`gh issue close`). |
+| `proposed` → `planning` | Manager | `gh issue create` with task packet as body, `task` label. Then sync: `ARGS="--task <TASK-ID>" make sync-push` to set Status→Planning. |
+| `planning` → `ready` | Planner | `gh issue edit <num> --body "$(cat task.md)"`. Then sync: `ARGS="--task <TASK-ID>" make sync-push` to set Status→Ready. |
+| `ready` → `in_progress` | Manager | Write task fields in BACKLOG.yaml, then `ARGS="--task <TASK-ID>" make sync-push` to set Status→In Progress, Owner. Suggest branch name with proper prefix (`feat/`, `fix/`, `chore/`, `docs/`, `refactor/`). |
+| `in_progress` → `dev_complete` | Developer | Create/switch to branch (`git checkout -b <prefix>/<task-id>-<desc>`). Implement, test, commit, push. Create PR (`gh pr create`). `gh issue comment` with `<!-- handoff -->`. Write state change in BACKLOG.yaml. Sync: `ARGS="--task <TASK-ID>" make sync-push`. |
+| `dev_complete` → `qa_passed` | QA | Check out the PR branch. Validate. `gh pr comment` with `<!-- qa-report -->`. Sync: `ARGS="--task <TASK-ID>" make sync-push`. |
+| `qa_passed` → `accepted` | Reviewer | Review PR diff. `gh pr review` with `--approve` or `--request-changes`. Sync: `ARGS="--task <TASK-ID>" make sync-push`. |
+| `accepted` → `done` | Manager | Merge PR (`gh pr merge`). Switch to main, pull latest, delete branch. Sync: `make sync-push ARGS="--all"` to set Status→Done, close Issue (`gh issue close`). Then sync-pull with task: `ARGS="--task <TASK-ID>" make sync-pull`. |
 
 ### Simplified workflow
 
 ```text
 1. Agent runs gh CLI commands to create/update Issues and comments
 2. Agent updates local BACKLOG.yaml (state, owner, etc.)
-3. Run make sync-push    → pushes state to GitHub Project fields
-4. Run make sync-pull     → regenerates local files from Issues
+3. Run ARGS="--task <TASK-ID>" make sync-push  → pushes state to GitHub Project fields (limited to one task)
+4. Run ARGS="--task <TASK-ID>" make sync-pull   → regenerates local files from Issues (limited to one task)
 5. Run make harness-check → validates everything
 ```
+
+Use `ARGS="--task <TASK-ID>"` when working on a specific task to drastically
+reduce GitHub API usage. Only sync all tasks with `ARGS="--all"` when needed.
 
 ## Sync commands
 
 ```bash
 # Pull Issues → local files (regenerates BACKLOG.yaml, task packets, handoffs, reports)
-make sync-pull
+make sync-pull          # All tasks
+make sync-pull ARGS="--task NH-XXX-###"   # Single task only
 
-# Push local files → Issues (bootstrap after setting up from backup)
-make sync-push
+# Push local files → GitHub Issues (bootstrap after setting up from backup)
+make sync-push          # Only active (non-done) tasks
+make sync-push ARGS="--task NH-XXX-###"   # Single task only
+make sync-push ARGS="--all"               # ALL tasks
 
 # Both directions
 make sync-project

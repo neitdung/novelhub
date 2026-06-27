@@ -11,7 +11,6 @@ CORE_SOURCES = [
     "AGENTS.md",
     ".agents/PROJECT.md",
     ".agents/AGENT_CATALOG.md",
-    ".agents/STATUS.md",
     ".agents/prompts/common.md",
 ]
 
@@ -119,7 +118,13 @@ def build_config() -> dict[str, object]:
 
 
 def main() -> None:
-    OUTPUT_PATH.write_text(json.dumps(build_config(), indent=2) + "\n", encoding="utf-8")
+    new_content = json.dumps(build_config(), indent=2) + "\n"
+    if OUTPUT_PATH.is_file():
+        existing = OUTPUT_PATH.read_text(encoding="utf-8")
+        if existing == new_content:
+            print(f"{OUTPUT_PATH.relative_to(ROOT)} unchanged — skipping write")
+            return
+    OUTPUT_PATH.write_text(new_content, encoding="utf-8")
     print(f"Wrote {OUTPUT_PATH.relative_to(ROOT)}")
 
 
