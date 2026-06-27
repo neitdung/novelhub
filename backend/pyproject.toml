@@ -25,6 +25,10 @@ dev = [
     "httpx>=0.27.0",
 ]
 
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["uploads*", "tests*"]
+
 [tool.ruff]
 target-version = "py311"
 line-length = 88
