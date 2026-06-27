@@ -4,14 +4,12 @@
 
 - Current milestone: `external-ingestion`
 - Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T04:55:00Z`
+- Backlog updated: `2026-06-27T05:24:36.790413Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-TOOL-004` Fix make install and make start Commands | `ready` | unassigned | `foundation` | none |
+None.
 
 ## In progress
 
@@ -37,6 +35,7 @@ None.
 | `NH-HARD-001` Security: sanitize_html, sanitize_url, sanitize_markdown, validate_input | `done` | unassigned | `unknown` | none |
 | `NH-HARNESS-001` Bootstrap and validate the AI engineering harness | `done` | unassigned | `unknown` | none |
 | `NH-HARNESS-002` Branch Naming, PR Creation, and PR-Based Review Workflow | `done` | unassigned | `unknown` | none |
+| `NH-HARNESS-003` Stop tracking generated artifact .md files in .agents/ | `done` | unassigned | `unknown` | none |
 | `NH-INGEST-001` Novel upload API and storage | `done` | unassigned | `unknown` | none |
 | `NH-INGEST-002` Chapter parsing and splitting | `done` | unassigned | `unknown` | none |
 | `NH-INGEST-003` Unified External Source Ingestion and Chapter Handler | `done` | unassigned | `unknown` | none |
@@ -50,9 +49,10 @@ None.
 | `NH-PORT-002` Backup ZIP with Manifest/Checksum, Restore with Validation | `done` | unassigned | `unknown` | none |
 | `NH-READ-001` Reader UI and navigation | `done` | unassigned | `unknown` | none |
 | `NH-READ-002` Bookmarks and progress persistence | `done` | unassigned | `unknown` | none |
-| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `done` | unassigned | `foundation` | none |
-| `NH-TOOL-002` Add Unified install Command | `done` | unassigned | `foundation` | none |
-| `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `done` | opencode | `foundation` | none |
+| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-002` Add Unified install Command | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-004` Fix make install and make start Commands | `done` | unassigned | `unknown` | none |
 
 ## Queued / proposed
 
@@ -68,4 +68,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-TOOL-004` to a Developer and record its branch and owned paths.
+No active or queued tasks remain. Create the next approved task packet before assigning work.
