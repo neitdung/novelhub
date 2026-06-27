@@ -56,7 +56,7 @@
       "milestone": "foundation",
       "priority": "P1",
       "weight": 5,
-      "state": "dev_complete",
+      "state": "done",
       "owner": "opencode-agent",
       "branch": "feat/NH-NEXT-002-sync-docs-scripts-nextjs",
       "depends_on": ["NH-NEXT-001"],
