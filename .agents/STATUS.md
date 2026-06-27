@@ -13,7 +13,9 @@ None.
 
 ## In progress
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-TOOL-002` Add Unified install Command | `dev_complete` | opencode | `foundation` | none |
 
 ## Blocked / rework
 
@@ -54,12 +56,13 @@ None.
 
 | Task | State | Owner | Milestone | Dependencies |
 |------|-------|-------|-----------|--------------|
-| `NH-TOOL-002` Add Unified install Command | `planning` | unassigned | `foundation` | none |
 | `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `planning` | unassigned | `foundation` | none |
 
 ## Active ownership
 
-No active path ownership.
+| Task | Branch | Owned paths |
+|------|--------|-------------|
+| `NH-TOOL-002` | `chore/NH-TOOL-002-unified-install-command` | `** `Makefile`<br>`scripts/install.sh` |
 
 ## Decisions and blockers
 
@@ -67,4 +70,4 @@ None recorded.
 
 ## Next valid action
 
-Complete the task packet for `NH-TOOL-002` and move it to `ready`.
+Assign `NH-TOOL-002` to QA and require a `<!-- qa-report -->` verdict.
