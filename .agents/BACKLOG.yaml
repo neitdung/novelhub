@@ -2,43 +2,78 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "external-ingestion",
-  "updated_at": "2026-06-27T04:22:22.292952Z",
+  "updated_at": "2026-06-27T03:53:08.587567Z",
   "tasks": [
     {
       "id": "NH-TOOL-003",
       "title": "Add start, stop, clear Commands at Top of Makefile",
-      "milestone": "unknown",
+      "milestone": "foundation",
       "priority": "P2",
       "weight": 2,
       "state": "done",
-      "owner": "",
-      "branch": null,
+      "owner": "opencode",
+      "branch": "chore/NH-TOOL-003-start-stop-clear-commands",
       "depends_on": [],
       "owned_paths": [
         "** `Makefile"
       ],
       "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
+      "handoff": ".agents/handoffs/NH-TOOL-003.md",
+      "qa_report": ".agents/reports/NH-TOOL-003-qa.md",
+      "review_report": ".agents/reports/NH-TOOL-003-review.md",
       "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
-          "state": "done",
-          "at": "2026-06-27T04:11:48Z",
+          "state": "proposed",
+          "at": "2026-06-27T03:51:58Z",
           "by": "github-mcp"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-27T04:26:11.611592Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T04:26:11.611592Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T04:26:11.611592Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-27T04:26:11.611592Z",
+          "by": "developer-agent"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-27T04:26:11.611592Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-27T04:26:11.611592Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-27T04:27:52.455236Z",
+          "by": "manager-agent"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292625Z"
+      "updated_at": "2026-06-27T03:53:08.587251Z"
     },
     {
       "id": "NH-TOOL-002",
       "title": "Add Unified install Command",
-      "milestone": "unknown",
+      "milestone": "foundation",
       "priority": "P2",
       "weight": 3,
-      "state": "done",
+      "state": "planning",
       "owner": "",
       "branch": null,
       "depends_on": [],
@@ -50,26 +85,31 @@
       "handoff": "",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "none",
+      "docs_impact": "pending",
       "blocked_by": [],
       "history": [
         {
-          "state": "done",
-          "at": "2026-06-27T04:10:39Z",
+          "state": "proposed",
+          "at": "2026-06-27T03:51:57Z",
           "by": "github-mcp"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-27T03:54:00.658845Z",
+          "by": "manager-agent"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292664Z"
+      "updated_at": "2026-06-27T03:53:08.587288Z"
     },
     {
       "id": "NH-TOOL-001",
       "title": "Clean Up Makefile and scripts/ Directory",
-      "milestone": "unknown",
+      "milestone": "foundation",
       "priority": "P2",
       "weight": 3,
-      "state": "done",
-      "owner": "",
-      "branch": null,
+      "state": "planning",
+      "owner": "opencode",
+      "branch": "chore/NH-TOOL-001-cleanup-makefile-scripts",
       "depends_on": [],
       "owned_paths": [
         "** `Makefile",
@@ -79,16 +119,21 @@
       "handoff": "",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "none",
+      "docs_impact": "pending",
       "blocked_by": [],
       "history": [
         {
-          "state": "done",
-          "at": "2026-06-27T04:05:36Z",
+          "state": "proposed",
+          "at": "2026-06-27T03:51:57Z",
           "by": "github-mcp"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-27T03:54:00.658849Z",
+          "by": "manager-agent"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292692Z"
+      "updated_at": "2026-06-27T03:53:08.587306Z"
     },
     {
       "id": "NH-HARNESS-002",
@@ -114,7 +159,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292717Z"
+      "updated_at": "2026-06-27T03:53:08.587330Z"
     },
     {
       "id": "NH-INGEST-005",
@@ -146,7 +191,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292733Z"
+      "updated_at": "2026-06-27T03:53:08.587347Z"
     },
     {
       "id": "NH-INGEST-003",
@@ -180,7 +225,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292759Z"
+      "updated_at": "2026-06-27T03:53:08.587374Z"
     },
     {
       "id": "NH-HARD-001",
@@ -206,7 +251,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292768Z"
+      "updated_at": "2026-06-27T03:53:08.587382Z"
     },
     {
       "id": "NH-PORT-002",
@@ -232,7 +277,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292776Z"
+      "updated_at": "2026-06-27T03:53:08.587390Z"
     },
     {
       "id": "NH-PORT-001",
@@ -258,7 +303,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292784Z"
+      "updated_at": "2026-06-27T03:53:08.587397Z"
     },
     {
       "id": "NH-DISCOV-001",
@@ -284,7 +329,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292792Z"
+      "updated_at": "2026-06-27T03:53:08.587405Z"
     },
     {
       "id": "NH-CHAT-002",
@@ -310,7 +355,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292799Z"
+      "updated_at": "2026-06-27T03:53:08.587412Z"
     },
     {
       "id": "NH-CHAT-001",
@@ -336,7 +381,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292806Z"
+      "updated_at": "2026-06-27T03:53:08.587420Z"
     },
     {
       "id": "NH-FE-003",
@@ -362,7 +407,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292815Z"
+      "updated_at": "2026-06-27T03:53:08.587428Z"
     },
     {
       "id": "NH-FE-002",
@@ -388,7 +433,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292822Z"
+      "updated_at": "2026-06-27T03:53:08.587435Z"
     },
     {
       "id": "NH-FE-001",
@@ -414,7 +459,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292829Z"
+      "updated_at": "2026-06-27T03:53:08.587443Z"
     },
     {
       "id": "NH-KB-003",
@@ -440,7 +485,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292837Z"
+      "updated_at": "2026-06-27T03:53:08.587451Z"
     },
     {
       "id": "NH-KB-002",
@@ -466,7 +511,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292844Z"
+      "updated_at": "2026-06-27T03:53:08.587459Z"
     },
     {
       "id": "NH-KB-001",
@@ -492,7 +537,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292854Z"
+      "updated_at": "2026-06-27T03:53:08.587467Z"
     },
     {
       "id": "NH-LLM-002",
@@ -520,7 +565,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292863Z"
+      "updated_at": "2026-06-27T03:53:08.587477Z"
     },
     {
       "id": "NH-LLM-001",
@@ -548,7 +593,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292873Z"
+      "updated_at": "2026-06-27T03:53:08.587486Z"
     },
     {
       "id": "NH-READ-002",
@@ -577,7 +622,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292883Z"
+      "updated_at": "2026-06-27T03:53:08.587495Z"
     },
     {
       "id": "NH-READ-001",
@@ -605,7 +650,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292891Z"
+      "updated_at": "2026-06-27T03:53:08.587504Z"
     },
     {
       "id": "NH-INGEST-002",
@@ -633,7 +678,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292899Z"
+      "updated_at": "2026-06-27T03:53:08.587513Z"
     },
     {
       "id": "NH-INGEST-001",
@@ -661,7 +706,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292908Z"
+      "updated_at": "2026-06-27T03:53:08.587521Z"
     },
     {
       "id": "NH-FOUND-005",
@@ -691,7 +736,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292917Z"
+      "updated_at": "2026-06-27T03:53:08.587533Z"
     },
     {
       "id": "NH-FOUND-003",
@@ -719,7 +764,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292926Z"
+      "updated_at": "2026-06-27T03:53:08.587541Z"
     },
     {
       "id": "NH-FOUND-001",
@@ -749,7 +794,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292937Z"
+      "updated_at": "2026-06-27T03:53:08.587552Z"
     },
     {
       "id": "NH-HARNESS-001",
@@ -775,7 +820,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T04:22:22.292950Z"
+      "updated_at": "2026-06-27T03:53:08.587566Z"
     }
   ]
 }
