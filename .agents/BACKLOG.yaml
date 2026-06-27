@@ -77,7 +77,7 @@
       "milestone": "foundation",
       "priority": "P2",
       "weight": 3,
-      "state": "dev_complete",
+      "state": "done",
       "owner": "opencode",
       "branch": "chore/NH-TOOL-001-cleanup-makefile-scripts",
       "depends_on": [],
@@ -87,9 +87,9 @@
       ],
       "task_packet": "",
       "handoff": ".agents/handoffs/NH-TOOL-001.md",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "qa_report": ".agents/reports/NH-TOOL-001-qa.md",
+      "review_report": ".agents/reports/NH-TOOL-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -116,6 +116,21 @@
           "state": "dev_complete",
           "at": "2026-06-27T03:56:20.254586Z",
           "by": "developer-agent"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-27T04:04:40.530153Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-27T04:04:40.530153Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-27T04:05:55.822390Z",
+          "by": "manager-agent"
         }
       ],
       "updated_at": "2026-06-27T03:53:08.587306Z"

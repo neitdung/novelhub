@@ -13,9 +13,7 @@ None.
 
 ## In progress
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `dev_complete` | opencode | `foundation` | none |
+None.
 
 ## Blocked / rework
 
@@ -50,6 +48,7 @@ None.
 | `NH-PORT-002` Backup ZIP with Manifest/Checksum, Restore with Validation | `done` | unassigned | `unknown` | none |
 | `NH-READ-001` Reader UI and navigation | `done` | unassigned | `unknown` | none |
 | `NH-READ-002` Bookmarks and progress persistence | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `done` | opencode | `foundation` | none |
 
 ## Queued / proposed
 
@@ -60,9 +59,7 @@ None.
 
 ## Active ownership
 
-| Task | Branch | Owned paths |
-|------|--------|-------------|
-| `NH-TOOL-001` | `chore/NH-TOOL-001-cleanup-makefile-scripts` | `** `Makefile`<br>`scripts/` |
+No active path ownership.
 
 ## Decisions and blockers
 
@@ -70,4 +67,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-TOOL-001` to QA and require a `<!-- qa-report -->` verdict.
+Complete the task packet for `NH-TOOL-002` and move it to `ready`.
