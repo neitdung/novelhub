@@ -2,10 +2,54 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Query
 
+from ..database import get_db_context
 from ..graph import get_graph_data, shortest_path
+from ..kb.crud import list_entities
+from ..schemas import FactionEntity, FactionList, FactionRelationship, FactionResponse
 from ..timeline import EventCreate, EventList, EventResponse, create_event, list_events
 
 router = APIRouter(prefix="/api", tags=["discovery"])
+
+
+@router.get("/graph/{novel_id}/factions", response_model=FactionList)
+async def get_factions_endpoint(novel_id: int) -> FactionList:
+    """Return organization entities and their relationships as a faction projection."""
+    entities, _ = await list_entities(novel_id, entity_type="organization", limit=200)
+
+    factions: list[FactionResponse] = []
+    for entity in entities:
+        async with get_db_context() as db:
+            cursor = await db.execute(
+                "SELECT source_entity_id, target_entity_id, relationship_type"
+                " FROM entity_relationships"
+                " WHERE novel_id = ?"
+                " AND (source_entity_id = ? OR target_entity_id = ?)",
+                (novel_id, entity.id, entity.id),
+            )
+            rows = await cursor.fetchall()
+
+        relationships = [
+            FactionRelationship(
+                source_entity_id=r[0],
+                target_entity_id=r[1],
+                relationship_type=r[2],
+            )
+            for r in rows
+        ]
+
+        factions.append(
+            FactionResponse(
+                entity=FactionEntity(
+                    id=entity.id,
+                    name=entity.name,
+                    entity_type=entity.entity_type,
+                    aliases=entity.aliases,
+                ),
+                relationships=relationships,
+            )
+        )
+
+    return FactionList(factions=factions, total=len(factions))
 
 
 @router.get("/graph/{novel_id}")

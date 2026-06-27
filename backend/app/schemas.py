@@ -205,3 +205,107 @@ class TxtImportResponse(BaseModel):
     novel_id: int
     chapters_created: int
     title: str
+
+
+# --- Import Preview / Re-split ---
+
+class ImportPreviewChapter(BaseModel):
+    chapter_number: int
+    title: str
+    content_preview: str
+    content_length: int
+
+
+class ImportPreviewResponse(BaseModel):
+    novel_id: int
+    chapters: list[ImportPreviewChapter]
+    total_chapters: int
+
+
+class ResplitResponse(BaseModel):
+    chapter_id: int
+    chapter_number: int
+    title: str
+    content_length: int
+
+
+# --- Factions ---
+
+class FactionEntity(BaseModel):
+    id: int
+    name: str
+    entity_type: str
+    aliases: list[str] = []
+
+
+class FactionRelationship(BaseModel):
+    source_entity_id: int
+    target_entity_id: int
+    relationship_type: str
+
+
+class FactionResponse(BaseModel):
+    entity: FactionEntity
+    relationships: list[FactionRelationship]
+
+
+class FactionList(BaseModel):
+    factions: list[FactionResponse]
+    total: int
+
+
+# --- Wiki Lint / Backlinks ---
+
+class WikiLink(BaseModel):
+    page_id: int
+    title: str
+    novel_id: int
+
+
+class WikiBacklinkList(BaseModel):
+    backlinks: list[WikiLink]
+    total: int
+
+
+class WikiLinkList(BaseModel):
+    links: list[WikiLink]
+    total: int
+
+
+class WikiLintIssue(BaseModel):
+    issue_type: str  # "orphan", "contradiction", "coverage"
+    page_id: int
+    title: str
+    description: str
+    severity: str  # "low", "medium", "high"
+
+
+class WikiLintReport(BaseModel):
+    novel_id: int
+    orphan_pages: list[WikiLintIssue]
+    contradictions: list[WikiLintIssue]
+    coverage_issues: list[WikiLintIssue]
+    total_issues: int
+
+
+# --- Provider Health ---
+
+class ProviderStatus(BaseModel):
+    provider: str
+    name: str
+    healthy: bool
+    error: str | None = None
+
+
+class ModelInfo(BaseModel):
+    provider: str
+    name: str
+    model_id: str
+
+
+class HealthCheckResponse(BaseModel):
+    providers: list[ProviderStatus]
+
+
+class ModelsListResponse(BaseModel):
+    models: list[ModelInfo]
