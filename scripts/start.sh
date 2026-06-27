@@ -1,5 +1,5 @@
 #!/bin/bash
-# Start script for NovelHub (FastAPI backend)
+# Start script for NovelHub (FastAPI backend + optional Next.js frontend)
 set -e
 
 cd "$(dirname "$0")/.."
@@ -15,9 +15,11 @@ fi
 
 # Parse CLI flags
 START_LOCAL_LLM=${START_LOCAL_LLM:-0}
+START_FRONTEND=${START_FRONTEND:-0}
 while [ $# -gt 0 ]; do
     case "$1" in
         --local) START_LOCAL_LLM=1; shift ;;
+        --frontend) START_FRONTEND=1; shift ;;
         *) shift ;;
     esac
 done
@@ -32,10 +34,14 @@ INSTALL_DEPS=${INSTALL_DEPS:-0}
 APP_URL=${APP_URL:-http://127.0.0.1:${PORT}}
 LLAMA_PORT=${LLAMA_PORT:-10124}
 LLAMA_HOST=${LLAMA_HOST:-127.0.0.1}
+FRONTEND_DIR=${FRONTEND_DIR:-frontend}
+FRONTEND_PORT=${FRONTEND_PORT:-3000}
+FRONTEND_URL=${FRONTEND_URL:-http://127.0.0.1:${FRONTEND_PORT}}
 
 echo "=== NovelHub ==="
 echo "Working directory: $(pwd)"
 echo "App URL: $APP_URL"
+echo "Frontend URL: $FRONTEND_URL"
 echo "OpenCode port: $OPENCODE_PORT"
 echo "Local LLM port: $LLAMA_PORT"
 
@@ -132,6 +138,10 @@ echo "Rendering OpenCode project prompt config..."
 cleanup() {
     echo ""
     echo "Shutting down..."
+    if [ -n "$FRONTEND_PID" ] && kill -0 "$FRONTEND_PID" 2>/dev/null; then
+        echo "Stopping frontend dev server (PID $FRONTEND_PID)..."
+        kill "$FRONTEND_PID" 2>/dev/null || true
+    fi
     if [ -n "$OPENCODE_PID" ] && [ "$OPENCODE_PID" != "existing" ] && kill -0 "$OPENCODE_PID" 2>/dev/null; then
         echo "Stopping OpenCode server (PID $OPENCODE_PID)..."
         kill "$OPENCODE_PID" 2>/dev/null || true
@@ -198,7 +208,28 @@ APP_PID=$!
 cd ..
 
 echo "NovelHub started (PID $APP_PID)"
+
+# Start frontend dev server if enabled
+FRONTEND_PID=""
+if [ "$START_FRONTEND" = "1" ]; then
+    if [ -d "${FRONTEND_DIR}/node_modules" ]; then
+        echo ""
+        echo "Starting frontend dev server on port ${FRONTEND_PORT}..."
+        echo "Frontend URL: ${FRONTEND_URL}"
+        cd "${FRONTEND_DIR}" && npm run dev &
+        FRONTEND_PID=$!
+        cd ..
+        echo "Frontend dev server started (PID $FRONTEND_PID)"
+    else
+        echo ""
+        echo "Warning: Frontend dependencies not installed."
+        echo "Run 'make frontend-install' or 'make install' first."
+    fi
+fi
+
+echo ""
 echo "Press Ctrl+C to stop."
 echo ""
 
+# Wait for backend; frontend is a child process cleaned up by the trap
 wait $APP_PID

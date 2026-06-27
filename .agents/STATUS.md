@@ -3,19 +3,19 @@
 <!-- GENERATED: scripts/harness/render_status.py --write -->
 
 - Current milestone: `foundation`
-- Milestone accepted weight: 0/13 (0.0%)
+- Milestone accepted weight: 13/18 (72.2%)
 - Backlog updated: `2026-06-27T11:27:37.579332Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-NEXT-001` Refactor Frontend to Next.js (App Router, SPA Mode) | `ready` | opencode-agent | `foundation` | none |
+None.
 
 ## In progress
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-NEXT-002` Sync Documents and Scripts After Next.js Refactor | `dev_complete` | opencode-agent | `foundation` | NH-NEXT-001 |
 
 ## Blocked / rework
 
@@ -48,6 +48,7 @@ None.
 | `NH-KB-003` On-Demand Wiki Generation | `done` | unassigned | `unknown` | none |
 | `NH-LLM-001` LLM provider interfaces | `done` | unassigned | `unknown` | none |
 | `NH-LLM-002` Analysis pipeline | `done` | unassigned | `unknown` | none |
+| `NH-NEXT-001` Refactor Frontend to Next.js (App Router, SPA Mode) | `done` | opencode-agent | `foundation` | none |
 | `NH-PORT-001` Export: Markdown Novel, JSON KB, Markdown Wiki | `done` | unassigned | `unknown` | none |
 | `NH-PORT-002` Backup ZIP with Manifest/Checksum, Restore with Validation | `done` | unassigned | `unknown` | none |
 | `NH-READ-001` Reader UI and navigation | `done` | unassigned | `unknown` | none |
@@ -63,7 +64,9 @@ None.
 
 ## Active ownership
 
-No active path ownership.
+| Task | Branch | Owned paths |
+|------|--------|-------------|
+| `NH-NEXT-002` | `feat/NH-NEXT-002-sync-docs-scripts-nextjs` | `docs/plans/phase-01-foundation.md`<br>`scripts/start.sh`<br>`scripts/stop.sh` |
 
 ## Decisions and blockers
 
@@ -71,4 +74,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-NEXT-001` to a Developer and record its branch and owned paths.
+Assign `NH-NEXT-002` to QA and require a `<!-- qa-report -->` verdict.

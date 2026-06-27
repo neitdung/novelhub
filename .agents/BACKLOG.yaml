@@ -10,7 +10,7 @@
       "milestone": "foundation",
       "priority": "P0",
       "weight": 13,
-      "state": "ready",
+      "state": "done",
       "owner": "opencode-agent",
       "branch": "feat/NH-NEXT-001-nextjs-frontend",
       "depends_on": [],
@@ -41,9 +41,54 @@
           "state": "ready",
           "at": "2026-06-27T11:35:00Z",
           "by": "opencode-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-27T11:40:00Z",
+          "by": "opencode-agent"
         }
       ],
-      "updated_at": "2026-06-27T11:35:00Z"
+      "updated_at": "2026-06-27T11:40:00Z"
+    },
+    {
+      "id": "NH-NEXT-002",
+      "title": "Sync Documents and Scripts After Next.js Refactor",
+      "milestone": "foundation",
+      "priority": "P1",
+      "weight": 5,
+      "state": "dev_complete",
+      "owner": "opencode-agent",
+      "branch": "feat/NH-NEXT-002-sync-docs-scripts-nextjs",
+      "depends_on": ["NH-NEXT-001"],
+      "owned_paths": [
+        "docs/plans/phase-01-foundation.md",
+        "scripts/start.sh",
+        "scripts/stop.sh"
+      ],
+      "task_packet": ".agents/tasks/NH-NEXT-002.md",
+      "handoff": ".agents/handoffs/NH-NEXT-002.md",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "resolved",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-27T11:50:00Z",
+          "by": "opencode-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T11:50:00Z",
+          "by": "opencode-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-27T12:00:00Z",
+          "by": "opencode-agent"
+        }
+      ],
+      "updated_at": "2026-06-27T12:00:00Z"
     },
     {
       "id": "NH-HARNESS-004",
