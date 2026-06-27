@@ -10,9 +10,9 @@
       "milestone": "foundation",
       "priority": "P2",
       "weight": 2,
-      "state": "planning",
-      "owner": "",
-      "branch": null,
+      "state": "done",
+      "owner": "opencode",
+      "branch": "chore/NH-TOOL-003-start-stop-clear-commands",
       "depends_on": [],
       "owned_paths": [
         "** `Makefile"
@@ -21,7 +21,7 @@
       "handoff": "",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "pending",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -31,7 +31,37 @@
         },
         {
           "state": "planning",
-          "at": "2026-06-27T03:54:00.658830Z",
+          "at": "2026-06-27T04:10:58.694296Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T04:10:58.694296Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T04:10:58.694296Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-27T04:10:58.694296Z",
+          "by": "developer-agent"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-27T04:10:58.694296Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-27T04:10:58.694296Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-27T04:10:58.694296Z",
           "by": "manager-agent"
         }
       ],
@@ -43,7 +73,7 @@
       "milestone": "foundation",
       "priority": "P2",
       "weight": 3,
-      "state": "dev_complete",
+      "state": "done",
       "owner": "opencode",
       "branch": "chore/NH-TOOL-002-unified-install-command",
       "depends_on": [],
@@ -53,9 +83,9 @@
       ],
       "task_packet": "",
       "handoff": ".agents/handoffs/NH-TOOL-002.md",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "qa_report": ".agents/reports/NH-TOOL-002-qa.md",
+      "review_report": ".agents/reports/NH-TOOL-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -82,6 +112,21 @@
           "state": "dev_complete",
           "at": "2026-06-27T04:08:05.256500Z",
           "by": "developer-agent"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-27T04:10:33.367511Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-27T04:10:33.367511Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-27T04:10:58.694311Z",
+          "by": "manager-agent"
         }
       ],
       "updated_at": "2026-06-27T03:53:08.587288Z"

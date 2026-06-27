@@ -13,9 +13,7 @@ None.
 
 ## In progress
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-TOOL-002` Add Unified install Command | `dev_complete` | opencode | `foundation` | none |
+None.
 
 ## Blocked / rework
 
@@ -51,18 +49,16 @@ None.
 | `NH-READ-001` Reader UI and navigation | `done` | unassigned | `unknown` | none |
 | `NH-READ-002` Bookmarks and progress persistence | `done` | unassigned | `unknown` | none |
 | `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `done` | opencode | `foundation` | none |
+| `NH-TOOL-002` Add Unified install Command | `done` | opencode | `foundation` | none |
+| `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `done` | opencode | `foundation` | none |
 
 ## Queued / proposed
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `planning` | unassigned | `foundation` | none |
+None.
 
 ## Active ownership
 
-| Task | Branch | Owned paths |
-|------|--------|-------------|
-| `NH-TOOL-002` | `chore/NH-TOOL-002-unified-install-command` | `** `Makefile`<br>`scripts/install.sh` |
+No active path ownership.
 
 ## Decisions and blockers
 
@@ -70,4 +66,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-TOOL-002` to QA and require a `<!-- qa-report -->` verdict.
+No active or queued tasks remain. Create the next approved task packet before assigning work.
