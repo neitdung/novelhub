@@ -8,12 +8,14 @@ FRONTEND_DIR := frontend
 GH_PROJECT_NUMBER ?= 1
 GH_OWNER ?= neitdung
 GITHUB_TOKEN ?=
+GH_TOKEN ?= $(GITHUB_TOKEN)
 
 # Export only GitHub-related variables (not PYTHON, which would override
 # script-level defaults like the venv python in scripts/start.sh).
 export GH_PROJECT_NUMBER
 export GH_OWNER
 export GITHUB_TOKEN
+export GH_TOKEN
 
 .PHONY: install start stop clear
 .PHONY: bootstrap harness-check status status-write task-check check integration e2e ci
