@@ -90,14 +90,14 @@ fi
 # Start local LLM if enabled
 LLM_PID=""
 LLM_STARTED="no"
-if [ "$START_LOCAL_LLM" = "1" ] && [ -x "scripts/local_llm.sh" ]; then
+if [ "$START_LOCAL_LLM" = "1" ] && [ -x "scripts/local/local_llm.sh" ]; then
     if curl -s "http://${LLAMA_HOST}:${LLAMA_PORT}/v1/models" >/dev/null 2>&1; then
         echo "Local LLM already running on port ${LLAMA_PORT}"
         LLM_PID="existing"
         LLM_STARTED="yes"
     else
         echo "Starting local LLM on ${LLAMA_HOST}:${LLAMA_PORT}..."
-        scripts/local_llm.sh &
+        scripts/local/local_llm.sh &
         LLM_PID=$!
 
         echo "Waiting for local LLM (up to 120s)..."
@@ -119,7 +119,7 @@ if [ "$START_LOCAL_LLM" = "1" ] && [ -x "scripts/local_llm.sh" ]; then
         fi
     fi
 elif [ "$START_LOCAL_LLM" = "1" ]; then
-    echo "Local LLM script not found at scripts/local_llm.sh."
+    echo "Local LLM script not found at scripts/local/local_llm.sh."
     echo "LLM features will use fallback."
 fi
 
