@@ -16,6 +16,10 @@ GITHUB_TOKEN ?=
 .PHONY: frontend-install frontend-lint frontend-typecheck frontend-test frontend-build frontend-check
 .PHONY: contract-export contract-check contract-validate
 
+# =============================================================================
+# Harness & management commands
+# =============================================================================
+
 bootstrap:
 	$(PYTHON) --version
 	$(PYTHON) scripts/harness/check_state.py
@@ -42,7 +46,10 @@ task-check:
 	@test -n "$(ID)" || (echo "ID is required: make task-check ID=<task-id>" && exit 2)
 	$(PYTHON) scripts/harness/task_check.py "$(ID)"
 
+# =============================================================================
 # Backend commands
+# =============================================================================
+
 backend-install:
 	cd $(BACKEND_DIR) && uv sync
 
@@ -57,7 +64,10 @@ backend-test:
 
 backend-check: backend-lint backend-typecheck backend-test
 
+# =============================================================================
 # Frontend commands
+# =============================================================================
+
 frontend-install:
 	cd $(FRONTEND_DIR) && npm ci
 
@@ -75,7 +85,10 @@ frontend-build:
 
 frontend-check: frontend-lint frontend-typecheck frontend-test
 
+# =============================================================================
 # Contract commands
+# =============================================================================
+
 contract-export:
 	$(PYTHON) scripts/contracts/export_openapi.py
 
@@ -83,6 +96,10 @@ contract-check:
 	$(PYTHON) scripts/contracts/check_contract.py
 
 contract-validate: contract-export contract-check
+
+# =============================================================================
+# CI / Composite commands
+# =============================================================================
 
 check: harness-check backend-check frontend-check contract-validate
 	$(PYTHON) -m compileall -q scripts/harness
