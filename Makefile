@@ -10,7 +10,7 @@ GH_PROJECT_NUMBER ?= 1
 GH_OWNER ?= neitdung
 GITHUB_TOKEN ?=
 
-.PHONY: start stop clear
+.PHONY: install start stop clear
 .PHONY: bootstrap harness-check status status-write task-check check integration e2e ci
 .PHONY: sync-pull sync-push sync-project
 .PHONY: backend-install backend-lint backend-typecheck backend-test backend-check
@@ -20,6 +20,9 @@ GITHUB_TOKEN ?=
 # =============================================================================
 # Developer quick-start commands
 # =============================================================================
+
+install:
+	./scripts/install.sh
 
 start:
 	./scripts/start.sh $(ARGS)

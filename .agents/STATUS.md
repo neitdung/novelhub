@@ -4,7 +4,7 @@
 
 - Current milestone: `external-ingestion`
 - Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T03:53:08.587567Z`
+- Backlog updated: `2026-06-27T04:22:22.292952Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -48,14 +48,13 @@ None.
 | `NH-PORT-002` Backup ZIP with Manifest/Checksum, Restore with Validation | `done` | unassigned | `unknown` | none |
 | `NH-READ-001` Reader UI and navigation | `done` | unassigned | `unknown` | none |
 | `NH-READ-002` Bookmarks and progress persistence | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-002` Add Unified install Command | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `done` | unassigned | `unknown` | none |
 
 ## Queued / proposed
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `planning` | opencode | `foundation` | none |
-| `NH-TOOL-002` Add Unified install Command | `planning` | unassigned | `foundation` | none |
-| `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `planning` | unassigned | `foundation` | none |
+None.
 
 ## Active ownership
 
@@ -67,4 +66,4 @@ None recorded.
 
 ## Next valid action
 
-Complete the task packet for `NH-TOOL-001` and move it to `ready`.
+No active or queued tasks remain. Create the next approved task packet before assigning work.
