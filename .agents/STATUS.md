@@ -3,8 +3,8 @@
 <!-- GENERATED: scripts/harness/render_status.py --write -->
 
 - Current milestone: `foundation`
-- Milestone accepted weight: 5/5 (100.0%)
-- Backlog updated: `2026-06-27T10:05:10.710909Z`
+- Milestone accepted weight: 0/0 (100.0%)
+- Backlog updated: `2026-06-27T10:41:38.611863Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -36,7 +36,7 @@ None.
 | `NH-HARNESS-001` Bootstrap and validate the AI engineering harness | `done` | unassigned | `unknown` | none |
 | `NH-HARNESS-002` Branch Naming, PR Creation, and PR-Based Review Workflow | `done` | unassigned | `unknown` | none |
 | `NH-HARNESS-003` Stop tracking generated artifact .md files in .agents/ | `done` | unassigned | `unknown` | none |
-| `NH-HARNESS-004` Fix GitHub CI: sync-pull artifact files, preserve metadata, add sync step | `done` | opencode | `foundation` | NH-HARNESS-003 |
+| `NH-HARNESS-004` Fix GitHub CI: sync-pull artifact files, preserve metadata, add sync step | `done` | unassigned | `unknown` | none |
 | `NH-INGEST-001` Novel upload API and storage | `done` | unassigned | `unknown` | none |
 | `NH-INGEST-002` Chapter parsing and splitting | `done` | unassigned | `unknown` | none |
 | `NH-INGEST-003` Unified External Source Ingestion and Chapter Handler | `done` | unassigned | `unknown` | none |
@@ -69,4 +69,4 @@ None recorded.
 
 ## Next valid action
 
-No active or queued tasks remain for `foundation`. Select the next approved milestone or create the next task packet.
+No active or queued tasks remain. Create the next approved task packet before assigning work.

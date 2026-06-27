@@ -57,6 +57,7 @@ status-write:
 
 sync-pull:
 	$(PYTHON) scripts/harness/sync_issues.py pull
+	$(PYTHON) scripts/harness/render_opencode_config.py
 
 sync-push:
 	$(PYTHON) scripts/harness/sync_issues.py push

@@ -2,24 +2,19 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "foundation",
-  "updated_at": "2026-06-27T10:05:10.710909Z",
+  "updated_at": "2026-06-27T10:41:38.611863Z",
   "tasks": [
     {
       "id": "NH-HARNESS-004",
       "title": "Fix GitHub CI: sync-pull artifact files, preserve metadata, add sync step",
-      "milestone": "foundation",
-      "priority": "P1",
+      "milestone": "unknown",
+      "priority": "P2",
       "weight": 5,
       "state": "done",
-      "owner": "opencode",
-      "branch": "fix/NH-HARNESS-004-fix-ci-workflow",
-      "depends_on": [
-        "NH-HARNESS-003"
-      ],
-      "owned_paths": [
-        ".github/workflows/ci.yml",
-        "scripts/harness/sync_issues.py"
-      ],
+      "owner": "",
+      "branch": null,
+      "depends_on": [],
+      "owned_paths": [],
       "task_packet": ".agents/tasks/NH-HARNESS-004.md",
       "handoff": ".agents/handoffs/NH-HARNESS-004.md",
       "qa_report": ".agents/reports/NH-HARNESS-004-qa.md",
@@ -28,47 +23,12 @@
       "blocked_by": [],
       "history": [
         {
-          "state": "proposed",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "github-mcp"
-        },
-        {
-          "state": "planning",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "manager-agent"
-        },
-        {
-          "state": "ready",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "planner-agent"
-        },
-        {
-          "state": "in_progress",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "developer-agent"
-        },
-        {
-          "state": "dev_complete",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "developer-agent"
-        },
-        {
-          "state": "qa_passed",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "qa-agent"
-        },
-        {
-          "state": "accepted",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "reviewer-agent"
-        },
-        {
           "state": "done",
-          "at": "2026-06-27T10:05:10.710909Z",
-          "by": "manager-agent"
+          "at": "2026-06-27T10:40:44Z",
+          "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:05:10.710909Z"
+      "updated_at": "2026-06-27T10:41:38.610229Z"
     },
     {
       "id": "NH-HARNESS-003",
@@ -92,11 +52,11 @@
       "history": [
         {
           "state": "done",
-          "at": "2026-06-27T05:23:59Z",
+          "at": "2026-06-27T10:40:43Z",
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.111643Z"
+      "updated_at": "2026-06-27T10:41:38.610349Z"
     },
     {
       "id": "NH-TOOL-004",
@@ -125,7 +85,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.111790Z"
+      "updated_at": "2026-06-27T10:41:38.610415Z"
     },
     {
       "id": "NH-TOOL-003",
@@ -153,7 +113,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.111929Z"
+      "updated_at": "2026-06-27T10:41:38.610478Z"
     },
     {
       "id": "NH-TOOL-002",
@@ -182,7 +142,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112041Z"
+      "updated_at": "2026-06-27T10:41:38.610531Z"
     },
     {
       "id": "NH-TOOL-001",
@@ -211,7 +171,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112152Z"
+      "updated_at": "2026-06-27T10:41:38.610583Z"
     },
     {
       "id": "NH-HARNESS-002",
@@ -237,7 +197,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112269Z"
+      "updated_at": "2026-06-27T10:41:38.610640Z"
     },
     {
       "id": "NH-INGEST-005",
@@ -269,7 +229,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112394Z"
+      "updated_at": "2026-06-27T10:41:38.610703Z"
     },
     {
       "id": "NH-INGEST-003",
@@ -303,7 +263,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112499Z"
+      "updated_at": "2026-06-27T10:41:38.610757Z"
     },
     {
       "id": "NH-HARD-001",
@@ -329,7 +289,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112592Z"
+      "updated_at": "2026-06-27T10:41:38.610797Z"
     },
     {
       "id": "NH-PORT-002",
@@ -355,7 +315,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112711Z"
+      "updated_at": "2026-06-27T10:41:38.610846Z"
     },
     {
       "id": "NH-PORT-001",
@@ -381,7 +341,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112825Z"
+      "updated_at": "2026-06-27T10:41:38.610894Z"
     },
     {
       "id": "NH-DISCOV-001",
@@ -407,7 +367,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.112934Z"
+      "updated_at": "2026-06-27T10:41:38.610942Z"
     },
     {
       "id": "NH-CHAT-002",
@@ -433,7 +393,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113046Z"
+      "updated_at": "2026-06-27T10:41:38.610991Z"
     },
     {
       "id": "NH-CHAT-001",
@@ -459,7 +419,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113154Z"
+      "updated_at": "2026-06-27T10:41:38.611038Z"
     },
     {
       "id": "NH-FE-003",
@@ -485,7 +445,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113263Z"
+      "updated_at": "2026-06-27T10:41:38.611086Z"
     },
     {
       "id": "NH-FE-002",
@@ -511,7 +471,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113380Z"
+      "updated_at": "2026-06-27T10:41:38.611134Z"
     },
     {
       "id": "NH-FE-001",
@@ -537,7 +497,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113488Z"
+      "updated_at": "2026-06-27T10:41:38.611181Z"
     },
     {
       "id": "NH-KB-003",
@@ -563,7 +523,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113601Z"
+      "updated_at": "2026-06-27T10:41:38.611230Z"
     },
     {
       "id": "NH-KB-002",
@@ -589,7 +549,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113748Z"
+      "updated_at": "2026-06-27T10:41:38.611278Z"
     },
     {
       "id": "NH-KB-001",
@@ -615,7 +575,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113864Z"
+      "updated_at": "2026-06-27T10:41:38.611325Z"
     },
     {
       "id": "NH-LLM-002",
@@ -643,7 +603,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113919Z"
+      "updated_at": "2026-06-27T10:41:38.611372Z"
     },
     {
       "id": "NH-LLM-001",
@@ -671,7 +631,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.113969Z"
+      "updated_at": "2026-06-27T10:41:38.611419Z"
     },
     {
       "id": "NH-READ-002",
@@ -700,7 +660,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114020Z"
+      "updated_at": "2026-06-27T10:41:38.611470Z"
     },
     {
       "id": "NH-READ-001",
@@ -728,7 +688,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114074Z"
+      "updated_at": "2026-06-27T10:41:38.611520Z"
     },
     {
       "id": "NH-INGEST-002",
@@ -756,7 +716,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114126Z"
+      "updated_at": "2026-06-27T10:41:38.611568Z"
     },
     {
       "id": "NH-INGEST-001",
@@ -784,7 +744,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114177Z"
+      "updated_at": "2026-06-27T10:41:38.611619Z"
     },
     {
       "id": "NH-FOUND-005",
@@ -814,7 +774,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114226Z"
+      "updated_at": "2026-06-27T10:41:38.611669Z"
     },
     {
       "id": "NH-FOUND-003",
@@ -842,7 +802,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114277Z"
+      "updated_at": "2026-06-27T10:41:38.611721Z"
     },
     {
       "id": "NH-FOUND-001",
@@ -872,7 +832,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114326Z"
+      "updated_at": "2026-06-27T10:41:38.611771Z"
     },
     {
       "id": "NH-HARNESS-001",
@@ -898,7 +858,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T10:04:53.114379Z"
+      "updated_at": "2026-06-27T10:41:38.611823Z"
     }
   ]
 }
