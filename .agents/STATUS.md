@@ -3,8 +3,8 @@
 <!-- GENERATED: scripts/harness/render_status.py --write -->
 
 - Current milestone: `foundation`
-- Milestone accepted weight: 0/3 (0.0%)
-- Backlog updated: `2026-06-27T15:04:14.623211Z`
+- Milestone accepted weight: 0/0 (100.0%)
+- Backlog updated: `2026-06-27T15:24:09.396857Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -15,7 +15,7 @@ None.
 
 | Task | State | Owner | Milestone | Dependencies |
 |------|-------|-------|-----------|--------------|
-| `NH-TOOL-005` Fix make start to Launch Frontend Dev Server | `dev_complete` | developer | `foundation` | none |
+| `NH-TOOL-005` Fix make start to Launch Frontend Dev Server | `qa_passed` | developer | `unknown` | none |
 
 ## Blocked / rework
 
@@ -67,7 +67,7 @@ None.
 
 | Task | Branch | Owned paths |
 |------|--------|-------------|
-| `NH-TOOL-005` | `fix/NH-TOOL-005-make-start-frontend` | `scripts/start.sh` |
+| `NH-TOOL-005` | `fix/NH-TOOL-005-make-start-frontend` | `** `scripts/start.sh` |
 
 ## Decisions and blockers
 
@@ -75,4 +75,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-TOOL-005` to QA and require a `<!-- qa-report -->` verdict.
+Assign `NH-TOOL-005` to Reviewer and require a `<!-- review-report -->` verdict.
