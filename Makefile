@@ -57,6 +57,7 @@ status-write:
 
 sync-pull:
 	$(PYTHON) scripts/harness/sync_issues.py pull
+	$(PYTHON) scripts/harness/render_opencode_config.py
 
 sync-push:
 	$(PYTHON) scripts/harness/sync_issues.py push
@@ -73,7 +74,7 @@ task-check:
 # =============================================================================
 
 backend-install:
-	cd $(BACKEND_DIR) && uv sync
+	cd $(BACKEND_DIR) && uv sync --all-extras
 
 backend-lint:
 	cd $(BACKEND_DIR) && .venv/bin/ruff check .
