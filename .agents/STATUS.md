@@ -4,7 +4,7 @@
 
 - Current milestone: `foundation`
 - Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T15:24:09.396857Z`
+- Backlog updated: `2026-06-27T15:29:58.685733Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -13,9 +13,7 @@ None.
 
 ## In progress
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-TOOL-005` Fix make start to Launch Frontend Dev Server | `qa_passed` | developer | `unknown` | none |
+None.
 
 ## Blocked / rework
 
@@ -58,6 +56,7 @@ None.
 | `NH-TOOL-002` Add Unified install Command | `done` | unassigned | `unknown` | none |
 | `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `done` | unassigned | `unknown` | none |
 | `NH-TOOL-004` Fix make install and make start Commands | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-005` Fix make start to Launch Frontend Dev Server | `done` | unassigned | `unknown` | none |
 
 ## Queued / proposed
 
@@ -65,9 +64,7 @@ None.
 
 ## Active ownership
 
-| Task | Branch | Owned paths |
-|------|--------|-------------|
-| `NH-TOOL-005` | `fix/NH-TOOL-005-make-start-frontend` | `** `scripts/start.sh` |
+No active path ownership.
 
 ## Decisions and blockers
 
@@ -75,4 +72,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-TOOL-005` to Reviewer and require a `<!-- review-report -->` verdict.
+No active or queued tasks remain. Create the next approved task packet before assigning work.
