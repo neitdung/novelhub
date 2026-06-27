@@ -222,7 +222,7 @@ if [ "$START_FRONTEND" = "1" ]; then
         echo ""
         echo "Starting frontend dev server on port ${FRONTEND_PORT}..."
         echo "Frontend URL: ${FRONTEND_URL}"
-        cd "${FRONTEND_ABS_DIR}" && ./node_modules/.bin/next dev &
+        cd "${FRONTEND_ABS_DIR}" && PORT="" ./node_modules/.bin/next dev -p "${FRONTEND_PORT}" &
         FRONTEND_PID=$!
         cd "${PROJECT_ROOT}"
         echo "Frontend dev server started (PID $FRONTEND_PID)"

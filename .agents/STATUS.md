@@ -15,7 +15,7 @@ None.
 
 | Task | State | Owner | Milestone | Dependencies |
 |------|-------|-------|-----------|--------------|
-| `NH-TOOL-005` Fix make start to Launch Frontend Dev Server | `in_progress` | developer | `foundation` | none |
+| `NH-TOOL-005` Fix make start to Launch Frontend Dev Server | `dev_complete` | developer | `foundation` | none |
 
 ## Blocked / rework
 
@@ -75,4 +75,4 @@ None recorded.
 
 ## Next valid action
 
-Wait for Developer handoff on `NH-TOOL-005` or record a blocker.
+Assign `NH-TOOL-005` to QA and require a `<!-- qa-report -->` verdict.

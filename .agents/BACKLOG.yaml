@@ -10,7 +10,7 @@
       "milestone": "foundation",
       "priority": "P1",
       "weight": 3,
-      "state": "in_progress",
+      "state": "dev_complete",
       "owner": "developer",
       "branch": "fix/NH-TOOL-005-make-start-frontend",
       "depends_on": [],
@@ -43,6 +43,11 @@
           "state": "in_progress",
           "at": "2026-06-27T15:05:30Z",
           "by": "manager"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-27T15:08:00Z",
+          "by": "developer"
         }
       ],
       "updated_at": "2026-06-27T15:04:14.617623Z"
