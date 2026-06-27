@@ -9,13 +9,13 @@
 
 ## Ready
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-NEXT-002` Sync Documents and Scripts After Next.js Refactor | `ready` | opencode-agent | `foundation` | NH-NEXT-001 |
+None.
 
 ## In progress
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-NEXT-002` Sync Documents and Scripts After Next.js Refactor | `dev_complete` | opencode-agent | `foundation` | NH-NEXT-001 |
 
 ## Blocked / rework
 
@@ -64,7 +64,9 @@ None.
 
 ## Active ownership
 
-No active path ownership.
+| Task | Branch | Owned paths |
+|------|--------|-------------|
+| `NH-NEXT-002` | `feat/NH-NEXT-002-sync-docs-scripts-nextjs` | `docs/plans/phase-01-foundation.md`<br>`scripts/start.sh`<br>`scripts/stop.sh` |
 
 ## Decisions and blockers
 
@@ -72,4 +74,4 @@ None recorded.
 
 ## Next valid action
 
-Assign `NH-NEXT-002` to a Developer and record its branch and owned paths.
+Assign `NH-NEXT-002` to QA and require a `<!-- qa-report -->` verdict.
