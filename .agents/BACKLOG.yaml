@@ -2,8 +2,38 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "foundation",
-  "updated_at": "2026-06-27T17:35:50.740340+00:00",
+  "updated_at": "2026-06-27T17:54:24.112554Z",
   "tasks": [
+    {
+      "id": "NH-FEP-001",
+      "title": "Full Frontend API Client and App Navigation Shell",
+      "milestone": "unknown",
+      "priority": "P2",
+      "weight": 13,
+      "state": "proposed",
+      "owner": "",
+      "branch": null,
+      "depends_on": [],
+      "owned_paths": [
+        "frontend/src/store/api.ts",
+        "frontend/src/app/",
+        "frontend/src/components/Layout.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-001.md",
+      "handoff": ".agents/handoffs/NH-FEP-001.md",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-27T17:53:26Z",
+          "by": "github-mcp"
+        }
+      ],
+      "updated_at": "2026-06-27T17:54:24.112326Z"
+    },
     {
       "id": "NH-TOOL-005",
       "title": "Fix make start to Launch Frontend Dev Server",
@@ -939,37 +969,6 @@
         }
       ],
       "updated_at": "2026-06-27T15:29:58.685673Z"
-    },
-    {
-      "id": "NH-FEP-001",
-      "title": "Full Frontend API Client and App Navigation Shell",
-      "milestone": "parity",
-      "priority": "P0",
-      "weight": 13,
-      "state": "in_progress",
-      "owner": "developer",
-      "branch": "feat/NH-FEP-001-frontend-api-shell",
-      "branch": null,
-      "depends_on": [],
-      "owned_paths": [
-        "frontend/src/store/api.ts",
-        "frontend/src/app/",
-        "frontend/src/components/Layout.tsx"
-      ],
-      "task_packet": ".agents/tasks/NH-FEP-001.md",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
-      "blocked_by": [],
-      "history": [
-        {
-          "state": "planning",
-          "at": "2026-06-28T00:00:00Z",
-          "by": "manager"
-        }
-      ],
-      "updated_at": "2026-06-28T00:00:00Z"
     },
     {
       "id": "NH-FEP-002",
