@@ -48,14 +48,13 @@ None.
 | `NH-PORT-002` Backup ZIP with Manifest/Checksum, Restore with Validation | `done` | unassigned | `unknown` | none |
 | `NH-READ-001` Reader UI and navigation | `done` | unassigned | `unknown` | none |
 | `NH-READ-002` Bookmarks and progress persistence | `done` | unassigned | `unknown` | none |
+| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `done` | unassigned | `foundation` | none |
+| `NH-TOOL-002` Add Unified install Command | `done` | unassigned | `foundation` | none |
 | `NH-TOOL-003` Add start, stop, clear Commands at Top of Makefile | `done` | opencode | `foundation` | none |
 
 ## Queued / proposed
 
-| Task | State | Owner | Milestone | Dependencies |
-|------|-------|-------|-----------|--------------|
-| `NH-TOOL-001` Clean Up Makefile and scripts/ Directory | `planning` | opencode | `foundation` | none |
-| `NH-TOOL-002` Add Unified install Command | `planning` | unassigned | `foundation` | none |
+None.
 
 ## Active ownership
 
@@ -67,4 +66,4 @@ None recorded.
 
 ## Next valid action
 
-Complete the task packet for `NH-TOOL-001` and move it to `ready`.
+No active or queued tasks remain. Create the next approved task packet before assigning work.

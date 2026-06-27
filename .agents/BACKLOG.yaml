@@ -73,7 +73,7 @@
       "milestone": "foundation",
       "priority": "P2",
       "weight": 3,
-      "state": "planning",
+      "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
@@ -82,10 +82,10 @@
         "scripts/install.sh"
       ],
       "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "handoff": ".agents/handoffs/NH-TOOL-002.md",
+      "qa_report": ".agents/reports/NH-TOOL-002-qa.md",
+      "review_report": ".agents/reports/NH-TOOL-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -95,7 +95,37 @@
         },
         {
           "state": "planning",
-          "at": "2026-06-27T03:54:00.658845Z",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "developer-agent"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-27T04:28:28.358101Z",
           "by": "manager-agent"
         }
       ],
@@ -107,19 +137,19 @@
       "milestone": "foundation",
       "priority": "P2",
       "weight": 3,
-      "state": "planning",
-      "owner": "opencode",
-      "branch": "chore/NH-TOOL-001-cleanup-makefile-scripts",
+      "state": "done",
+      "owner": "",
+      "branch": null,
       "depends_on": [],
       "owned_paths": [
         "** `Makefile",
         "scripts/"
       ],
       "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "handoff": ".agents/handoffs/NH-TOOL-001.md",
+      "qa_report": ".agents/reports/NH-TOOL-001-qa.md",
+      "review_report": ".agents/reports/NH-TOOL-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -129,7 +159,37 @@
         },
         {
           "state": "planning",
-          "at": "2026-06-27T03:54:00.658849Z",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "dev_complete",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "developer-agent"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "qa-agent"
+        },
+        {
+          "state": "accepted",
+          "at": "2026-06-27T04:28:28.358101Z",
+          "by": "reviewer-agent"
+        },
+        {
+          "state": "done",
+          "at": "2026-06-27T04:28:28.358101Z",
           "by": "manager-agent"
         }
       ],
