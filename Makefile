@@ -74,7 +74,7 @@ task-check:
 # =============================================================================
 
 backend-install:
-	cd $(BACKEND_DIR) && uv sync
+	cd $(BACKEND_DIR) && uv sync --group dev
 
 backend-lint:
 	cd $(BACKEND_DIR) && .venv/bin/ruff check .
