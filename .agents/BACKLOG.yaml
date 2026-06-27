@@ -939,8 +939,6 @@
         }
       ],
       "updated_at": "2026-06-27T15:29:58.685673Z"
-<<<<<<< HEAD
-=======
     },
     {
       "id": "NH-FEP-002",
@@ -1185,7 +1183,7 @@
       "milestone": "parity",
       "priority": "P1",
       "weight": 13,
-      "state": "in_progress",
+      "state": "dev_complete",
       "owner": "developer",
       "branch": "feat/NH-BEP-001-backend-gaps",
       "depends_on": [],
@@ -1195,7 +1193,7 @@
         "backend/app/crud.py"
       ],
       "task_packet": ".agents/tasks/NH-BEP-001.md",
-      "handoff": "",
+      "handoff": ".agents/handoffs/NH-BEP-001.md",
       "qa_report": "",
       "review_report": "",
       "docs_impact": "pending",
@@ -1213,6 +1211,11 @@
         },
         {
           "state": "in_progress",
+          "at": "2026-06-28T00:00:00Z",
+          "by": "developer"
+        },
+        {
+          "state": "dev_complete",
           "at": "2026-06-28T00:00:00Z",
           "by": "developer"
         }

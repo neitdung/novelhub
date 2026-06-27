@@ -4,7 +4,7 @@
 
 - Current milestone: `foundation`
 - Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T17:54:24.112554Z`
+- Backlog updated: `2026-06-27T15:50:13.259239Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -15,7 +15,7 @@ None.
 
 | Task | State | Owner | Milestone | Dependencies |
 |------|-------|-------|-----------|--------------|
-| `NH-BEP-001` Backend Gaps for Import Preview, Factions, Wiki Lint/Backlinks, Chat Streaming, and Provider Health | `in_progress` | developer | `parity` | none |
+| `NH-BEP-001` Backend Gaps for Import Preview, Factions, Wiki Lint/Backlinks, Chat Streaming, and Provider Health | `dev_complete` | developer | `parity` | none |
 
 ## Blocked / rework
 
@@ -64,7 +64,6 @@ None.
 
 | Task | State | Owner | Milestone | Dependencies |
 |------|-------|-------|-----------|--------------|
-| `NH-FEP-001` Full Frontend API Client and App Navigation Shell | `proposed` | unassigned | `unknown` | none |
 | `NH-FEP-002` Bookshelf, Import, Source, and Chapter Management UI | `planning` | unassigned | `parity` | NH-FEP-001 |
 | `NH-FEP-003` Analysis Dashboard with WebSocket Progress and Polling Fallback | `planning` | unassigned | `parity` | NH-FEP-001 |
 | `NH-FEP-004` Reader UX with Bookmarks, Progress, Highlights, and Entity Drawer | `planning` | unassigned | `parity` | NH-FEP-001 |
@@ -85,4 +84,4 @@ None recorded.
 
 ## Next valid action
 
-Wait for Developer handoff on `NH-BEP-001` or record a blocker.
+Assign `NH-BEP-001` to QA and require a `<!-- qa-report -->` verdict.
