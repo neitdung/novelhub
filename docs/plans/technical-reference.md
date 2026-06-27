@@ -6,9 +6,9 @@ This document carries cross-phase details from the consolidated source plan. Pha
 
 | Layer | Technology |
 |-------|------------|
-| Frontend | React 19, TypeScript, Vite, Chakra UI |
+| Frontend | React 19, TypeScript, Next.js (App Router, server mode with API proxy), Chakra UI |
 | State | Redux Toolkit, React Redux, RTK Query |
-| Routing | React Router |
+| Routing | Next.js App Router (file-system-based) |
 | Forms | React Hook Form, Zod |
 | Backend | Python 3.11+, FastAPI async |
 | Database | SQLite, aiosqlite, FTS5 |

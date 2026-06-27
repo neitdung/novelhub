@@ -1,6 +1,8 @@
+"use client";
+
 import { Box, Heading, Text } from "@chakra-ui/react";
 
-export function NotFound() {
+export default function NotFound() {
   return (
     <Box p={8} textAlign="center">
       <Heading size="xl">404</Heading>

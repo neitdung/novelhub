@@ -98,13 +98,16 @@ frontend-lint:
 	cd $(FRONTEND_DIR) && npx oxlint src
 
 frontend-typecheck:
-	cd $(FRONTEND_DIR) && npx tsc -b
+	cd $(FRONTEND_DIR) && npx tsc --noEmit
 
 frontend-test:
 	cd $(FRONTEND_DIR) && npx vitest run
 
 frontend-build:
 	cd $(FRONTEND_DIR) && npm run build
+
+frontend-dev:
+	cd $(FRONTEND_DIR) && npm run dev
 
 frontend-check: frontend-lint frontend-typecheck frontend-test
 

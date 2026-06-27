@@ -1,15 +1,18 @@
+"use client";
+
 import { Box, Heading, HStack, Spinner, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import {
   useGetChapterQuery,
   useGetChaptersQuery,
   useGetNovelQuery,
-} from "../store/api";
+} from "@/store/api";
 
-export function Reader() {
-  const { id } = useParams<{ id: string }>();
-  const novelId = Number(id);
+export default function Reader() {
+  const params = useParams<{ id: string }>();
+  const novelId = Number(params.id);
 
   const { data: novel, isLoading: novelLoading } = useGetNovelQuery(novelId);
   const { data: chapters, isLoading: chaptersLoading } =
@@ -58,17 +61,18 @@ export function Reader() {
     return (
       <Box p={8}>
         <Text>Novel not found.</Text>
-        <Link to="/">
-          <Box
-            as="button"
-            mt={4}
-            px={4}
-            py={2}
-            bg="gray.200"
-            borderRadius="md"
-          >
-            Back to Bookshelf
-          </Box>
+        <Link
+          href="/"
+          style={{
+            display: "inline-block",
+            marginTop: "16px",
+            padding: "8px 16px",
+            background: "var(--chakra-colors-gray-200)",
+            borderRadius: "8px",
+            textDecoration: "none",
+          }}
+        >
+          Back to Bookshelf
         </Link>
       </Box>
     );
@@ -77,16 +81,16 @@ export function Reader() {
   return (
     <Box p={8}>
       <HStack justify="space-between" mb={4}>
-        <Link to="/">
-          <Box
-            as="button"
-            px={4}
-            py={2}
-            bg="gray.200"
-            borderRadius="md"
-          >
-            ← Bookshelf
-          </Box>
+        <Link
+          href="/"
+          style={{
+            padding: "8px 16px",
+            background: "var(--chakra-colors-gray-200)",
+            borderRadius: "8px",
+            textDecoration: "none",
+          }}
+        >
+          &larr; Bookshelf
         </Link>
         <Heading size="lg">{novel.title}</Heading>
         <Box w={24} />
@@ -99,7 +103,9 @@ export function Reader() {
           py={2}
           bg="gray.200"
           borderRadius="md"
-          onClick={() => setCurrentChapterIndex((prev) => Math.max(prev - 1, 0))}
+          onClick={() =>
+            setCurrentChapterIndex((prev) => Math.max(prev - 1, 0))
+          }
           opacity={currentChapterIndex === 0 ? 0.5 : 1}
         >
           Previous
@@ -108,7 +114,12 @@ export function Reader() {
         <select
           value={currentChapterIndex}
           onChange={(e) => setCurrentChapterIndex(Number(e.target.value))}
-          style={{ maxWidth: "300px", padding: "8px", borderRadius: "6px", border: "1px solid #ccc" }}
+          style={{
+            maxWidth: "300px",
+            padding: "8px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+          }}
         >
           {chapters.map((chapter, index) => (
             <option key={chapter.id} value={index}>
@@ -163,10 +174,12 @@ export function Reader() {
           py={2}
           bg="gray.200"
           borderRadius="md"
-          onClick={() => setCurrentChapterIndex((prev) => Math.max(prev - 1, 0))}
+          onClick={() =>
+            setCurrentChapterIndex((prev) => Math.max(prev - 1, 0))
+          }
           opacity={currentChapterIndex === 0 ? 0.5 : 1}
         >
-          ← Previous Chapter
+          &larr; Previous Chapter
         </Box>
         <Box
           as="button"
@@ -181,7 +194,7 @@ export function Reader() {
           }
           opacity={currentChapterIndex === chapters.length - 1 ? 0.5 : 1}
         >
-          Next Chapter →
+          Next Chapter &rarr;
         </Box>
       </HStack>
     </Box>

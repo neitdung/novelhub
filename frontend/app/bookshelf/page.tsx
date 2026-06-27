@@ -1,9 +1,11 @@
-import { Box, Heading, HStack, Input, Stack, Text } from "@chakra-ui/react";
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { useGetNovelsQuery, useUploadNovelMutation } from "../store/api";
+"use client";
 
-export function Bookshelf() {
+import { Box, Heading, HStack, Input, Stack, Text } from "@chakra-ui/react";
+import Link from "next/link";
+import { useRef, useState } from "react";
+import { useGetNovelsQuery, useUploadNovelMutation } from "@/store/api";
+
+export default function Bookshelf() {
   const { data, isLoading } = useGetNovelsQuery();
   const [uploadNovel] = useUploadNovelMutation();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -69,21 +71,21 @@ export function Bookshelf() {
                 <Box>
                   <Heading size="md">{novel.title}</Heading>
                   <Text color="gray.500" mt={1}>
-                    {novel.author || "Unknown author"} • {novel.language}
+                    {novel.author || "Unknown author"} &bull; {novel.language}
                   </Text>
                 </Box>
-                <Link to={`/novel/${novel.id}`}>
-                  <Box
-                    as="button"
-                    px={4}
-                    py={2}
-                    bg="blue.500"
-                    color="white"
-                    borderRadius="md"
-                    _hover={{ bg: "blue.600" }}
-                  >
-                    Read
-                  </Box>
+                <Link
+                  href={`/novel/${novel.id}`}
+                  style={{
+                    padding: "8px 16px",
+                    background: "var(--chakra-colors-blue-500)",
+                    color: "white",
+                    borderRadius: "8px",
+                    fontWeight: "600",
+                    textDecoration: "none",
+                  }}
+                >
+                  Read
                 </Link>
               </HStack>
             </Box>

@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Spinner, Text, VStack } from "@chakra-ui/react";
 
 interface LoadingStateProps {

@@ -14,7 +14,7 @@ The architecture must remain extensible to other languages. Translation is not p
 
 ## Technical baseline
 
-- Frontend: React 19, TypeScript, Vite, Chakra UI.
+- Frontend: React 19, TypeScript, Next.js (App Router, server mode with API proxy), Chakra UI.
 - State: Redux Toolkit, React Redux, RTK Query.
 - Backend: Python 3.11+, FastAPI async.
 - Database: SQLite, aiosqlite, FTS5.

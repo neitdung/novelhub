@@ -16,8 +16,8 @@ Create runnable backend and frontend shells with shared contracts, configuration
 
 ### Frontend
 
-- React 19, TypeScript strict mode, Vite, Chakra UI provider and semantic tokens.
-- React Router lazy routes.
+- React 19, TypeScript strict mode, Next.js (App Router, SPA/static export), Chakra UI provider and semantic tokens.
+- Next.js App Router file-system routes (replacing React Router).
 - Redux Toolkit store, typed hooks, RTK Query base API, normalized errors.
 - Environment validation and error boundary.
 - Vitest and React Testing Library setup.

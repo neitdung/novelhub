@@ -1,7 +1,9 @@
-import { Box, Heading, HStack, Text, VStack } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+"use client";
 
-export function Home() {
+import { Box, Heading, HStack, Text, VStack } from "@chakra-ui/react";
+import Link from "next/link";
+
+export default function Home() {
   return (
     <Box p={8}>
       <VStack gap={6} align="center">
@@ -11,18 +13,18 @@ export function Home() {
           analyze your novels with AI-powered insights.
         </Text>
         <HStack>
-          <Link to="/bookshelf">
-            <Box
-              as="button"
-              px={6}
-              py={3}
-              bg="blue.500"
-              color="white"
-              borderRadius="md"
-              _hover={{ bg: "blue.600" }}
-            >
-              Go to Bookshelf
-            </Box>
+          <Link
+            href="/bookshelf"
+            style={{
+              padding: "12px 24px",
+              background: "var(--chakra-colors-blue-500)",
+              color: "white",
+              borderRadius: "8px",
+              fontWeight: "600",
+              textDecoration: "none",
+            }}
+          >
+            Go to Bookshelf
           </Link>
         </HStack>
       </VStack>

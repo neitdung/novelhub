@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Box, Heading, VStack, Text, Input } from "@chakra-ui/react";
 
@@ -19,8 +21,15 @@ const LLM_MODELS: Record<string, string[]> = {
   anthropic: ["claude-sonnet-4-20250514", "claude-3-5-haiku-20241022"],
 };
 
-export function Settings() {
+export default function Settings() {
   const [settings, setSettings] = useState<Settings>(() => {
+    if (typeof window === "undefined") {
+      return {
+        llmProvider: "ollama",
+        llmModel: "llama3.2",
+        apiEndpoint: "http://localhost:11434",
+      };
+    }
     const saved = localStorage.getItem("novelhub-settings");
     return saved
       ? JSON.parse(saved)
