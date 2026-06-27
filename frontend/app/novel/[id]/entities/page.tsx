@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import {
   Box,
   Heading,
@@ -19,7 +21,7 @@ import {
   useSearchQuery,
   useGetWikiPagesQuery,
   useGenerateWikiMutation,
-} from "../store/api";
+} from "@/store/api";
 
 const ENTITY_TYPES = [
   "character",
@@ -30,9 +32,9 @@ const ENTITY_TYPES = [
   "concept",
 ];
 
-export function EntityBrowser() {
-  const { novelId } = useParams<{ novelId: string }>();
-  const numericNovelId = Number(novelId);
+export default function EntityBrowser() {
+  const params = useParams<{ id: string }>();
+  const numericNovelId = Number(params.id);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState<string>("");
@@ -55,7 +57,7 @@ export function EntityBrowser() {
 
   const { data: searchData } = useSearchQuery(
     { q: searchQuery, novelId: numericNovelId },
-    { skip: !searchQuery }
+    { skip: !searchQuery },
   );
 
   const { data: wikiData } = useGetWikiPagesQuery({
@@ -272,9 +274,7 @@ export function EntityBrowser() {
           <Tabs.Content value="wiki">
             {wikiData?.pages.length === 0 ? (
               <Box p={4} bg="blue.50" borderRadius="md">
-                <Text>
-                  No wiki pages yet. Generate one from an entity.
-                </Text>
+                <Text>No wiki pages yet. Generate one from an entity.</Text>
               </Box>
             ) : (
               <Table.Root>
@@ -325,13 +325,7 @@ export function EntityBrowser() {
           justifyContent="center"
           zIndex={1000}
         >
-          <Box
-            bg="white"
-            p={6}
-            borderRadius="lg"
-            minW="400px"
-            boxShadow="lg"
-          >
+          <Box bg="white" p={6} borderRadius="lg" minW="400px" boxShadow="lg">
             <Heading size="md" mb={4}>
               Create Entity
             </Heading>

@@ -1,3 +1,5 @@
+"use client";
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 interface Novel {
@@ -120,8 +122,12 @@ export const api = createApi({
         { type: "Chapter", id: novelId },
       ],
     }),
-    getChapter: builder.query<Chapter, { novelId: number; chapterId: number }>({
-      query: ({ novelId, chapterId }) => `novels/${novelId}/chapters/${chapterId}`,
+    getChapter: builder.query<
+      Chapter,
+      { novelId: number; chapterId: number }
+    >({
+      query: ({ novelId, chapterId }) =>
+        `novels/${novelId}/chapters/${chapterId}`,
       providesTags: (_result, _error, { novelId }) => [
         { type: "Chapter", id: novelId },
       ],
@@ -178,7 +184,12 @@ export const api = createApi({
     }),
     getEntities: builder.query<
       EntityList,
-      { novelId: number; entityType?: string; limit?: number; offset?: number }
+      {
+        novelId: number;
+        entityType?: string;
+        limit?: number;
+        offset?: number;
+      }
     >({
       query: ({ novelId, entityType, limit = 50, offset = 0 }) => {
         const params = new URLSearchParams({
@@ -254,7 +265,12 @@ export const api = createApi({
     }),
     getWikiPages: builder.query<
       WikiPageList,
-      { novelId: number; entityId?: number; limit?: number; offset?: number }
+      {
+        novelId: number;
+        entityId?: number;
+        limit?: number;
+        offset?: number;
+      }
     >({
       query: ({ novelId, entityId, limit = 50, offset = 0 }) => {
         const params = new URLSearchParams({
@@ -273,7 +289,12 @@ export const api = createApi({
     }),
     generateWiki: builder.mutation<
       WikiPage,
-      { novelId: number; entityId?: number; title?: string; language?: string }
+      {
+        novelId: number;
+        entityId?: number;
+        title?: string;
+        language?: string;
+      }
     >({
       query: ({ novelId, ...body }) => ({
         url: "wiki/generate",

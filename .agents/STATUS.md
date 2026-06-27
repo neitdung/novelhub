@@ -3,13 +3,15 @@
 <!-- GENERATED: scripts/harness/render_status.py --write -->
 
 - Current milestone: `foundation`
-- Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T11:12:32.883910Z`
+- Milestone accepted weight: 0/13 (0.0%)
+- Backlog updated: `2026-06-27T11:27:37.579332Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-NEXT-001` Refactor Frontend to Next.js (App Router, SPA Mode) | `ready` | opencode-agent | `foundation` | none |
 
 ## In progress
 
@@ -69,4 +71,4 @@ None recorded.
 
 ## Next valid action
 
-No active or queued tasks remain. Create the next approved task packet before assigning work.
+Assign `NH-NEXT-001` to a Developer and record its branch and owned paths.
