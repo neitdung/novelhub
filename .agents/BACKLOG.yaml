@@ -2,8 +2,47 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "external-ingestion",
-  "updated_at": "2026-06-27T03:53:08.587567Z",
+  "updated_at": "2026-06-27T04:55:00Z",
   "tasks": [
+    {
+      "id": "NH-TOOL-004",
+      "title": "Fix make install and make start Commands",
+      "milestone": "foundation",
+      "priority": "P1",
+      "weight": 2,
+      "state": "in_progress",
+      "owner": "opencode",
+      "branch": "fix/NH-TOOL-004-install-start",
+      "depends_on": [],
+      "owned_paths": [
+        "backend/pyproject.toml",
+        "scripts/start.sh"
+      ],
+      "task_packet": ".agents/tasks/NH-TOOL-004.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "planning",
+          "at": "2026-06-27T04:55:00Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T04:58:00Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T04:59:00Z",
+          "by": "manager-agent"
+        }
+      ],
+      "updated_at": "2026-06-27T04:55:00Z"
+    },
     {
       "id": "NH-TOOL-003",
       "title": "Add start, stop, clear Commands at Top of Makefile",

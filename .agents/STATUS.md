@@ -4,12 +4,14 @@
 
 - Current milestone: `external-ingestion`
 - Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T03:53:08.587567Z`
+- Backlog updated: `2026-06-27T04:55:00Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-TOOL-004` Fix make install and make start Commands | `ready` | unassigned | `foundation` | none |
 
 ## In progress
 
@@ -66,4 +68,4 @@ None recorded.
 
 ## Next valid action
 
-No active or queued tasks remain. Create the next approved task packet before assigning work.
+Assign `NH-TOOL-004` to a Developer and record its branch and owned paths.

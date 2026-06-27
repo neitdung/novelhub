@@ -3,6 +3,7 @@
 set -e
 
 cd "$(dirname "$0")/.."
+PROJECT_ROOT=$(pwd)
 
 # Load .env first so it can override all defaults
 if [ -f ".env" ]; then
@@ -45,7 +46,7 @@ fi
 
 # Resolve the Python runtime
 BACKEND_DIR="backend"
-PYTHON=${PYTHON:-${BACKEND_DIR}/.venv/bin/python}
+PYTHON=${PYTHON:-${PROJECT_ROOT}/${BACKEND_DIR}/.venv/bin/python}
 
 if [ ! -x "$PYTHON" ]; then
     if [ "$INSTALL_DEPS" = "1" ]; then
@@ -59,7 +60,7 @@ if [ ! -x "$PYTHON" ]; then
     fi
 fi
 
-PYTHON=${PYTHON:-${BACKEND_DIR}/.venv/bin/python}
+PYTHON=${PYTHON:-${PROJECT_ROOT}/${BACKEND_DIR}/.venv/bin/python}
 if [ ! -x "$PYTHON" ]; then
     echo "Error: Python runtime not found: $PYTHON"
     echo "Install python3-venv, then run:"
