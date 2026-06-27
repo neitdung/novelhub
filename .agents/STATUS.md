@@ -2,9 +2,9 @@
 
 <!-- GENERATED: scripts/harness/render_status.py --write -->
 
-- Current milestone: `external-ingestion`
-- Milestone accepted weight: 0/0 (100.0%)
-- Backlog updated: `2026-06-27T05:24:36.790413Z`
+- Current milestone: `foundation`
+- Milestone accepted weight: 0/5 (0.0%)
+- Backlog updated: `2026-06-27T09:58:42.442152Z`
 - GitHub Project: https://github.com/neitdung/novelhub/projects
 
 ## Ready
@@ -13,7 +13,9 @@ None.
 
 ## In progress
 
-None.
+| Task | State | Owner | Milestone | Dependencies |
+|------|-------|-------|-----------|--------------|
+| `NH-HARNESS-004` Fix GitHub CI: sync-pull artifact files, preserve metadata, add sync step | `in_progress` | opencode | `foundation` | NH-HARNESS-003 |
 
 ## Blocked / rework
 
@@ -60,7 +62,9 @@ None.
 
 ## Active ownership
 
-No active path ownership.
+| Task | Branch | Owned paths |
+|------|--------|-------------|
+| `NH-HARNESS-004` | `fix/NH-HARNESS-004-fix-ci-workflow` | `.github/workflows/ci.yml`<br>`scripts/harness/sync_issues.py` |
 
 ## Decisions and blockers
 
@@ -68,4 +72,4 @@ None recorded.
 
 ## Next valid action
 
-No active or queued tasks remain. Create the next approved task packet before assigning work.
+Wait for Developer handoff on `NH-HARNESS-004` or record a blocker.

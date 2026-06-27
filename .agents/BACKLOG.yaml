@@ -1,9 +1,55 @@
 {
   "schema_version": 1,
   "project": "novelhub",
-  "current_milestone": "external-ingestion",
-  "updated_at": "2026-06-27T05:24:36.790413Z",
+  "current_milestone": "foundation",
+  "updated_at": "2026-06-27T09:58:42.442152Z",
   "tasks": [
+    {
+      "id": "NH-HARNESS-004",
+      "title": "Fix GitHub CI: sync-pull artifact files, preserve metadata, add sync step",
+      "milestone": "foundation",
+      "priority": "P1",
+      "weight": 5,
+      "state": "in_progress",
+      "owner": "opencode",
+      "branch": "fix/NH-HARNESS-004-fix-ci-workflow",
+      "depends_on": [
+        "NH-HARNESS-003"
+      ],
+      "owned_paths": [
+        ".github/workflows/ci.yml",
+        "scripts/harness/sync_issues.py"
+      ],
+      "task_packet": ".agents/tasks/NH-HARNESS-004.md",
+      "handoff": "",
+      "qa_report": "",
+      "review_report": "",
+      "docs_impact": "none",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-27T09:58:42.442152Z",
+          "by": "github-mcp"
+        },
+        {
+          "state": "planning",
+          "at": "2026-06-27T09:58:42.442152Z",
+          "by": "manager-agent"
+        },
+        {
+          "state": "ready",
+          "at": "2026-06-27T09:58:42.442152Z",
+          "by": "planner-agent"
+        },
+        {
+          "state": "in_progress",
+          "at": "2026-06-27T09:58:42.442152Z",
+          "by": "developer-agent"
+        }
+      ],
+      "updated_at": "2026-06-27T09:58:42.442152Z"
+    },
     {
       "id": "NH-HARNESS-003",
       "title": "Stop tracking generated artifact .md files in .agents/",
@@ -17,9 +63,9 @@
       "owned_paths": [
         ".gitignore"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
+      "task_packet": ".agents/tasks/NH-HARNESS-003.md",
+      "handoff": ".agents/handoffs/NH-HARNESS-003.md",
+      "qa_report": ".agents/reports/NH-HARNESS-003-qa.md",
       "review_report": ".agents/reports/NH-HARNESS-003-review.md",
       "docs_impact": "none",
       "blocked_by": [],
@@ -30,14 +76,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.789823Z"
+      "updated_at": "2026-06-27T09:58:03.316560Z"
     },
     {
       "id": "NH-TOOL-004",
       "title": "Fix make install and make start Commands",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 2,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -46,11 +92,11 @@
         "** `backend/pyproject.toml",
         "scripts/start.sh"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
+      "task_packet": ".agents/tasks/NH-TOOL-004.md",
+      "handoff": ".agents/handoffs/NH-TOOL-004.md",
+      "qa_report": ".agents/reports/NH-TOOL-004-qa.md",
       "review_report": "",
-      "docs_impact": "pending",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -59,14 +105,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.789879Z"
+      "updated_at": "2026-06-27T09:58:03.316702Z"
     },
     {
       "id": "NH-TOOL-003",
       "title": "Add start, stop, clear Commands at Top of Makefile",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 2,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -74,11 +120,11 @@
       "owned_paths": [
         "** `Makefile"
       ],
-      "task_packet": "",
-      "handoff": "",
+      "task_packet": ".agents/tasks/NH-TOOL-003.md",
+      "handoff": ".agents/handoffs/NH-TOOL-003.md",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "pending",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -87,14 +133,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.789914Z"
+      "updated_at": "2026-06-27T09:58:03.317170Z"
     },
     {
       "id": "NH-TOOL-002",
       "title": "Add Unified install Command",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 3,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -103,11 +149,11 @@
         "** `Makefile",
         "scripts/install.sh"
       ],
-      "task_packet": "",
-      "handoff": "",
+      "task_packet": ".agents/tasks/NH-TOOL-002.md",
+      "handoff": ".agents/handoffs/NH-TOOL-002.md",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "pending",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -116,14 +162,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.789943Z"
+      "updated_at": "2026-06-27T09:58:03.317441Z"
     },
     {
       "id": "NH-TOOL-001",
       "title": "Clean Up Makefile and scripts/ Directory",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 3,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -132,11 +178,11 @@
         "** `Makefile",
         "scripts/"
       ],
-      "task_packet": "",
-      "handoff": "",
+      "task_packet": ".agents/tasks/NH-TOOL-001.md",
+      "handoff": ".agents/handoffs/NH-TOOL-001.md",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "pending",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -145,24 +191,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.789971Z"
+      "updated_at": "2026-06-27T09:58:03.317707Z"
     },
     {
       "id": "NH-HARNESS-002",
       "title": "Branch Naming, PR Creation, and PR-Based Review Workflow",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-HARNESS-002.md",
+      "handoff": ".agents/handoffs/NH-HARNESS-002.md",
+      "qa_report": ".agents/reports/NH-HARNESS-002-qa.md",
+      "review_report": ".agents/reports/NH-HARNESS-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -171,14 +217,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790004Z"
+      "updated_at": "2026-06-27T09:58:03.317968Z"
     },
     {
       "id": "NH-INGEST-005",
       "title": "Frontend Source Management, Import Flow, and Chapter Handler UI",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -190,11 +236,11 @@
         "frontend/src/App.tsx",
         "frontend/src/components/"
       ],
-      "task_packet": "",
+      "task_packet": ".agents/tasks/NH-INGEST-005.md",
       "handoff": "",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "pending",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -203,14 +249,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790027Z"
+      "updated_at": "2026-06-27T09:58:03.318408Z"
     },
     {
       "id": "NH-INGEST-003",
       "title": "Unified External Source Ingestion and Chapter Handler",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -224,11 +270,11 @@
         "backend/app/migrations.py",
         "backend/pyproject.toml"
       ],
-      "task_packet": "",
-      "handoff": "",
+      "task_packet": ".agents/tasks/NH-INGEST-003.md",
+      "handoff": ".agents/handoffs/NH-INGEST-003.md",
       "qa_report": "",
       "review_report": "",
-      "docs_impact": "pending",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -237,24 +283,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790066Z"
+      "updated_at": "2026-06-27T09:58:03.318596Z"
     },
     {
       "id": "NH-HARD-001",
       "title": "Security: sanitize_html, sanitize_url, sanitize_markdown, validate_input",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 3,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-HARD-001.md",
+      "handoff": ".agents/handoffs/NH-HARD-001.md",
+      "qa_report": ".agents/reports/NH-HARD-001-qa.md",
+      "review_report": ".agents/reports/NH-HARD-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -263,24 +309,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790080Z"
+      "updated_at": "2026-06-27T09:58:03.318917Z"
     },
     {
       "id": "NH-PORT-002",
       "title": "Backup ZIP with Manifest/Checksum, Restore with Validation",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-PORT-002.md",
+      "handoff": ".agents/handoffs/NH-PORT-002.md",
+      "qa_report": ".agents/reports/NH-PORT-002-qa.md",
+      "review_report": ".agents/reports/NH-PORT-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -289,24 +335,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790094Z"
+      "updated_at": "2026-06-27T09:58:03.319094Z"
     },
     {
       "id": "NH-PORT-001",
       "title": "Export: Markdown Novel, JSON KB, Markdown Wiki",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-PORT-001.md",
+      "handoff": ".agents/handoffs/NH-PORT-001.md",
+      "qa_report": ".agents/reports/NH-PORT-001-qa.md",
+      "review_report": ".agents/reports/NH-PORT-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -315,24 +361,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790107Z"
+      "updated_at": "2026-06-27T09:58:03.319236Z"
     },
     {
       "id": "NH-DISCOV-001",
       "title": "Knowledge Graph and Timeline API",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-DISCOV-001.md",
+      "handoff": ".agents/handoffs/NH-DISCOV-001.md",
+      "qa_report": ".agents/reports/NH-DISCOV-001-qa.md",
+      "review_report": ".agents/reports/NH-DISCOV-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -341,24 +387,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790125Z"
+      "updated_at": "2026-06-27T09:58:03.319381Z"
     },
     {
       "id": "NH-CHAT-002",
       "title": "Chat Tools: Wiki Search, Entity Lookup, Alias Resolution",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-CHAT-002.md",
+      "handoff": ".agents/handoffs/NH-CHAT-002.md",
+      "qa_report": ".agents/reports/NH-CHAT-002-qa.md",
+      "review_report": ".agents/reports/NH-CHAT-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -367,24 +413,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790138Z"
+      "updated_at": "2026-06-27T09:58:03.319515Z"
     },
     {
       "id": "NH-CHAT-001",
       "title": "Chat CRUD and Messages API",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-CHAT-001.md",
+      "handoff": ".agents/handoffs/NH-CHAT-001.md",
+      "qa_report": ".agents/reports/NH-CHAT-001-qa.md",
+      "review_report": ".agents/reports/NH-CHAT-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -393,24 +439,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790152Z"
+      "updated_at": "2026-06-27T09:58:03.319644Z"
     },
     {
       "id": "NH-FE-003",
       "title": "Settings Page and Enhanced Navigation",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-FE-003.md",
+      "handoff": ".agents/handoffs/NH-FE-003.md",
+      "qa_report": ".agents/reports/NH-FE-003-qa.md",
+      "review_report": ".agents/reports/NH-FE-003-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -419,24 +465,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790166Z"
+      "updated_at": "2026-06-27T09:58:03.319789Z"
     },
     {
       "id": "NH-FE-002",
       "title": "Theme System",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-FE-002.md",
+      "handoff": ".agents/handoffs/NH-FE-002.md",
+      "qa_report": ".agents/reports/NH-FE-002-qa.md",
+      "review_report": ".agents/reports/NH-FE-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -445,24 +491,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790179Z"
+      "updated_at": "2026-06-27T09:58:03.319922Z"
     },
     {
       "id": "NH-FE-001",
       "title": "WebSocket Analysis Progress",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-FE-001.md",
+      "handoff": ".agents/handoffs/NH-FE-001.md",
+      "qa_report": ".agents/reports/NH-FE-001-qa.md",
+      "review_report": ".agents/reports/NH-FE-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -471,24 +517,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790193Z"
+      "updated_at": "2026-06-27T09:58:03.320061Z"
     },
     {
       "id": "NH-KB-003",
       "title": "On-Demand Wiki Generation",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-KB-003.md",
+      "handoff": ".agents/handoffs/NH-KB-003.md",
+      "qa_report": ".agents/reports/NH-KB-003-qa.md",
+      "review_report": ".agents/reports/NH-KB-003-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -497,24 +543,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790207Z"
+      "updated_at": "2026-06-27T09:58:03.320191Z"
     },
     {
       "id": "NH-KB-002",
       "title": "FTS5 Search",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-KB-002.md",
+      "handoff": ".agents/handoffs/NH-KB-002.md",
+      "qa_report": ".agents/reports/NH-KB-002-qa.md",
+      "review_report": ".agents/reports/NH-KB-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -523,24 +569,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790221Z"
+      "updated_at": "2026-06-27T09:58:03.320327Z"
     },
     {
       "id": "NH-KB-001",
       "title": "Entity Knowledge Base Schema and API",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-KB-001.md",
+      "handoff": ".agents/handoffs/NH-KB-001.md",
+      "qa_report": ".agents/reports/NH-KB-001-qa.md",
+      "review_report": ".agents/reports/NH-KB-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -549,14 +595,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790238Z"
+      "updated_at": "2026-06-27T09:58:03.320464Z"
     },
     {
       "id": "NH-LLM-002",
       "title": "Analysis pipeline",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -564,11 +610,11 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-LLM-002.md",
+      "handoff": ".agents/handoffs/NH-LLM-002.md",
+      "qa_report": ".agents/reports/NH-LLM-002-qa.md",
+      "review_report": ".agents/reports/NH-LLM-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -577,14 +623,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790255Z"
+      "updated_at": "2026-06-27T09:58:03.320598Z"
     },
     {
       "id": "NH-LLM-001",
       "title": "LLM provider interfaces",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -592,11 +638,11 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-LLM-001.md",
+      "handoff": ".agents/handoffs/NH-LLM-001.md",
+      "qa_report": ".agents/reports/NH-LLM-001-qa.md",
+      "review_report": ".agents/reports/NH-LLM-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -605,14 +651,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790272Z"
+      "updated_at": "2026-06-27T09:58:03.320753Z"
     },
     {
       "id": "NH-READ-002",
       "title": "Bookmarks and progress persistence",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -621,11 +667,11 @@
         "backend/",
         "frontend/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-READ-002.md",
+      "handoff": ".agents/handoffs/NH-READ-002.md",
+      "qa_report": ".agents/reports/NH-READ-002-qa.md",
+      "review_report": ".agents/reports/NH-READ-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -634,14 +680,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790289Z"
+      "updated_at": "2026-06-27T09:58:03.320894Z"
     },
     {
       "id": "NH-READ-001",
       "title": "Reader UI and navigation",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -649,11 +695,11 @@
       "owned_paths": [
         "frontend/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-READ-001.md",
+      "handoff": ".agents/handoffs/NH-READ-001.md",
+      "qa_report": ".agents/reports/NH-READ-001-qa.md",
+      "review_report": ".agents/reports/NH-READ-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -662,14 +708,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790304Z"
+      "updated_at": "2026-06-27T09:58:03.321039Z"
     },
     {
       "id": "NH-INGEST-002",
       "title": "Chapter parsing and splitting",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -677,11 +723,11 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-INGEST-002.md",
+      "handoff": ".agents/handoffs/NH-INGEST-002.md",
+      "qa_report": ".agents/reports/NH-INGEST-002-qa.md",
+      "review_report": ".agents/reports/NH-INGEST-002-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -690,14 +736,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790320Z"
+      "updated_at": "2026-06-27T09:58:03.321186Z"
     },
     {
       "id": "NH-INGEST-001",
       "title": "Novel upload API and storage",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 8,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -705,11 +751,11 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-INGEST-001.md",
+      "handoff": ".agents/handoffs/NH-INGEST-001.md",
+      "qa_report": ".agents/reports/NH-INGEST-001-qa.md",
+      "review_report": ".agents/reports/NH-INGEST-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -718,14 +764,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790335Z"
+      "updated_at": "2026-06-27T09:58:03.321332Z"
     },
     {
       "id": "NH-FOUND-005",
       "title": "OpenAPI contract and generated type check",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -735,11 +781,11 @@
         "frontend/",
         "contracts/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-FOUND-005.md",
+      "handoff": ".agents/handoffs/NH-FOUND-005.md",
+      "qa_report": ".agents/reports/NH-FOUND-005-qa.md",
+      "review_report": ".agents/reports/NH-FOUND-005-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -748,14 +794,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790353Z"
+      "updated_at": "2026-06-27T09:58:03.321476Z"
     },
     {
       "id": "NH-FOUND-003",
       "title": "SQLite migration baseline",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -763,11 +809,11 @@
       "owned_paths": [
         "backend/"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-FOUND-003.md",
+      "handoff": ".agents/handoffs/NH-FOUND-003.md",
+      "qa_report": ".agents/reports/NH-FOUND-003-qa.md",
+      "review_report": ".agents/reports/NH-FOUND-003-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -776,14 +822,14 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790368Z"
+      "updated_at": "2026-06-27T09:58:03.321613Z"
     },
     {
       "id": "NH-FOUND-001",
       "title": "Scaffold backend and frontend toolchains",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
@@ -793,11 +839,11 @@
         "frontend/",
         "root toolchain configuration"
       ],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-FOUND-001.md",
+      "handoff": ".agents/handoffs/NH-FOUND-001.md",
+      "qa_report": ".agents/reports/NH-FOUND-001-qa.md",
+      "review_report": ".agents/reports/NH-FOUND-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -806,24 +852,24 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790386Z"
+      "updated_at": "2026-06-27T09:58:03.321768Z"
     },
     {
       "id": "NH-HARNESS-001",
       "title": "Bootstrap and validate the AI engineering harness",
       "milestone": "unknown",
       "priority": "P2",
-      "weight": 0,
+      "weight": 5,
       "state": "done",
       "owner": "",
       "branch": null,
       "depends_on": [],
       "owned_paths": [],
-      "task_packet": "",
-      "handoff": "",
-      "qa_report": "",
-      "review_report": "",
-      "docs_impact": "pending",
+      "task_packet": ".agents/tasks/NH-HARNESS-001.md",
+      "handoff": ".agents/handoffs/NH-HARNESS-001.md",
+      "qa_report": ".agents/reports/NH-HARNESS-001-qa.md",
+      "review_report": ".agents/reports/NH-HARNESS-001-review.md",
+      "docs_impact": "none",
       "blocked_by": [],
       "history": [
         {
@@ -832,7 +878,7 @@
           "by": "github-mcp"
         }
       ],
-      "updated_at": "2026-06-27T05:24:36.790409Z"
+      "updated_at": "2026-06-27T09:58:03.321927Z"
     }
   ]
 }

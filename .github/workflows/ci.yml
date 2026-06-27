@@ -13,6 +13,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Sync local artifacts from GitHub Issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PROJECT_NUMBER: ${{ vars.GH_PROJECT_NUMBER || '1' }}
+          GH_OWNER: ${{ github.repository_owner }}
+        run: make sync-pull
       - name: Validate AI engineering harness
         run: make harness-check
       - name: Run project checks
