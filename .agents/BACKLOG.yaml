@@ -2,8 +2,43 @@
   "schema_version": 1,
   "project": "novelhub",
   "current_milestone": "foundation",
-  "updated_at": "2026-06-27T15:50:13.259239Z",
+  "updated_at": "2026-06-27T17:54:24.112554Z",
   "tasks": [
+    {
+      "id": "NH-FEP-001",
+      "title": "Full Frontend API Client and App Navigation Shell",
+      "milestone": "unknown",
+      "priority": "P2",
+      "weight": 13,
+      "state": "qa_passed",
+      "owner": "Developer",
+      "branch": "feat/NH-FEP-001-frontend-api-shell",
+      "depends_on": [],
+      "owned_paths": [
+        "frontend/src/store/api.ts",
+        "frontend/src/app/",
+        "frontend/src/components/Layout.tsx"
+      ],
+      "task_packet": ".agents/tasks/NH-FEP-001.md",
+      "handoff": ".agents/handoffs/NH-FEP-001.md",
+      "qa_report": ".agents/reports/NH-FEP-001-qa.md",
+      "review_report": "",
+      "docs_impact": "pending",
+      "blocked_by": [],
+      "history": [
+        {
+          "state": "proposed",
+          "at": "2026-06-27T17:53:26Z",
+          "by": "github-mcp"
+        },
+        {
+          "state": "qa_passed",
+          "at": "2026-06-28T01:01:00Z",
+          "by": "qa-agent"
+        }
+      ],
+      "updated_at": "2026-06-28T01:01:00Z"
+    },
     {
       "id": "NH-TOOL-005",
       "title": "Fix make start to Launch Frontend Dev Server",
@@ -1183,7 +1218,7 @@
       "milestone": "parity",
       "priority": "P1",
       "weight": 13,
-      "state": "dev_complete",
+      "state": "qa_failed",
       "owner": "developer",
       "branch": "feat/NH-BEP-001-backend-gaps",
       "depends_on": [],
@@ -1194,7 +1229,7 @@
       ],
       "task_packet": ".agents/tasks/NH-BEP-001.md",
       "handoff": ".agents/handoffs/NH-BEP-001.md",
-      "qa_report": "",
+      "qa_report": ".agents/reports/NH-BEP-001-qa.md",
       "review_report": "",
       "docs_impact": "pending",
       "blocked_by": [],
@@ -1205,19 +1240,9 @@
           "by": "manager"
         },
         {
-          "state": "ready",
+          "state": "qa_failed",
           "at": "2026-06-28T00:00:00Z",
-          "by": "planner"
-        },
-        {
-          "state": "in_progress",
-          "at": "2026-06-28T00:00:00Z",
-          "by": "developer"
-        },
-        {
-          "state": "dev_complete",
-          "at": "2026-06-28T00:00:00Z",
-          "by": "developer"
+          "by": "qa"
         }
       ],
       "updated_at": "2026-06-28T00:00:00Z"
