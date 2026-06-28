@@ -21,6 +21,7 @@ from .routers import (
     sources,
     wiki,
 )
+from .routers.health import router as health_router
 from .ws import router as ws_router
 
 
@@ -48,6 +49,7 @@ app.include_router(export.router)
 app.include_router(backup.router)
 app.include_router(sources.router)
 app.include_router(chapters.router)
+app.include_router(health_router)
 app.include_router(ws_router)
 
 

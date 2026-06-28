@@ -39,6 +39,7 @@ from ..schemas import (
     ImportJobResponse,
     ImportRequest,
     ImportStatusResponse,
+    ResplitResponse,
     TxtImportResponse,
 )
 from ..scraper import get_scraper
@@ -145,6 +146,48 @@ async def reimport_chapter(
     if updated is None:
         raise HTTPException(status_code=500, detail="Failed to load chapter")
     return ChapterResponse(**updated)
+
+
+@router.post(
+    "/{novel_id}/chapters/{chapter_id}/resplit", response_model=ResplitResponse
+)
+async def resplit_chapter(novel_id: int, chapter_id: int) -> ResplitResponse:
+    async with get_db_context() as db:
+        chapter = await get_chapter(db, chapter_id)
+        if chapter is None or chapter["novel_id"] != novel_id:
+            raise HTTPException(status_code=404, detail="Chapter not found")
+
+        content = str(chapter.get("content", ""))
+        if not content:
+            raise HTTPException(
+                status_code=400, detail="Chapter has no content to resplit"
+            )
+
+        novel = await get_novel(db, novel_id)
+        lang = str(novel["language"]) if novel else "en"
+
+        parsed = split_chapters(content, language=lang)
+        if not parsed or len(parsed) == 0:
+            raise HTTPException(
+                status_code=400, detail="Could not split chapter content"
+            )
+
+        new_title = str(parsed[0].get("title", chapter.get("title", "")))
+        new_content = str(parsed[0].get("content", content))
+
+        await update_chapter(db, chapter_id, title=new_title, content=new_content)
+        updated = await get_chapter(db, chapter_id)
+
+    if updated is None:
+        raise HTTPException(status_code=500, detail="Failed to load updated chapter")
+
+    new_content_str = str(updated.get("content", ""))
+    return ResplitResponse(
+        chapter_id=chapter_id,
+        chapter_number=int(str(updated["chapter_number"])),
+        title=str(updated.get("title", "")),
+        content_length=len(new_content_str),
+    )
 
 
 @router.post("/{novel_id}/chapters/{chapter_id}/reparse")

@@ -1,6 +1,10 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Query
+import json
+from collections.abc import AsyncGenerator
+
+from fastapi import APIRouter, HTTPException, Query, Request
+from fastapi.responses import StreamingResponse
 
 from ..chat.crud import (
     add_message,
@@ -19,6 +23,8 @@ from ..chat.schemas import (
     MessageResponse,
 )
 from ..chat.tools import execute_tool, get_available_tools
+from ..llm import get_llm_provider
+from ..llm.base import LLMProvider
 
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
@@ -85,6 +91,91 @@ async def list_messages_endpoint(
 @router.get("/tools")
 async def list_tools_endpoint() -> list[dict[str, str]]:
     return get_available_tools()
+
+
+async def _generate_stream(
+    conv_id: int,
+    messages: list[dict[str, str]],
+    llm: LLMProvider,
+) -> AsyncGenerator[str, None]:
+    """Generate SSE events for streaming LLM responses."""
+    full_response = ""
+    try:
+        response = await llm.complete(messages)
+        content = response.content
+        full_response = content
+
+        # Yield the complete response as a single chunk for simplicity
+        # In production, this would use a true streaming API
+        yield f"data: {json.dumps({'type': 'chunk', 'content': content})}\n\n"
+        yield f"data: {json.dumps({'type': 'done', 'content': full_response})}\n\n"
+
+    except Exception as e:
+        error_msg = f"Streaming error: {e}"
+        yield f"data: {json.dumps({'type': 'error', 'content': error_msg})}\n\n"
+
+    finally:
+        # Save the assistant message to the conversation
+        if full_response:
+            await add_message(
+                conv_id,
+                MessageCreate(
+                    role="assistant",
+                    content=full_response,
+                    citations=[],
+                    tool_calls=[],
+                ),
+            )
+
+
+@router.post("/conversations/{conv_id}/stream")
+async def stream_chat_response(conv_id: int, request: Request) -> StreamingResponse:
+    """Stream a chat response using SSE from a user message."""
+    conv = await get_conversation(conv_id)
+    if not conv:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+
+    body = await request.json()
+    user_content = body.get("content", "") if isinstance(body, dict) else ""
+    tool_name = body.get("tool") if isinstance(body, dict) else None
+    tool_args = body.get("arguments", {}) if isinstance(body, dict) else {}
+
+    # Save the user message
+    await add_message(
+        conv_id,
+        MessageCreate(
+            role="user",
+            content=user_content,
+            citations=[],
+            tool_calls=[],
+        ),
+    )
+
+    # Get conversation history
+    existing_messages, _ = await list_messages(conv_id, limit=50, offset=0)
+    history: list[dict[str, str]] = []
+    for msg in existing_messages:
+        role = "assistant" if msg.role == "assistant" else "user"
+        history.append({"role": role, "content": msg.content})
+
+    # Handle tool execution if requested
+    if tool_name:
+        tool_result = await execute_tool(tool_name, tool_args)
+        result_content = json.dumps(tool_result, ensure_ascii=False)
+        tool_msg = f"Tool {tool_name} returned: {result_content}"
+        history.append({"role": "user", "content": tool_msg})
+
+    llm = get_llm_provider()
+
+    return StreamingResponse(
+        _generate_stream(conv_id, history, llm),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @router.post("/tools/{tool_name}")
