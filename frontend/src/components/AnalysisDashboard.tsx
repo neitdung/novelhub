@@ -22,6 +22,7 @@ import {
 import { useAnalysisWebSocket } from "@/hooks/useAnalysisWebSocket";
 import type { AnalysisProgress } from "@/hooks/useAnalysisWebSocket";
 import { ChapterStatusTable } from "./ChapterStatusTable";
+import { AnalysisLogsViewer } from "./AnalysisLogsViewer";
 import { LoadingState } from "./LoadingState";
 import { ErrorState } from "./ErrorState";
 import { EmptyState } from "./EmptyState";
@@ -538,6 +539,24 @@ export function AnalysisDashboard() {
                 </Box>
               ))}
             </VStack>
+          </Card.Body>
+        </Card.Root>
+      )}
+
+      {/* ── Analysis Logs ────────────────────────────────────────────────── */}
+      {selectedNovelId && mergedProgress && (
+        <Card.Root variant="outline">
+          <Card.Header>
+            <Text fontWeight="bold" fontSize="lg">
+              Analysis Logs
+            </Text>
+          </Card.Header>
+          <Card.Body>
+            <AnalysisLogsViewer
+              analysisState={mergedProgress.state}
+              errors={mergedProgress.errors}
+              tasks={mergedProgress.tasks}
+            />
           </Card.Body>
         </Card.Root>
       )}

@@ -97,7 +97,7 @@ export function ChapterStatusTable({
               <Table.Row key={row.chapter_number}>
                 <Table.Cell>{row.chapter_number}</Table.Cell>
                 <Table.Cell>
-                  <Text noOfLines={1} maxWidth="300px">
+                  <Text overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap" maxWidth="300px">
                     {row.title ?? `Chapter ${row.chapter_number}`}
                   </Text>
                 </Table.Cell>
